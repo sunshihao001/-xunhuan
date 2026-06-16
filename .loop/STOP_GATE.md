@@ -1,17 +1,26 @@
 # STOP_GATE
 
-## Done
+## Final stop state
 
-仓库结构完整、链接验证通过、commit 和 push 成功。
+Done.
+
+## Done evidence
+
+- 仓库结构完整。
+- Markdown 链接验证通过。
+- Git commit 成功。
+- Git push 成功。
+- GitHub 远端 commit 验证成功。
+- GitHub 仓库描述和 topics 已更新。
 
 ## DoneWithRisk
 
-仓库已推送，但存在非阻塞文档改进项。
+Not used.
 
 ## Blocked
 
-GitHub auth、网络、权限、链接验证或 git push 失败。
+Not used.
 
 ## HumanGate
 
-需要改变产品方向、仓库所有权、公开/私有设置、删除历史、强推时交还用户。
+Not triggered.
