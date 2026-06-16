@@ -1,44 +1,51 @@
 # HANDOFF
 
-## Final status
+## Stage completed
 
-Done.
+Codex theory completion stage is complete.
 
-## What changed
+## Source-of-truth work order
 
-Hermes completed the initial creator workflow demand/framework layer and converted it into a Codex-ready work order.
+`CODEX_WORK_ORDER_CREATOR_THEORY_V1.md`
 
-Artifacts:
-
-- `CREATOR_WORKFLOW_IDEA_FRAMEWORK.md`
-- `CODEX_WORK_ORDER_CREATOR_THEORY_V1.md`
-
-## Current chain
-
-```text
-Core principles
--> Creator workflow idea framework
--> Codex work order for Creator Theory v1
--> Codex professional theory expansion
--> scenario/application mapping
--> productization interface/MVP
-```
-
-## Verification
-
-Passed:
-
-- required artifact existence and size check
-- coverage check
-- local Markdown link check
-
-## Resume instructions
-
-Next action: run Codex with `CODEX_WORK_ORDER_CREATOR_THEORY_V1.md` as the controlling work order. Codex should produce:
+## Delivered artifacts
 
 - `CREATOR_WORKFLOW_THEORY_V1.md`
 - `CREATOR_WORKFLOW_OPERATING_MODEL.md`
 - `CREATOR_WORKFLOW_SCENARIOS.md`
 - `CREATOR_WORKFLOW_ANTI_PATTERNS.md`
+- updated `INDEX.md`
 
-Do not implement UI or tools yet.
+## Verifier evidence
+
+Hermes verifier passed:
+
+- existence and size checks;
+- required concept coverage;
+- 20-scenario coverage;
+- anti-pattern coverage;
+- INDEX navigation links;
+- relative Markdown links;
+- forbidden-path integrity.
+
+## Stop state
+
+DoneWithRisk.
+
+Risk: pre-existing `.codex/` directory remains untracked in the worktree and is intentionally not included in the committed product artifacts.
+
+## Recommended next stage
+
+Create the next bounded work order for:
+
+```text
+CREATOR_INTERFACE_CONTRACT_V0_1.md
+```
+
+Purpose:
+
+```text
+Turn creator-first theory into the first user-facing product interface contract: what the creator sees, what controls exist, what status/evidence is exposed, what remains internal, and how satisfaction feedback routes to Loop/Codex/Verifier/KB.
+```
+
+This should happen before implementation so the future MVP does not expose internal machinery to the user.
