@@ -1,17 +1,25 @@
 # STOP_GATE — v0.2
 
-## Done
+## Final stop state
 
-所有 ACCEPTANCE 通过，提交并推送 GitHub。
+Done.
+
+## Done evidence
+
+- Init Loop CLI implemented.
+- Help/compile/init/conflict/force/dry-run/fallback checks passed.
+- Markdown links passed.
+- Forbidden protocol/template/workflow dirs unchanged.
+- Commit pushed: `5d1aed933804909ecfb4cfd168f8e26f2e80f019`.
 
 ## DoneWithRisk
 
-脚本可用但存在非阻塞文档或平台兼容风险。
+Not used.
 
 ## Blocked
 
-Codex 不可用、验证失败两次、GitHub push 失败、或需要超出范围的依赖/发布系统。
+Not used.
 
 ## HumanGate
 
-需要改变产品方向、引入依赖、发布到 PyPI、重构仓库协议、强推或删除历史。
+Not triggered.

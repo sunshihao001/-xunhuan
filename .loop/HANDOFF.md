@@ -1,8 +1,16 @@
 # HANDOFF
 
-## Current status
+## Final status
 
-ReadyForPush.
+Done.
+
+## Repository
+
+https://github.com/sunshihao001/-xunhuan
+
+## Commit
+
+`5d1aed933804909ecfb4cfd168f8e26f2e80f019`
 
 ## What changed
 
@@ -16,8 +24,8 @@ This initializes the standard 8 `.loop` files.
 
 ## Evidence
 
-Hermes verifier passed all acceptance checks.
+Hermes verifier passed all acceptance checks, and the implementation was pushed to GitHub.
 
-## Next action
+## Next recommended loop
 
-Commit and push to GitHub. After push, update this handoff to Done with commit evidence.
+v0.3: add a `scripts/check_loop.py` verifier that checks `.loop/` completeness and reports Done/Risk/Blocked readiness.

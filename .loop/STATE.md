@@ -1,15 +1,13 @@
 # STATE
 
-status: ReadyForPush
+status: Done
 round: 1
 
 ## Current understanding
 
-v0.2 has implemented the minimum runnable Loop initializer.
+v0.2 has implemented and uploaded the minimum runnable Loop initializer.
 
-## Round 1 execution
-
-Codex implemented:
+## Delivered
 
 - `scripts/init_loop.py`
 - `docs/INIT_LOOP.md`
@@ -27,6 +25,11 @@ Codex implemented:
 - Markdown link check: pass
 - forbidden protocol/template/workflow dirs unchanged: pass
 
-## Next action
+## GitHub evidence
 
-Commit and push v0.2 to GitHub.
+- Commit: `5d1aed933804909ecfb4cfd168f8e26f2e80f019`
+- Push: `main -> main`
+
+## Stop decision
+
+Done.
