@@ -33,6 +33,7 @@
 ## Product
 
 - [Product Positioning](PRODUCT_POSITIONING.md)
+- [AI Workflow Control Model](AI_WORKFLOW_CONTROL_MODEL.md)
 - [v0.7 Trial](07_TRIALS/V0_7_BOUNDED_LOOP_TRIAL.md)
 
 ## Tools
