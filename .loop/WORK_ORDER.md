@@ -1,140 +1,56 @@
-# WORK_ORDER - Workflow External Audit Research Pack Round
+# WORK_ORDER - Non-Expert Creator Workflow Encapsulation Round
 
 ## Context
 
-The user approved the workflow theory audit direction. The next correct step is to turn the audit brief and external source candidates into a layered research evidence pack.
+The user clarified an important product principle:
 
-This is a research cognition update round, not product implementation and not CLI tooling.
+> The user is not a professional AI programming person and may not understand many technical parts. The workflow should encapsulate scattered capabilities so the user only needs to create ideas, adjust the broad direction, and judge satisfaction with the finished product before requesting changes.
+
+This changes the product model. The current repo contains many powerful but scattered assets: demand interrogation, external research, knowledge pipeline, Codex work orders, loop state, verifier gates, audit packs, and productization contracts. These must be wrapped into a creator-facing operating model.
 
 ## Objective
 
-Create a durable `workflow_audit_research/` evidence pack that audits the current Hermes + Codex + Loop + Knowledge Base workflow against external literature and practice.
+Create a creator-facing encapsulation model for the AI workflow. The model should define what the user should and should not need to operate, and how Hermes should hide internal complexity behind simple stages and feedback loops.
 
-The pack must preserve candidate evidence separately from reading cards, synthesis, stable conclusions, and workflow patch candidates.
+This is documentation/product-model work. Do not create CLI tools. Do not add dependencies. Do not implement UI.
 
 ## Read first
 
-- `WORKFLOW_THEORY_AUDIT_BRIEF.md`
-- `WORKFLOW_EXTERNAL_AUDIT_SOURCES.md`
 - `AI_WORKFLOW_THEORY_V0_1.md`
 - `HERMES_CODEX_EXECUTION_PLAYBOOK.md`
-- `RESEARCH_TO_PRODUCT_LOOP.md`
-- `AI_WORKFLOW_KNOWLEDGE_PIPELINE.md`
 - `THEORY_TO_PRODUCT_CONNECTION.md`
 - `PRODUCTIZATION_LOOP_V0_1.md`
+- `DEMAND_CONTRACT_PRODUCTIZATION_V0_1.md`
+- `workflow_audit_research/workflow/patch_candidates.md`
+- `workflow_audit_research/kb/stable_conclusions.md`
+- `WORKFLOW_THEORY_AUDIT_BRIEF.md`
 
-## Required output tree
+## Required output artifacts
 
-Create:
+1. `CREATOR_FIRST_WORKFLOW_MODEL.md`
+   - Define the user's role as creator / direction owner / satisfaction judge.
+   - Define what the user should not need to understand: prompt engineering, Codex, loop files, verifier implementation, research pack internals, git details.
+   - Define what the system should encapsulate.
+   - Explain the difference between internal engineering workflow and user-facing workflow.
+   - Include a simple user-facing loop: idea → direction check → system execution → artifact preview → satisfaction feedback → correction.
 
-```text
-workflow_audit_research/
-  README.md
-  raw/
-    source_urls.md
-  clean/
-    source_candidates.md
-  reading/
-    S1_loop_engineering.md
-    S2_context_engineering.md
-    S3_spec_driven_development.md
-    S4_human_in_loop_audit_trail.md
-  insights/
-    workflow_audit_synthesis.md
-    risk_register.md
-  kb/
-    stable_conclusions.md
-  workflow/
-    patch_candidates.md
-    next_research_plan.md
-```
+2. `ENCAPSULATED_WORKFLOW_REQUIREMENTS.md`
+   - Convert the principle into product requirements.
+   - Include functional requirements for Hermes, Codex, Loop, Verifier, Knowledge Base, and Research.
+   - Include non-goals.
+   - Include acceptance criteria.
+   - Include HumanGate rules from a non-technical user perspective.
+   - Include what feedback should look like: “满意 / 不满意 / 方向错 / 细节错 / 继续深化 / 停止”.
 
-Update `INDEX.md` with a link to `workflow_audit_research/README.md`.
+3. Update `INDEX.md`
+   - Link both new artifacts under Product.
 
-## Content requirements
-
-### README.md
-
-- Explain the purpose of the audit pack.
-- State that it is not final kb yet.
-- Define the reading order.
-- Explain raw / clean / reading / insights / kb / workflow promotion gates.
-
-### raw/source_urls.md
-
-- List source URLs, titles, source type, and audit dimension.
-- Clearly label as raw/candidate evidence.
-
-### clean/source_candidates.md
-
-- Summarize each candidate source.
-- Include relevance, quality, limitations, and use_for.
-
-### reading cards
-
-For each source card include:
-
-- source metadata
-- core thesis
-- useful claims
-- evidence strength
-- limits / risks
-- relation to current workflow
-- audit implications
-- candidate workflow patch
-
-### insights/workflow_audit_synthesis.md
-
-Synthesize across sources by audit dimension:
-
-- Loop Engineering
-- Context Engineering
-- Spec-driven Development
-- Human-in-the-loop
-- Verifier / maker-checker
-- Audit trail / provenance
-- Knowledge pipeline
-
-For each dimension include:
-
-- support evidence
-- challenge / risk evidence
-- current workflow assessment
-- improvement direction
-
-### insights/risk_register.md
-
-List current workflow risks:
-
-- risk
-- why it matters
-- evidence source
-- severity
-- mitigation
-- target artifact to improve
-
-### kb/stable_conclusions.md
-
-Only include cautiously promoted conclusions. It must explicitly state which conclusions are stable enough and which are still candidates.
-
-### workflow/patch_candidates.md
-
-Include workflow patch candidates, not final patches. Each candidate must have:
-
-- patch id
-- source evidence
-- target artifact / behavior
-- proposed change
-- verifier gate
-- status: candidate
-
-### workflow/next_research_plan.md
-
-Define next research/search steps, including missing source types such as official docs, GitHub repos, academic/industry frameworks, and examples of audit trail schema.
+4. Optional: update `.loop/STATE.md`, `.loop/LOOP_LOG.md`, `.loop/HANDOFF.md` with this round's state.
 
 ## Allowed files
 
-- `workflow_audit_research/**`
+- `CREATOR_FIRST_WORKFLOW_MODEL.md`
+- `ENCAPSULATED_WORKFLOW_REQUIREMENTS.md`
 - `INDEX.md`
 - `.loop/STATE.md`
 - `.loop/LOOP_LOG.md`
@@ -155,9 +71,17 @@ Do not modify:
 - `scripts/`
 - `tests/`
 - `docs/`
-- any root theory/contract/work order file except `INDEX.md`
+- `workflow_audit_research/`
+- root theory/contract files not listed in allowed files
 
-Do not create CLI tools. Do not add dependencies. Do not commit.
+## Content requirements
+
+- Write in clear language suitable for a non-professional AI programming user.
+- Do not reduce the system's internal rigor; hide complexity behind product boundaries.
+- Make it clear that the user should not have to manually operate demand interrogation, research collection, Codex, `.loop`, verifier, or git.
+- Preserve HumanGate: the user still decides direction, risk, value, scope, satisfaction, and major corrections.
+- Define how the system should report back: concise product status, evidence summary, what changed, what needs feedback.
+- Include a warning that the current repo is still building this encapsulation and not yet a finished UI/product.
 
 ## Required verification before returning
 
@@ -166,33 +90,20 @@ Run and report:
 ```bash
 python - <<'PY'
 from pathlib import Path
-required = [
-  'workflow_audit_research/README.md',
-  'workflow_audit_research/raw/source_urls.md',
-  'workflow_audit_research/clean/source_candidates.md',
-  'workflow_audit_research/reading/S1_loop_engineering.md',
-  'workflow_audit_research/reading/S2_context_engineering.md',
-  'workflow_audit_research/reading/S3_spec_driven_development.md',
-  'workflow_audit_research/reading/S4_human_in_loop_audit_trail.md',
-  'workflow_audit_research/insights/workflow_audit_synthesis.md',
-  'workflow_audit_research/insights/risk_register.md',
-  'workflow_audit_research/kb/stable_conclusions.md',
-  'workflow_audit_research/workflow/patch_candidates.md',
-  'workflow_audit_research/workflow/next_research_plan.md',
-]
-for f in required:
+files = ['CREATOR_FIRST_WORKFLOW_MODEL.md','ENCAPSULATED_WORKFLOW_REQUIREMENTS.md','INDEX.md']
+for f in files:
     p = Path(f)
     assert p.exists(), f'missing {f}'
-    assert p.stat().st_size > 500, f'too small {f}'
-print('workflow audit research pack exists')
+    assert p.stat().st_size > 1000, f'too small {f}'
+print('creator workflow artifacts exist')
 PY
 python - <<'PY'
 from pathlib import Path
-terms = ['Loop Engineering','Context Engineering','Spec-driven','HumanGate','Verifier','audit trail','provenance','raw','clean','reading','insights','kb','workflow patch']
-text = '\n'.join(p.read_text(encoding='utf-8', errors='replace') for p in Path('workflow_audit_research').rglob('*.md'))
+terms = ['creator','direction','satisfaction','Hermes','Codex','Loop','Verifier','Knowledge Base','HumanGate','encapsulate']
+text = '\n'.join(Path(f).read_text(encoding='utf-8', errors='replace') for f in ['CREATOR_FIRST_WORKFLOW_MODEL.md','ENCAPSULATED_WORKFLOW_REQUIREMENTS.md'])
 missing = [t for t in terms if t not in text]
 assert not missing, missing
-print('workflow audit coverage passed')
+print('creator workflow coverage passed')
 PY
 git diff --name-only
 ```
@@ -204,7 +115,7 @@ Also verify forbidden paths are unchanged.
 Return:
 
 - Files created/updated.
-- Main audit findings.
-- Patch candidates created.
-- Verification commands and results.
-- Stop state: Done / DoneWithRisk / Blocked / HumanGate / Repair.
+- How the user's role changed in the model.
+- What complexity is now marked for encapsulation.
+- Verification results.
+- Stop state.

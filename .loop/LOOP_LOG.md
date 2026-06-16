@@ -1,5 +1,38 @@
 # LOOP_LOG
 
+## Creator-first workflow encapsulation round
+
+The user requested a documentation/product-model round to encapsulate the existing workflow for a non-professional AI programming user.
+
+## What Codex produced
+
+Created:
+
+- `CREATOR_FIRST_WORKFLOW_MODEL.md`
+- `ENCAPSULATED_WORKFLOW_REQUIREMENTS.md`
+
+Updated:
+
+- `INDEX.md`
+- `.loop/STATE.md`
+- `.loop/LOOP_LOG.md`
+- `.loop/HANDOFF.md`
+
+## Main findings
+
+- The user role should be creator, direction owner, and satisfaction judge.
+- Hermes, Codex, Loop, Verifier, Knowledge Base, and Research should remain rigorous internal subsystems, but their mechanics should be encapsulated.
+- The user-facing loop should be idea -> direction check -> system execution -> artifact preview -> satisfaction feedback -> correction.
+- HumanGate should protect direction, value, risk, scope, satisfaction, and major correction decisions without requiring technical micromanagement.
+
+## Verification evidence
+
+Required artifact existence, size, and coverage checks passed. Diff inspection confirmed that changed paths are within the allowed file list.
+
+## Decision
+
+Done.
+
 ## Workflow external audit research pack round
 
 The user said to proceed according to the workflow theory audit direction. Hermes compiled a bounded Codex work order to create a layered research evidence pack.

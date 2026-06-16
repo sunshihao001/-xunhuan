@@ -1,29 +1,21 @@
 # STATE
 
 status: Done
-round: 1
+round: creator-first workflow encapsulation
 
 ## Current understanding
 
-The user approved the workflow theory audit direction. This round paused productization and created a layered external-audit research pack instead of continuing implementation.
+The user clarified that the target user is a creator, not a professional AI programming operator. The workflow must hide scattered internal capabilities behind a simple creator-facing loop while preserving internal rigor.
 
 ## Completed action
 
-Codex created `workflow_audit_research/` with raw / clean / reading / insights / kb / workflow layers.
+This round created the creator-first encapsulation model and requirements:
 
-Created audit outputs include:
+- `CREATOR_FIRST_WORKFLOW_MODEL.md`
+- `ENCAPSULATED_WORKFLOW_REQUIREMENTS.md`
 
-- source URL inventory
-- clean source candidates
-- four reading cards
-- audit synthesis
-- risk register
-- cautious stable conclusions
-- workflow patch candidates
-- next research plan
-
-Hermes independently verified file existence, coverage terms, links, and forbidden path boundaries.
+The round also updated `INDEX.md` so the new product artifacts are discoverable.
 
 ## Next action
 
-Use `workflow_audit_research/workflow/patch_candidates.md` to decide which candidate patch should become an accepted workflow change. Recommended next target: audit trail schema or research_context field.
+Use the creator-first model as the product boundary for future work. Future rounds should keep the user-facing surface focused on idea, direction, preview, satisfaction, and correction while Hermes, Codex, Loop, Verifier, Knowledge Base, and Research handle internal execution.

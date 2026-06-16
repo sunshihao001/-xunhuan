@@ -6,48 +6,47 @@ Done.
 
 ## What changed
 
-This round created the first durable workflow external-audit research pack:
+This round created creator-first workflow encapsulation artifacts:
 
-```text
-workflow_audit_research/
-```
+- `CREATOR_FIRST_WORKFLOW_MODEL.md`
+- `ENCAPSULATED_WORKFLOW_REQUIREMENTS.md`
 
-It follows the intended evidence pipeline:
+It also updated `INDEX.md` under Product and refreshed loop state/log/handoff for this round.
 
-```text
-raw -> clean -> reading -> insights -> kb -> workflow
-```
+## Current product model
 
-## Key artifacts
+The user is modeled as:
 
-- `workflow_audit_research/README.md`
-- `workflow_audit_research/raw/source_urls.md`
-- `workflow_audit_research/clean/source_candidates.md`
-- `workflow_audit_research/reading/*.md`
-- `workflow_audit_research/insights/workflow_audit_synthesis.md`
-- `workflow_audit_research/insights/risk_register.md`
-- `workflow_audit_research/kb/stable_conclusions.md`
-- `workflow_audit_research/workflow/patch_candidates.md`
-- `workflow_audit_research/workflow/next_research_plan.md`
+- creator,
+- direction owner,
+- satisfaction judge,
+- HumanGate decision owner for value, risk, scope, boundaries, and major corrections.
 
-## Patch candidates created
+The system should encapsulate:
 
-- PATCH-AUDIT-001: loop connection statement
-- PATCH-AUDIT-002: research context field
-- PATCH-AUDIT-003: work order type classification
-- PATCH-AUDIT-004: minimum loop audit trail fields
-- PATCH-AUDIT-005: maker-checker evidence boundary
-- PATCH-AUDIT-006: cautious KB promotion rule
+- demand interrogation,
+- research collection and promotion,
+- Codex work orders,
+- `.loop` state,
+- Verifier checks,
+- Knowledge Base learnback,
+- git and forbidden-path safety details.
 
 ## Verification
 
 Passed:
 
-- file existence and size check
-- audit concept coverage check
-- local Markdown link check
-- forbidden path diff check
+- required artifact existence and size check
+- creator workflow coverage check
+- allowed-path diff inspection
+- forbidden path unchanged check
 
 ## Resume instructions
 
-Next recommended action: select one patch candidate and promote it into an accepted workflow rule. The highest-value next patch is likely PATCH-AUDIT-004, the minimum loop audit trail fields, because it improves verifier accountability across all future rounds.
+Future productization rounds should use the creator-facing loop as the outer product surface:
+
+```text
+idea -> direction check -> system execution -> artifact preview -> satisfaction feedback -> correction
+```
+
+Internal rigor still comes from Hermes, Codex, Loop, Verifier, Knowledge Base, Research, Demand Contracts, and evidence-based stop states.

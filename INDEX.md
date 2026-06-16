@@ -33,6 +33,8 @@
 ## Product
 
 - [Product Positioning](PRODUCT_POSITIONING.md)
+- [Creator-First Workflow Model](CREATOR_FIRST_WORKFLOW_MODEL.md)
+- [Encapsulated Workflow Requirements](ENCAPSULATED_WORKFLOW_REQUIREMENTS.md)
 - [AI Workflow Control Model](AI_WORKFLOW_CONTROL_MODEL.md)
 - [AI Workflow Knowledge Pipeline](AI_WORKFLOW_KNOWLEDGE_PIPELINE.md)
 - [AI Workflow Theory v0.1](AI_WORKFLOW_THEORY_V0_1.md)
