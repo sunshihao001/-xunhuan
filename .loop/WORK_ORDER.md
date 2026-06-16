@@ -1,27 +1,82 @@
-# WORK_ORDER - Round 1
+# WORK_ORDER - Long Theory Completion Round
+
+## Correction
+
+The previous execution over-focused on small CLI increments. The user has clarified the actual desired next step:
+
+> Use the initial idea already expressed in Hermes, plus the saved AI workflow assets, and let Codex run a long task to complete the first full version of the theory/workflow. Hermes should then verify and report back.
+
+Do not create another small standalone CLI in this round.
 
 ## Read first
 
+- `AI_WORKFLOW_CONTROL_MODEL.md`
 - `AI_WORKFLOW_KNOWLEDGE_PIPELINE.md`
+- `AI_WORKFLOW_MAP.md` if present
+- `AI_WORKFLOW_ROUTER.md` if present
+- `DEMAND_CONTRACT_TEMPLATE.md` if present
 - `README.md`
 - `INDEX.md`
-- `scripts/compile_loop.py`
-- `tests/test_compile_loop.py`
-- `.loop/TARGET.md`
-- `.loop/ACCEPTANCE.md`
+- `docs/COMPILE_LOOP.md`
+- `docs/INIT_RESEARCH_PACK.md`
+- `.loop/HANDOFF.md`
+
+## User's initial idea to preserve and complete
+
+The user wants this workflow:
+
+```text
+在 Hermes 里先给出需求初步想法；
+搜索外部相关信息资料来完善和填充理论框架；
+把完善后的理论交给 Codex 长任务，补全具体的全部理论初步版本；
+再按照全部理论使用循环代理把它做成成品；
+成品完成后，根据不合适的地方继续调整修改；
+外部搜索资料不能只是当时搜索使用，而要按照来源和层级保存为知识库储备；
+Hermes 应该负责需求拷问、理论框架、知识库与验证；
+Codex 应该负责长任务执行和具体细节完善；
+人只负责关键边界、方向调整和 HumanGate。
+```
 
 ## Objective
 
-Implement v0.8: a research evidence pack initializer at `scripts/init_research_pack.py`.
+Create the first complete, coherent theory/workflow version for this AI workflow operating system. It should integrate the saved cognition into a professional artifact set that can guide future Hermes + Codex + loop-agent execution.
+
+## Required output artifacts
+
+Create or update documentation only. Do not create new CLI tools in this round.
+
+Required artifacts:
+
+1. `AI_WORKFLOW_THEORY_V0_1.md`
+   - Complete theory framework.
+   - Explain the control model: Human / Hermes / Codex / Loop / Verifier / Knowledge Base.
+   - Explain why external research must become durable evidence assets.
+   - Explain how initial ideas become theory, then Codex long tasks, then loop-built product, then iterative correction.
+
+2. `HERMES_CODEX_EXECUTION_PLAYBOOK.md`
+   - Concrete step-by-step workflow.
+   - Include exact phases from initial idea to final product.
+   - Include what Hermes does, what Codex does, when HumanGate triggers, and how verifier checks results.
+   - Include example Codex long-task work order shape.
+
+3. `RESEARCH_TO_PRODUCT_LOOP.md`
+   - External research → layered knowledge → theory → Codex task → loop execution → product → correction.
+   - Define the durable research layers: raw, clean, reading, insights, kb, workflow.
+   - Define promotion gates from source to stable knowledge and workflow patch.
+
+4. Update `INDEX.md`
+   - Add the new artifacts under Product or a new Theory / Workflow section.
+
+5. Optionally update `README.md` only if useful for navigation.
 
 ## Allowed files
 
-- `scripts/init_research_pack.py`
-- `tests/test_init_research_pack.py`
-- `docs/INIT_RESEARCH_PACK.md`
-- `README.md`
+- `AI_WORKFLOW_THEORY_V0_1.md`
+- `HERMES_CODEX_EXECUTION_PLAYBOOK.md`
+- `RESEARCH_TO_PRODUCT_LOOP.md`
 - `INDEX.md`
-- `.loop/*` only for execution notes if needed
+- `README.md`
+- `.loop/*` only if needed for status notes
 
 ## Forbidden files/directories
 
@@ -35,86 +90,64 @@ Do not modify:
 - `05_WORKFLOWS/`
 - `06_KNOWLEDGE_BASE/`
 - `07_TRIALS/`
+- `scripts/`
+- `tests/`
+- `docs/`
 
-Do not add dependencies.
+Do not create CLI tools. Do not add dependencies.
 
-## Requirements
+## Content quality requirements
 
-Create `scripts/init_research_pack.py` using only Python standard library.
-
-CLI behavior:
-
-```bash
-python scripts/init_research_pack.py --name <pack-name> --dir <target-dir> --question <cognition-question>
-python scripts/init_research_pack.py --name <pack-name> --dir <target-dir> --question <cognition-question> --dry-run
-python scripts/init_research_pack.py --name <pack-name> --dir <target-dir> --question <cognition-question> --force
-```
-
-Required behavior:
-
-1. Create a research evidence pack directory under `<target-dir>/<pack-name>/`.
-2. Create these directories:
-   - `raw/`
-   - `raw/source_captures/`
-   - `clean/`
-   - `reading/`
-   - `insights/`
-   - `kb/`
-   - `workflow/`
-3. Write root `README.md` explaining:
-   - cognition question
-   - layer roles
-   - promotion gate from evidence to workflow patch
-   - Hermes / Codex / Verifier usage
-4. Write starter files:
-   - `clean/sources.json`
-   - `clean/source_quality.md`
-   - `insights/synthesis.md`
-   - `kb/stable_conclusions.md`
-   - `workflow/patches.md`
-   - `workflow/next_execution_plan.md`
-5. Default behavior must refuse to overwrite existing files.
-6. `--force` may overwrite generated files.
-7. `--dry-run` previews planned directories/files without writing.
-8. Human output should list created or planned paths.
-9. JSON output is optional; do not implement unless simple.
-
-Documentation:
-
-- Add `docs/INIT_RESEARCH_PACK.md` with usage, layer meanings, examples, and how it feeds Hermes/Codex/Loop.
-- Update README / INDEX to mention the research pack initializer.
+- Avoid empty theory and vague slogans.
+- Use concrete phases, gates, artifacts, and file names.
+- Distinguish temporary research evidence from stable knowledge.
+- Distinguish Hermes orchestration from Codex execution.
+- Distinguish Codex self-report from Hermes verifier evidence.
+- Include stop conditions: Done, DoneWithRisk, Blocked, HumanGate.
+- Include how future external sources should be saved and promoted.
+- Include how this can guide later product implementation.
 
 ## Required verification before returning
 
 Run and report:
 
 ```bash
-python scripts/init_research_pack.py --help
-python -m py_compile scripts/init_research_pack.py
-python tests/test_init_research_pack.py -v
-python tests/test_compile_loop.py -v
-python tests/test_plan_next.py -v
-python tests/test_run_loop.py -v
-python tests/test_check_loop.py -v
-TMPDIR=$(mktemp -d)
-python scripts/init_research_pack.py --name ai-workflow-research --dir "$TMPDIR" --question "How should external research become durable AI workflow knowledge?"
-python scripts/init_research_pack.py --name ai-workflow-research --dir "$TMPDIR" --question "x" ; test $? -ne 0
-python scripts/init_research_pack.py --name ai-workflow-research --dir "$TMPDIR" --question "x" --force
-python scripts/init_research_pack.py --name dry --dir "$TMPDIR" --question "x" --dry-run
+python - <<'PY'
+from pathlib import Path
+files = [
+  'AI_WORKFLOW_THEORY_V0_1.md',
+  'HERMES_CODEX_EXECUTION_PLAYBOOK.md',
+  'RESEARCH_TO_PRODUCT_LOOP.md',
+  'INDEX.md',
+]
+for f in files:
+    p = Path(f)
+    assert p.exists(), f'missing {f}'
+    assert p.stat().st_size > 1000, f'too small {f}'
+print('artifact existence check passed')
+PY
+python - <<'PY'
+from pathlib import Path
+required_terms = ['Hermes', 'Codex', 'HumanGate', 'Verifier', 'raw', 'clean', 'reading', 'insights', 'kb', 'workflow']
+text = '\n'.join(Path(f).read_text(encoding='utf-8', errors='replace') for f in [
+  'AI_WORKFLOW_THEORY_V0_1.md',
+  'HERMES_CODEX_EXECUTION_PLAYBOOK.md',
+  'RESEARCH_TO_PRODUCT_LOOP.md',
+])
+missing = [t for t in required_terms if t not in text]
+assert not missing, missing
+print('concept coverage check passed')
+PY
+git diff --name-only
 ```
 
-Also verify:
-
-- dry-run does not write files
-- Markdown links remain valid
-- forbidden directories are unchanged
+Also verify forbidden paths are unchanged.
 
 ## Completion report
 
 Return:
 
-- Files changed.
-- Commands run with pass/fail status.
-- Whether Codex encountered blockers.
-- Whether research pack behavior was verified.
-- Whether forbidden paths stayed unchanged.
+- Files created/updated.
+- Summary of the completed theory/workflow version.
+- Verification commands and results.
+- Any risks or remaining gaps.

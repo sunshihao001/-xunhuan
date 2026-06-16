@@ -6,60 +6,36 @@ Done.
 
 ## What changed
 
-v0.8 adds a research evidence pack initializer:
+This round corrected direction away from small isolated CLI increments and completed the first full theory/workflow version using Codex long-task execution.
 
-```bash
-python scripts/init_research_pack.py --name <pack-name> --dir <target-dir> --question <cognition-question>
-python scripts/init_research_pack.py --name <pack-name> --dir <target-dir> --question <cognition-question> --dry-run
-python scripts/init_research_pack.py --name <pack-name> --dir <target-dir> --question <cognition-question> --force
-```
+New source-of-truth artifacts:
 
-It creates a layered pack:
+- `AI_WORKFLOW_THEORY_V0_1.md`
+- `HERMES_CODEX_EXECUTION_PLAYBOOK.md`
+- `RESEARCH_TO_PRODUCT_LOOP.md`
 
-```text
-raw/
-raw/source_captures/
-clean/
-reading/
-insights/
-kb/
-workflow/
-```
+Updated navigation:
 
-and starter files:
+- `INDEX.md`
 
-```text
-README.md
-clean/sources.json
-clean/source_quality.md
-insights/synthesis.md
-kb/stable_conclusions.md
-workflow/patches.md
-workflow/next_execution_plan.md
-```
+## What the new artifacts cover
 
-## Evidence
+- Human / Hermes / Codex / Loop / Verifier / Knowledge Base role split.
+- Initial idea → external research → durable knowledge → theory → Codex work order → loop-built product → correction → learnback.
+- Research layers: raw, clean, reading, insights, kb, workflow.
+- Promotion gates from evidence to stable knowledge and workflow patches.
+- Codex long-task work order shape.
+- Stop states: Done, DoneWithRisk, Blocked, HumanGate, Repair.
 
-Verifier evidence passed:
+## Verification
 
-- `python scripts/init_research_pack.py --help`
-- `python -m py_compile scripts/init_research_pack.py`
-- `python tests/test_init_research_pack.py -v`
-- `python tests/test_compile_loop.py -v`
-- `python tests/test_plan_next.py -v`
-- `python tests/test_run_loop.py -v`
-- `python tests/test_check_loop.py -v`
-- positive init path
-- overwrite refusal path
-- `--force` path
-- `--dry-run` non-write path
-- Markdown link check
+Passed:
+
+- artifact existence and size check
+- concept coverage check
+- local Markdown link check
 - forbidden path diff check
-
-## Risks
-
-This initializes evidence packs only. It does not crawl the web, build a RAG/vector store, or automatically promote evidence into stable knowledge.
 
 ## Resume instructions
 
-Recommended next loop: v0.9 research pack checker. After that, add source capture/import and promotion-gate tooling.
+Next step should use these documents as the source-of-truth theory layer and compile the next bounded product-building loop from them. Do not continue adding small tools unless they are explicitly derived from the theory-to-product loop.

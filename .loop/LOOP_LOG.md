@@ -1,36 +1,40 @@
 # LOOP_LOG
 
-## Round 0 - Loop compiled
+## Correction round - Long theory completion
 
-Hermes compiled v0.8 bounded loop for a research evidence pack initializer.
+The user clarified that the desired next step was not another small tool increment. The correct task was:
 
-## Round 1
+```text
+Use the initial idea already expressed in Hermes, let Codex run a long task, complete the first full theory/workflow version, then return a verified report.
+```
 
-Codex executed successfully with the bounded work order.
+## Codex execution
 
-What happened:
+Codex ran successfully and created the theory artifact set:
 
-1. Hermes expressed the user's demand as a research cognition update loop, not a one-off search task.
-2. Codex read the work order and relevant workflow docs.
-3. Codex added failing tests first for `scripts/init_research_pack.py`.
-4. Codex implemented the initializer and docs.
-5. Hermes verified the result independently.
+- `AI_WORKFLOW_THEORY_V0_1.md`
+- `HERMES_CODEX_EXECUTION_PLAYBOOK.md`
+- `RESEARCH_TO_PRODUCT_LOOP.md`
 
-## Evidence
+Codex also updated `INDEX.md` to link the new artifacts.
 
-- `python scripts/init_research_pack.py --help`: passed.
-- `python -m py_compile scripts/init_research_pack.py`: passed.
-- `python tests/test_init_research_pack.py -v`: 5 tests passed.
-- `python tests/test_compile_loop.py -v`: 10 tests passed.
-- `python tests/test_plan_next.py -v`: 5 tests passed.
-- `python tests/test_run_loop.py -v`: 6 tests passed.
-- `python tests/test_check_loop.py -v`: 6 tests passed.
-- Positive temp-dir init command: passed.
-- Overwrite refusal without `--force`: passed.
-- `--force` overwrite: passed.
-- `--dry-run` preview and non-write check: passed.
-- Markdown relative links: 37 checked, 0 missing.
-- Forbidden path diff: none.
+## Hermes verifier evidence
+
+Hermes independently ran:
+
+- artifact existence and size check
+- concept coverage check for Hermes / Codex / HumanGate / Verifier / raw / clean / reading / insights / kb / workflow
+- local Markdown link check
+- forbidden path diff check
+
+Results:
+
+- `AI_WORKFLOW_THEORY_V0_1.md`: 9383 bytes
+- `HERMES_CODEX_EXECUTION_PLAYBOOK.md`: 8023 bytes
+- `RESEARCH_TO_PRODUCT_LOOP.md`: 8619 bytes
+- concept coverage: passed
+- local links checked: 31, missing: 0
+- forbidden path diff: none
 
 ## Decision
 

@@ -5,12 +5,18 @@ round: 1
 
 ## Current understanding
 
-v0.8 adds `scripts/init_research_pack.py`, a concrete research evidence pack initializer. This turns the user's demand into execution: external research should become layered durable knowledge assets, not one-off search summaries.
+The previous small-tool direction was corrected. The user's actual request was to take the already stated initial idea and have Codex run a long task to complete the first full theory/workflow version.
 
 ## Completed action
 
-Round 1 completed with Codex execution. Codex followed TDD, added tests first, implemented the initializer, updated docs, README, and INDEX. Hermes independently re-ran verifier gates and manual positive/negative checks.
+Codex completed the long theory round and produced:
+
+- `AI_WORKFLOW_THEORY_V0_1.md`
+- `HERMES_CODEX_EXECUTION_PLAYBOOK.md`
+- `RESEARCH_TO_PRODUCT_LOOP.md`
+
+Hermes independently verified artifact existence, size, concept coverage, local links, and forbidden path boundaries.
 
 ## Next action
 
-Recommended v0.9: add `scripts/check_research_pack.py` to validate pack structure, source inventory parseability, starter files, and promotion-gate readiness before any research pack is used as Hermes/Codex context.
+Use these theory artifacts as the source of truth for the next product-building loop. Future execution should not keep adding small isolated CLIs unless they directly serve the theory-to-product loop.

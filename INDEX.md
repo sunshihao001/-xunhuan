@@ -35,6 +35,9 @@
 - [Product Positioning](PRODUCT_POSITIONING.md)
 - [AI Workflow Control Model](AI_WORKFLOW_CONTROL_MODEL.md)
 - [AI Workflow Knowledge Pipeline](AI_WORKFLOW_KNOWLEDGE_PIPELINE.md)
+- [AI Workflow Theory v0.1](AI_WORKFLOW_THEORY_V0_1.md)
+- [Hermes Codex Execution Playbook](HERMES_CODEX_EXECUTION_PLAYBOOK.md)
+- [Research to Product Loop](RESEARCH_TO_PRODUCT_LOOP.md)
 - [v0.7 Trial](07_TRIALS/V0_7_BOUNDED_LOOP_TRIAL.md)
 
 ## Tools
