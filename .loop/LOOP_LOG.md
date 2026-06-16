@@ -1,45 +1,45 @@
 # LOOP_LOG
 
-## Round: creator mvp loop prototype v0.1
+## Round: creator mvp loop prototype refinement v0.2
 
 ### Trigger
 
-User said "继续推进" after Hermes had compiled the prototype work order and asked for permission to continue after a mistaken path cleanup.
+User said "继续推进" after the v0.1 prototype stage completed and the previous handoff recommended a prototype review/refinement pass.
 
 ### Demand cognition
 
-Hermes interpreted the request as authorization to continue the existing bounded loop:
+Hermes interpreted the request as continuing the bounded loop with a refinement stage, not expanding into a real app surface yet.
+
+The active convergence slice was:
 
 ```text
-MVP demand contract -> Codex prototype work order -> static prototype -> Hermes verifier -> commit/push -> user review
+v0.1 static prototype -> product-quality v0.2 refinement -> verified creator-facing baseline
 ```
 
 ### Work order compiled
 
 Hermes created:
 
-- `CODEX_WORK_ORDER_CREATOR_MVP_PROTOTYPE_V0_1.md`
+- `CODEX_WORK_ORDER_CREATOR_MVP_PROTOTYPE_REFINEMENT_V0_2.md`
 
 The work order constrained Codex to:
 
 ```text
-prototypes/creator-mvp-loop-v0-1.html
+prototypes/creator-mvp-loop-v0-2.html
 INDEX.md
 ```
 
-and forbade dependencies, CLI tools, real `.loop` automation, network behavior, broad app architecture, forbidden directory changes, and commits.
+and required Codex to preserve:
 
-### Path cleanup
-
-A first `write_file` call mistakenly used an MSYS-style `/c/...` path with the file tool, which resolved outside the intended workspace as `C:\c\Users\Administrator\...`.
-
-After the user authorized continuation, Hermes removed the mistaken duplicate file and confirmed cleanup.
+```text
+prototypes/creator-mvp-loop-v0-1.html
+```
 
 ### Codex result
 
 Codex created:
 
-- `prototypes/creator-mvp-loop-v0-1.html`
+- `prototypes/creator-mvp-loop-v0-2.html`
 
 Codex updated:
 
@@ -51,32 +51,40 @@ Codex did not commit changes.
 
 Hermes independently verified:
 
-- `prototypes/creator-mvp-loop-v0-1.html` exists and is substantive: 21361 bytes;
-- required terms are present, including Creator MVP Loop v0.1, Idea Intake, Direction Check, Preview, Evidence Summary, HumanGate, Correction Routing, Stop state, automatic continuation, and scope expansion;
+- v0.1 file exists and has no diff;
+- v0.2 file exists and is substantive: 29275 bytes;
+- required labels/concepts are present: Creator MVP Loop v0.1, v0.2 refinement, Idea Intake, Direction Check, Status, Preview, Evidence Summary, Satisfaction Feedback, HumanGate, Correction Routing, internal route roles, scope expansion, and automatic continuation;
 - feedback actions are present: approve, adjust, reject, continue, stop;
-- no static network/dependency patterns were detected (`fetch(`, `XMLHttpRequest`, `import(`, remote `src`/`href`, `cdn`);
-- `INDEX.md` links both `CODEX_WORK_ORDER_CREATOR_MVP_PROTOTYPE_V0_1.md` and `prototypes/creator-mvp-loop-v0-1.html`;
+- HumanGate choices are present: authorize, keep, stop;
+- evidence includes optional internal detail via `<details>/<summary>`;
+- no static network/dependency patterns were detected;
+- `INDEX.md` preserves v0.1 link and adds v0.2 link;
 - forbidden directories were not changed;
-- HTML parsed with Python's stdlib HTML parser;
-- extracted inline script passed `node --check`.
+- HTML parsed via Python stdlib `html.parser`;
+- extracted inline script passed `node --check`;
+- Playwright CLI rendered the v0.2 page and produced a screenshot after installing the matching Chromium build;
+- CDP interaction verification passed:
+  - initial state: Preview;
+  - Continue -> HumanGate;
+  - route title: HumanGate: creator-owned decision;
+  - Stop -> Stop;
+  - Continue disabled after Stop: true;
+  - Authorize new slice disabled after Stop: true.
 
 ### Decision
 
 DoneWithRisk.
 
-Risk:
+Reason:
 
-- no live browser render verification was possible because no Chrome/Chromium/Edge executable was available in the environment;
-- the pre-existing untracked `.codex/` directory remains excluded from committed product artifacts.
+- v0.2 itself passed file, syntax, render, and interaction verification;
+- the worktree still has a pre-existing untracked `.codex/` directory/config file that is intentionally excluded from committed artifacts.
 
 ### Next recommended stage
 
-User review of the prototype. Route feedback as:
+The v0.2 prototype can now be used as the product baseline for the next HumanGate decision:
 
 ```text
-approve -> Done / next refinement
-adjust -> bounded repair
-reject -> reopen direction
-continue -> HumanGate for next slice
-stop -> halt automatic continuation
+continue as static prototype refinement
+or move toward a named app surface / real product implementation slice
 ```

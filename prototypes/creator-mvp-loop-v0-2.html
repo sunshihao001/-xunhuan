@@ -1,0 +1,879 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Creator MVP Loop v0.2</title>
+  <style>
+    :root {
+      --bg: #f4f6f5;
+      --panel: #ffffff;
+      --panel-soft: #f8faf9;
+      --ink: #172026;
+      --muted: #5d696f;
+      --line: #d7dfdc;
+      --accent: #14685b;
+      --accent-soft: #e7f3ef;
+      --warn: #9b6417;
+      --warn-soft: #fbf3e4;
+      --danger: #a03d35;
+      --danger-soft: #f9e8e6;
+      --stop: #394247;
+      --stop-soft: #edf1f1;
+      --shadow: 0 10px 28px rgba(23, 32, 38, 0.08);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font: 15px/1.5 Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    button,
+    textarea,
+    input {
+      font: inherit;
+    }
+
+    .shell {
+      width: min(1220px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 24px 0 36px;
+    }
+
+    .topbar {
+      display: flex;
+      gap: 14px;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 0 0 16px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .titleblock h1 {
+      margin: 0 0 6px;
+      font-size: 32px;
+      letter-spacing: 0;
+    }
+
+    .titleblock p {
+      margin: 0;
+      max-width: 840px;
+      color: var(--muted);
+    }
+
+    .badges {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--panel);
+      padding: 0 12px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+      white-space: nowrap;
+      box-shadow: var(--shadow);
+    }
+
+    .badge.primary {
+      color: var(--accent);
+      border-color: rgba(20, 104, 91, 0.24);
+      background: var(--accent-soft);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.08fr) minmax(330px, 0.72fr);
+      gap: 18px;
+      margin-top: 18px;
+      align-items: start;
+    }
+
+    .stack {
+      display: grid;
+      gap: 18px;
+      align-content: start;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      padding: 18px;
+    }
+
+    .panel h2 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      letter-spacing: 0;
+    }
+
+    .eyebrow {
+      margin: 0 0 4px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0;
+    }
+
+    .intake {
+      width: 100%;
+      min-height: 126px;
+      resize: vertical;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px;
+      background: var(--panel-soft);
+      color: var(--ink);
+    }
+
+    .intake:focus,
+    button:focus-visible,
+    summary:focus-visible,
+    .choice:focus-visible {
+      outline: 3px solid rgba(20, 104, 91, 0.22);
+      outline-offset: 2px;
+    }
+
+    .direction-grid,
+    .summary-grid,
+    .evidence-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .field {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel-soft);
+      padding: 12px;
+      min-height: 94px;
+    }
+
+    .field strong,
+    .mini-label {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0;
+    }
+
+    .state-rail {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+
+    .stage {
+      min-height: 74px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 10px;
+      background: var(--panel-soft);
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .stage strong {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--ink);
+      font-size: 14px;
+    }
+
+    .stage.active {
+      border-color: rgba(20, 104, 91, 0.42);
+      background: var(--accent-soft);
+      color: var(--ink);
+    }
+
+    .stage.gate {
+      border-color: rgba(155, 100, 23, 0.42);
+      background: var(--warn-soft);
+    }
+
+    .status-strip {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .status-card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel-soft);
+      padding: 12px;
+      min-height: 96px;
+    }
+
+    .status-value {
+      display: block;
+      margin-top: 2px;
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--ink);
+    }
+
+    .preview-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(230px, 0.34fr);
+      gap: 12px;
+      align-items: stretch;
+    }
+
+    .artifact {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel-soft);
+      padding: 16px;
+    }
+
+    .artifact h3 {
+      margin: 0 0 8px;
+      font-size: 18px;
+    }
+
+    .artifact p,
+    .note,
+    .small {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .artifact ul {
+      margin: 10px 0 0;
+      padding-left: 20px;
+    }
+
+    .artifact li + li {
+      margin-top: 6px;
+    }
+
+    .riskbox {
+      border: 1px solid rgba(155, 100, 23, 0.3);
+      border-radius: 8px;
+      background: var(--warn-soft);
+      padding: 12px;
+    }
+
+    .riskbox strong {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--warn);
+    }
+
+    .buttons {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    button,
+    .choice {
+      min-height: 44px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel-soft);
+      color: var(--ink);
+      cursor: pointer;
+      font-weight: 800;
+      padding: 10px 12px;
+    }
+
+    button:hover:not(:disabled),
+    .choice:hover:not(:disabled) {
+      border-color: rgba(20, 104, 91, 0.42);
+      background: var(--accent-soft);
+    }
+
+    button[data-action="approve"] {
+      color: #ffffff;
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+
+    button[data-action="stop"],
+    .choice[data-choice="stop"] {
+      color: #ffffff;
+      background: var(--stop);
+      border-color: var(--stop);
+    }
+
+    button[data-action="reject"] {
+      color: var(--danger);
+      border-color: rgba(160, 61, 53, 0.28);
+      background: var(--danger-soft);
+    }
+
+    button:disabled,
+    .choice:disabled {
+      cursor: not-allowed;
+      opacity: 0.45;
+    }
+
+    .routebox {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel-soft);
+      padding: 14px;
+      min-height: 118px;
+    }
+
+    .routebox[data-tone="gate"] {
+      border-color: rgba(155, 100, 23, 0.35);
+      background: var(--warn-soft);
+    }
+
+    .routebox[data-tone="stop"] {
+      border-color: rgba(57, 66, 71, 0.35);
+      background: var(--stop-soft);
+    }
+
+    .route-title {
+      margin: 0 0 6px;
+      font-size: 17px;
+      font-weight: 900;
+    }
+
+    .internal-line {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      align-items: center;
+      margin-top: 10px;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      min-height: 30px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--panel-soft);
+      padding: 0 10px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .arrow {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .controls-note {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    details {
+      border-top: 1px solid var(--line);
+      margin-top: 12px;
+      padding-top: 10px;
+    }
+
+    details summary {
+      cursor: pointer;
+      color: var(--ink);
+      font-weight: 800;
+      list-style: none;
+    }
+
+    details summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .detail-grid {
+      display: grid;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .detail-line {
+      padding: 10px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .detail-line:last-child {
+      border-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .gate-panel {
+      border: 1px solid rgba(155, 100, 23, 0.3);
+      border-radius: 8px;
+      background: var(--warn-soft);
+      padding: 14px;
+    }
+
+    .gate-panel .gate-reason {
+      margin: 6px 0 12px;
+      color: var(--ink);
+      font-weight: 700;
+    }
+
+    .gate-choices {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    .gate-status {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media (max-width: 940px) {
+      .topbar,
+      .grid,
+      .preview-layout {
+        grid-template-columns: 1fr;
+        display: grid;
+      }
+
+      .badges {
+        justify-content: flex-start;
+      }
+
+      .state-rail,
+      .status-strip,
+      .direction-grid,
+      .summary-grid,
+      .evidence-grid,
+      .buttons,
+      .gate-choices {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <div class="titleblock">
+        <p class="eyebrow">Creator MVP Loop v0.1</p>
+        <h1>Creator MVP Loop v0.2</h1>
+        <p>v0.2 refinement keeps the v0.1 loop intact, but makes the creator path clearer, the status model tighter, and the evidence surface more product-like.</p>
+      </div>
+      <div class="badges" aria-label="Prototype labels">
+        <span class="badge primary">v0.2 refinement</span>
+        <span class="badge">v0.1 preserved</span>
+        <span class="badge">artifact: creator-mvp-loop-v0-2.html</span>
+      </div>
+    </header>
+
+    <section class="grid" aria-label="Creator MVP Loop refinement prototype">
+      <div class="stack">
+        <section class="panel" aria-labelledby="idea-title">
+          <p class="eyebrow">Idea Intake</p>
+          <h2 id="idea-title">Idea Intake</h2>
+          <label class="mini-label" for="idea">Rough creator idea</label>
+          <textarea id="idea" class="intake">I want a clearer creator-facing prototype where direction, status, preview, evidence, and feedback are easy to scan without exposing raw .loop machinery.</textarea>
+          <p class="small" style="margin-top:10px;">The creator can edit the idea in plain language. Hermes preserves the wording and summarizes the demand rather than exposing internal mechanics.</p>
+        </section>
+
+        <section class="panel" aria-labelledby="direction-title">
+          <p class="eyebrow">Direction Check</p>
+          <h2 id="direction-title">Direction Check</h2>
+          <div class="direction-grid">
+            <div class="field">
+              <strong>Inferred objective</strong>
+              Make the primary path obvious within five seconds and keep creator controls separate from internal evidence.
+            </div>
+            <div class="field">
+              <strong>Expected output</strong>
+              A single static prototype showing status, preview, evidence, feedback routing, and HumanGate behavior.
+            </div>
+            <div class="field">
+              <strong>Non-goals</strong>
+              No build system, no dependencies, no network behavior, no accounts, no services, and no real .loop automation.
+            </div>
+            <div class="field">
+              <strong>Material risk</strong>
+              Continue can create scope expansion, so it must route to HumanGate instead of silently starting automatic continuation.
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" aria-labelledby="status-title">
+          <p class="eyebrow">Status</p>
+          <h2 id="status-title">Status</h2>
+          <div class="state-rail" id="rail" aria-label="Loop states">
+            <div class="stage active" data-state="intake"><strong>Idea Intake</strong>Creator input captured</div>
+            <div class="stage active" data-state="direction"><strong>Direction Check</strong>Demand clarified</div>
+            <div class="stage active" data-state="status"><strong>Status</strong>Work summarized</div>
+            <div class="stage active" data-state="preview"><strong>Preview</strong>Artifact ready</div>
+            <div class="stage active" data-state="feedback"><strong>Satisfaction Feedback</strong>Decision pending</div>
+            <div class="stage gate" data-state="gate"><strong>HumanGate</strong>Creator-owned decision</div>
+          </div>
+
+          <div class="status-strip">
+            <div class="status-card">
+              <span class="mini-label">Current state</span>
+              <span class="status-value" id="currentState">Preview</span>
+            </div>
+            <div class="status-card">
+              <span class="mini-label">Decision need</span>
+              <span class="status-value" id="decisionNeed">Approve, adjust, reject, continue, or stop.</span>
+            </div>
+            <div class="status-card">
+              <span class="mini-label">Preview readiness</span>
+              <span class="status-value" id="previewReady">Ready</span>
+            </div>
+            <div class="status-card">
+              <span class="mini-label">Risk</span>
+              <span class="status-value" id="riskState">scope expansion</span>
+            </div>
+            <div class="status-card">
+              <span class="mini-label">Verification result</span>
+              <span class="status-value" id="verificationState">Pending creator judgment</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" aria-labelledby="preview-title">
+          <p class="eyebrow">Preview</p>
+          <h2 id="preview-title">Preview</h2>
+          <div class="preview-layout">
+            <div class="artifact">
+              <h3 id="artifactTitle">Artifact: creator-mvp-loop-v0-2.html</h3>
+              <p id="artifactSummary">This refinement keeps the same creator-facing loop, but puts the primary path first: idea intake, direction check, status, preview, evidence summary, and feedback routing.</p>
+              <ul id="artifactPoints">
+                <li>Creator controls are visually separated from internal evidence.</li>
+                <li>HumanGate is a normal creator-owned decision state.</li>
+                <li>Stop visibly disables automatic continuation.</li>
+                <li>Continue routes to HumanGate when it would create a new slice.</li>
+              </ul>
+            </div>
+            <div class="riskbox">
+              <strong>Known limitation</strong>
+              <p id="artifactRisk">Static sample data only. No network calls, no dependencies, and no real .loop state are connected.</p>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <aside class="stack">
+        <section class="panel" aria-labelledby="evidence-title">
+          <p class="eyebrow">Evidence Summary</p>
+          <h2 id="evidence-title">Evidence Summary</h2>
+          <div class="evidence-grid">
+            <div class="field">
+              <strong>Summary</strong>
+              <span id="evidenceSummary">The prototype shows the creator path, a summarized internal route, and state-aware feedback behavior.</span>
+            </div>
+            <div class="field">
+              <strong>Current state</strong>
+              <span id="evidenceState">Preview</span>
+            </div>
+            <div class="field">
+              <strong>Preview readiness</strong>
+              <span id="evidencePreview">Yes</span>
+            </div>
+            <div class="field">
+              <strong>Verification result</strong>
+              <span id="evidenceVerification">Pending creator choice</span>
+            </div>
+          </div>
+
+          <details>
+            <summary>Internal detail</summary>
+            <div class="detail-grid">
+              <div class="detail-line">
+                <strong class="mini-label">Route</strong>
+                Hermes -> Demand Contract -> Loop -> Codex -> Verifier -> feedback/learnback
+              </div>
+              <div class="detail-line">
+                <strong class="mini-label">Scope boundary</strong>
+                The creator sees summarized evidence, not raw .loop files, verifier transcripts, or git mechanics.
+              </div>
+              <div class="detail-line">
+                <strong class="mini-label">Checks</strong>
+                Static artifact only, no dependencies, no network behavior, and no unauthorized directory changes.
+              </div>
+            </div>
+          </details>
+        </section>
+
+        <section class="panel" aria-labelledby="feedback-title">
+          <p class="eyebrow">Satisfaction Feedback</p>
+          <h2 id="feedback-title">Satisfaction Feedback</h2>
+          <div class="buttons" aria-label="Feedback controls">
+            <button type="button" data-action="approve">Approve</button>
+            <button type="button" data-action="adjust">Adjust</button>
+            <button type="button" data-action="reject">Reject</button>
+            <button type="button" data-action="continue">Continue</button>
+            <button type="button" data-action="stop">Stop</button>
+          </div>
+          <p class="controls-note" id="feedbackNote">Approve, adjust, reject, continue, and stop each update state, routing copy, evidence, and the stop state.</p>
+        </section>
+
+        <section class="panel" aria-labelledby="routing-title">
+          <p class="eyebrow">Correction Routing</p>
+          <h2 id="routing-title">Correction Routing</h2>
+          <div class="routebox" id="routeBox" data-tone="neutral" role="status" aria-live="polite">
+            <p class="route-title" id="routeTitle">Preview awaiting feedback</p>
+            <p id="routeText">Choose a feedback action to route to Done, Repair, Direction Check, HumanGate, or Stop.</p>
+          </div>
+          <div class="internal-line" aria-label="Internal route summary">
+            <span class="chip">Hermes</span>
+            <span class="arrow">to</span>
+            <span class="chip">Demand Contract</span>
+            <span class="arrow">to</span>
+            <span class="chip">Loop</span>
+            <span class="arrow">to</span>
+            <span class="chip">Codex</span>
+            <span class="arrow">to</span>
+            <span class="chip">Verifier</span>
+            <span class="arrow">to</span>
+            <span class="chip">feedback/learnback</span>
+          </div>
+          <p class="controls-note">The creator sees a product route, not a document dashboard. The route names scope expansion and automatic continuation explicitly.</p>
+        </section>
+
+        <section class="panel" aria-labelledby="gate-title">
+          <p class="eyebrow">HumanGate</p>
+          <h2 id="gate-title">HumanGate</h2>
+          <div class="gate-panel">
+            <p class="gate-reason" id="gateReason">Reason: Continue would create a new slice, so the next step belongs to the creator.</p>
+            <div class="gate-choices" aria-label="HumanGate options">
+              <button type="button" class="choice" data-choice="authorize">Authorize new slice</button>
+              <button type="button" class="choice" data-choice="keep">Keep current slice</button>
+              <button type="button" class="choice" data-choice="stop">Stop</button>
+            </div>
+            <p class="gate-status" id="gateStatus">HumanGate is a creator-owned decision, not an error state.</p>
+          </div>
+        </section>
+      </aside>
+    </section>
+  </main>
+
+  <script>
+    const routeBox = document.getElementById("routeBox");
+    const routeTitle = document.getElementById("routeTitle");
+    const routeText = document.getElementById("routeText");
+    const currentState = document.getElementById("currentState");
+    const decisionNeed = document.getElementById("decisionNeed");
+    const previewReady = document.getElementById("previewReady");
+    const riskState = document.getElementById("riskState");
+    const verificationState = document.getElementById("verificationState");
+    const evidenceSummary = document.getElementById("evidenceSummary");
+    const evidenceState = document.getElementById("evidenceState");
+    const evidencePreview = document.getElementById("evidencePreview");
+    const evidenceVerification = document.getElementById("evidenceVerification");
+    const feedbackNote = document.getElementById("feedbackNote");
+    const gateReason = document.getElementById("gateReason");
+    const gateStatus = document.getElementById("gateStatus");
+    const buttons = Array.from(document.querySelectorAll("button[data-action]"));
+    const gateChoices = Array.from(document.querySelectorAll("button[data-choice]"));
+    const stages = Array.from(document.querySelectorAll(".stage"));
+
+    let state = "preview";
+    let stopLocked = false;
+    let nextSliceCreatesScope = true;
+
+    const model = {
+      preview: {
+        tone: "neutral",
+        routeTitle: "Preview ready for judgment",
+        routeText: "The creator can inspect the artifact, the evidence summary, and the feedback controls without reading internal internals.",
+        decision: "Approve, adjust, reject, continue, or stop.",
+        preview: "Ready",
+        risk: "scope expansion",
+        verification: "Pending creator judgment",
+        evidence: "The prototype is browseable, static, and intentionally summarized for creator review.",
+        gateReason: "Reason: Continue would create a new slice, so the next step belongs to the creator.",
+        gateStatus: "HumanGate is ready if the creator wants to authorize scope expansion.",
+        current: "Preview",
+        summary: "The prototype shows the creator path, a summarized internal route, and state-aware feedback behavior."
+      },
+      done: {
+        tone: "neutral",
+        routeTitle: "Approved: route to Done",
+        routeText: "Hermes records satisfaction, Verifier evidence supports completion, and no automatic continuation starts unless a new demand is created.",
+        decision: "No further decision is needed for this slice.",
+        preview: "Accepted",
+        risk: "no material open risk",
+        verification: "Pass",
+        evidence: "Approval is based on verifier-supported evidence, not Codex self-report.",
+        gateReason: "Reason: A new slice is not needed right now.",
+        gateStatus: "HumanGate remains available only if the creator later asks for scope expansion.",
+        current: "Done",
+        summary: "The current artifact satisfies the active slice and does not require a continuation decision."
+      },
+      repair: {
+        tone: "neutral",
+        routeTitle: "Adjust: bounded repair",
+        routeText: "The direction is close, but the prototype needs a constrained correction inside the current slice.",
+        decision: "Tighten details, tone, depth, or layout.",
+        preview: "Needs update",
+        risk: "repair within current slice",
+        verification: "Recheck needed",
+        evidence: "Adjust stays inside the authorized prototype boundary and reuses the same creator loop.",
+        gateReason: "Reason: Repair is bounded; no new slice is required yet.",
+        gateStatus: "HumanGate is unnecessary unless the correction would expand scope.",
+        current: "Repair",
+        summary: "The current slice needs a bounded correction, not a new product direction."
+      },
+      direction: {
+        tone: "neutral",
+        routeTitle: "Rejected: reopen Direction Check",
+        routeText: "The result misses the intended product angle, so the contract needs a direction reset rather than a detail patch.",
+        decision: "Reconfirm objective, output, non-goals, or risk.",
+        preview: "Direction reopened",
+        risk: "semantic mismatch",
+        verification: "Direction review required",
+        evidence: "Reject reopens the demand instead of hiding the mismatch under small edits.",
+        gateReason: "Reason: The current framing needs confirmation before work continues.",
+        gateStatus: "HumanGate may appear if the new direction changes scope or risk.",
+        current: "Direction Check",
+        summary: "The creator should restate the objective before execution continues."
+      },
+      gate: {
+        tone: "gate",
+        routeTitle: "HumanGate: creator-owned decision",
+        routeText: "Continue would create a new slice, so the next move is a creator choice about scope expansion.",
+        decision: "Authorize a new slice, keep the current slice, or stop.",
+        preview: "Paused for decision",
+        risk: "scope expansion",
+        verification: "Decision needed",
+        evidence: "Automatic continuation is paused until the creator resolves the boundary.",
+        gateReason: "Reason: Continue would create a new slice, so the next step belongs to the creator.",
+        gateStatus: "HumanGate is not an error. It is a normal creator decision state.",
+        current: "HumanGate",
+        summary: "Continuation is paused because the next slice would expand scope."
+      },
+      stop: {
+        tone: "stop",
+        routeTitle: "Stopped: automatic continuation disabled",
+        routeText: "The creator chose Stop. The prototype preserves the current state and disables continuation controls.",
+        decision: "A future new demand is required to resume.",
+        preview: "Read-only",
+        risk: "automatic continuation disabled",
+        verification: "Stop confirmed",
+        evidence: "Stop is treated as an explicit creator-owned end state.",
+        gateReason: "Reason: The creator chose Stop, so no continuation is allowed.",
+        gateStatus: "The gate is closed until a new demand exists.",
+        current: "Stop",
+        summary: "The current demand is halted and no further continuation should run."
+      }
+    };
+
+    function render(stage) {
+      const data = model[stage];
+      state = stage;
+
+      routeBox.dataset.tone = data.tone;
+      routeTitle.textContent = data.routeTitle;
+      routeText.textContent = data.routeText;
+      currentState.textContent = data.current;
+      decisionNeed.textContent = data.decision;
+      previewReady.textContent = data.preview;
+      riskState.textContent = data.risk;
+      verificationState.textContent = data.verification;
+      evidenceSummary.textContent = data.summary;
+      evidenceState.textContent = data.current;
+      evidencePreview.textContent = data.preview;
+      evidenceVerification.textContent = data.verification;
+      feedbackNote.textContent = data.evidence;
+      gateReason.textContent = data.gateReason;
+      gateStatus.textContent = data.gateStatus;
+
+      stages.forEach((stageNode) => {
+        const isGate = stageNode.dataset.state === "gate";
+        stageNode.classList.toggle("gate", isGate || stage === "gate");
+        stageNode.classList.toggle("active", stageNode.dataset.state === "feedback" || stageNode.dataset.state === "preview" || stageNode.dataset.state === "status" || stageNode.dataset.state === "direction" || stageNode.dataset.state === "intake" || stage === stageNode.dataset.state);
+      });
+
+      if (stage === "stop") {
+        stopLocked = true;
+        buttons.forEach((button) => {
+          if (button.dataset.action === "continue") {
+            button.disabled = true;
+          }
+        });
+        gateChoices.forEach((button) => {
+          if (button.dataset.choice === "authorize") {
+            button.disabled = true;
+          }
+        });
+      }
+    }
+
+    buttons.forEach((button) => {
+      button.addEventListener("click", () => {
+        if (button.dataset.action === "approve") {
+          render("done");
+          return;
+        }
+        if (button.dataset.action === "adjust") {
+          nextSliceCreatesScope = false;
+          render("repair");
+          return;
+        }
+        if (button.dataset.action === "reject") {
+          nextSliceCreatesScope = false;
+          render("direction");
+          return;
+        }
+        if (button.dataset.action === "continue") {
+          if (stopLocked) {
+            return;
+          }
+          if (nextSliceCreatesScope) {
+            render("gate");
+            return;
+          }
+          render("preview");
+          return;
+        }
+        if (button.dataset.action === "stop") {
+          render("stop");
+        }
+      });
+    });
+
+    gateChoices.forEach((button) => {
+      button.addEventListener("click", () => {
+        if (button.dataset.choice === "authorize") {
+          nextSliceCreatesScope = false;
+          render("preview");
+          return;
+        }
+        if (button.dataset.choice === "keep") {
+          nextSliceCreatesScope = true;
+          render("preview");
+          return;
+        }
+        if (button.dataset.choice === "stop") {
+          render("stop");
+        }
+      });
+    });
+
+    render("preview");
+  </script>
+</body>
+</html>
