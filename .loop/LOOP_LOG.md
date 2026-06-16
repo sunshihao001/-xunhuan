@@ -1,40 +1,25 @@
 # LOOP_LOG
 
-## Core principles theory and application round
+## Creator workflow idea framework round
 
-The user asked to抓住重点 and establish the core principles that should govern all future design, execution, verification, and productization.
+The user asked to use the demand-interrogation front end to deeply question the idea, establish an initial idea/demand framework, and then transform it to the point where Codex can continue.
 
-## What Codex produced
+## What Hermes produced
 
-Created:
+- `CREATOR_WORKFLOW_IDEA_FRAMEWORK.md`
+- `CODEX_WORK_ORDER_CREATOR_THEORY_V1.md`
 
-- `CORE_PRINCIPLES.md`
-- `CORE_PRINCIPLES_THEORY.md`
-- `CORE_PRINCIPLES_APPLICATION_MATRIX.md`
+## Why this matters
 
-Updated:
+This prevents Codex from free-running on a vague instruction. Hermes first established the problem world, solution world, core principles, interrogation dimensions, product hypothesis, scenario requirements, non-goals, and verifier gate.
 
-- `INDEX.md`
-
-## Core principles created
-
-1. Creator Stays Creator
-2. Encapsulation Preserves Rigor
-3. Demand Before Execution
-4. Bounded Executor, Not Product Owner
-5. Verification Is Independent Evidence
-6. State Must Outlive Chat
-7. Knowledge Promotion Has Gates
-8. HumanGate Protects Authority
-9. Satisfaction Is Product Evidence
-10. Theory Must Drive Productization
+Then Hermes compiled the Codex handoff into a bounded work order with required outputs, allowed files, forbidden files, verification commands, and stop states.
 
 ## Verification evidence
 
-- Required artifact existence and size checks passed.
-- Core principle concept coverage passed.
-- Local Markdown link check passed.
-- Forbidden path diff check passed.
+- File existence and size checks passed.
+- Framework concept coverage passed.
+- Local Markdown links checked with no missing links.
 
 ## Decision
 

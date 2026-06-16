@@ -1,22 +1,21 @@
 # STATE
 
 status: Done
-round: core principles theory and application
+round: creator workflow idea framework
 
 ## Current understanding
 
-The user asked to identify and lock the core principles that should govern the creator-first AI workflow operating system, then have Codex mature the idea into professional theory and map it to practical scenarios.
+The user confirmed the correct next step is to use the demand-interrogation front end to deeply question the idea and establish a complete initial demand/framework document before handing the task to Codex.
 
 ## Completed action
 
-Codex created:
+Hermes created:
 
-- `CORE_PRINCIPLES.md`
-- `CORE_PRINCIPLES_THEORY.md`
-- `CORE_PRINCIPLES_APPLICATION_MATRIX.md`
+- `CREATOR_WORKFLOW_IDEA_FRAMEWORK.md`
+- `CODEX_WORK_ORDER_CREATOR_THEORY_V1.md`
 
-`INDEX.md` now links these artifacts.
+These artifacts define the initial creator-first workflow framework and the bounded Codex handoff for professional theory expansion.
 
 ## Next action
 
-Use these core principles as acceptance criteria for all future productization work. Next likely step: turn the creator-facing loop into a concrete interface spec while checking every scenario against the principles.
+Run Codex using `CODEX_WORK_ORDER_CREATOR_THEORY_V1.md` to create the full professional theory, operating model, scenarios, and anti-patterns.

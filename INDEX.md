@@ -38,6 +38,8 @@
 - [Core Principles](CORE_PRINCIPLES.md)
 - [Core Principles Theory](CORE_PRINCIPLES_THEORY.md)
 - [Core Principles Application Matrix](CORE_PRINCIPLES_APPLICATION_MATRIX.md)
+- [Creator Workflow Idea Framework](CREATOR_WORKFLOW_IDEA_FRAMEWORK.md)
+- [Codex Work Order: Creator Theory v1](CODEX_WORK_ORDER_CREATOR_THEORY_V1.md)
 - [AI Workflow Control Model](AI_WORKFLOW_CONTROL_MODEL.md)
 - [AI Workflow Knowledge Pipeline](AI_WORKFLOW_KNOWLEDGE_PIPELINE.md)
 - [AI Workflow Theory v0.1](AI_WORKFLOW_THEORY_V0_1.md)
