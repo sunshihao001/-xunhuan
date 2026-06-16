@@ -4,16 +4,16 @@
 
 - `README.md`
 - `INDEX.md`
-- `docs/PLAN_NEXT.md`
-- `scripts/plan_next.py`
-- `scripts/run_loop.py`
+- `docs/COMPILE_LOOP.md`
+- `scripts/compile_loop.py`
 - `scripts/check_loop.py`
+- `tests/test_compile_loop.py`
 - `.loop/TARGET.md`
 - `.loop/ACCEPTANCE.md`
 
 ## Objective
 
-Implement v0.6: a read-only higher-level intent compiler CLI at `scripts/compile_loop.py`.
+Implement v0.7: guarded write mode for `scripts/compile_loop.py`.
 
 ## Allowed files
 
@@ -22,7 +22,7 @@ Implement v0.6: a read-only higher-level intent compiler CLI at `scripts/compile
 - `docs/COMPILE_LOOP.md`
 - `README.md`
 - `INDEX.md`
-- `.loop/*` for execution state and evidence only
+- `.loop/*` only for execution notes if needed
 
 ## Forbidden files/directories
 
@@ -41,60 +41,47 @@ Do not add dependencies.
 
 ## Requirements
 
-Create `scripts/compile_loop.py` using only Python standard library.
+Enhance `scripts/compile_loop.py` using only Python standard library.
 
 CLI behavior:
 
 ```bash
 python scripts/compile_loop.py --intent <intent-file>
 python scripts/compile_loop.py --intent <intent-file> --json
+python scripts/compile_loop.py --intent <intent-file> --write --dir <target-project>
+python scripts/compile_loop.py --intent <intent-file> --write --dir <target-project> --force
 ```
 
-The compiler must be read-only. It must not mutate files.
+Required behavior:
 
-It should:
-
-1. Parse a compact intent brief / demand contract Markdown file.
-2. Recognize at least these sections:
-   - Goal
-   - Scope
-   - Non-goals
-   - Inputs
-   - Outputs
-   - Constraints
-   - Acceptance
-   - Risks
-   - HumanGate
-3. Build a `proposed_loop` structure containing at least:
-   - `TARGET.md` draft data
-   - `PATH.md` draft data
-   - `ACCEPTANCE.md` draft data
-   - `WORK_ORDER.md` draft data
-4. In human output, print:
-   - goal
-   - scope
-   - non-goals
-   - proposed loop summary
-   - explicit note that the CLI does not write files or execute agents
-5. In JSON output, include at least:
+1. Default mode remains read-only and must not mutate files.
+2. `--write` materializes standard `.loop/` files under `<target-project>/.loop/`.
+3. Write mode must require `--dir`; do not silently write to cwd.
+4. Standard files written:
+   - `TARGET.md`
+   - `PATH.md`
+   - `ACCEPTANCE.md`
+   - `STATE.md`
+   - `LOOP_LOG.md`
+   - `STOP_GATE.md`
+   - `HANDOFF.md`
+   - `WORK_ORDER.md`
+5. Without `--force`, refuse to overwrite existing target files and exit non-zero.
+6. With `--force`, overwrite generated target files.
+7. Written files must be structurally valid enough for `scripts/check_loop.py --dir <target-project>` to pass.
+8. Human output should clearly say when files were written.
+9. JSON output should include at least:
    - `ok`
    - `intent_path`
-   - `goal`
-   - `scope`
-   - `non_goals`
-   - `inputs`
-   - `outputs`
-   - `constraints`
-   - `acceptance`
-   - `risks`
-   - `human_gate`
-   - `proposed_loop`
+   - `write`
+   - `target_dir`
+   - `written_files`
    - `issues`
 
 Documentation:
 
-- Add `docs/COMPILE_LOOP.md` with usage, read-only boundary, examples, and how it fits before plan_next.
-- Update README and INDEX to mention v0.6 compiler.
+- Update `docs/COMPILE_LOOP.md` with guarded write mode examples and safety boundary.
+- Update README / INDEX if needed.
 
 ## Required verification before returning
 
@@ -108,17 +95,20 @@ python tests/test_plan_next.py -v
 python tests/test_run_loop.py -v
 python tests/test_check_loop.py -v
 TMPDIR=$(mktemp -d)
+# create sample intent file
 python scripts/compile_loop.py --intent <sample-intent>
-python scripts/compile_loop.py --intent <sample-intent> --json
 python scripts/compile_loop.py --intent <sample-intent> --json | python -m json.tool
+python scripts/compile_loop.py --intent <sample-intent> --write --dir "$TMPDIR"
+python scripts/check_loop.py --dir "$TMPDIR"
+python scripts/compile_loop.py --intent <sample-intent> --write --dir "$TMPDIR" ; test $? -ne 0
+python scripts/compile_loop.py --intent <sample-intent> --write --dir "$TMPDIR" --force
 ```
 
 Also verify:
 
-- missing required sections causes non-zero exit and issues
-- running `compile_loop.py` does not mutate files
-- Markdown links remain valid
+- default read-only mode does not mutate files
 - forbidden directories are unchanged
+- Markdown links remain valid
 
 ## Completion report
 
@@ -126,6 +116,6 @@ Return:
 
 - Files changed.
 - Commands run with pass/fail status.
-- Whether read-only behavior was verified.
-- Any risks or deferred work.
+- Whether Codex encountered blockers.
+- Whether guarded write behavior was verified.
 - Whether forbidden paths stayed unchanged.

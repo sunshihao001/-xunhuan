@@ -2,16 +2,16 @@
 
 ## Done
 
-All acceptance checks pass, docs are updated, and forbidden paths are unchanged.
+All acceptance checks pass, docs are updated, forbidden paths are unchanged, and remote push succeeds.
 
 ## DoneWithRisk
 
-Core compiler works, but a documented non-blocking parsing limitation remains.
+Core write mode works, but a documented non-blocking edge case remains.
 
 ## Blocked
 
-Stop if requirements imply write-mode generation beyond the read-only compiler boundary.
+Stop if Codex cannot run, tests cannot execute, or write-mode requirements require unsafe behavior.
 
 ## HumanGate
 
-Stop before adding file writes, agent execution, shell execution, secrets, or production side effects to `compile_loop.py`.
+Stop before adding autonomous execution, deleting user files, writing outside the requested target directory, or changing core protocol/template directories.

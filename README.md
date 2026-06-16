@@ -110,7 +110,7 @@ Hermes 编译 Loop
 - 已提供最小可运行 Loop 结构检查器：`scripts/check_loop.py`
 - 已提供只读 Loop Bootstrap Runner：`scripts/run_loop.py`
 - 已提供只读 Work Order Plan Compiler：`scripts/plan_next.py`
-- 已提供只读高层 Intent Compiler：`scripts/compile_loop.py`
+- 已提供默认只读、可显式守护写入的高层 Intent Compiler：`scripts/compile_loop.py`
 
 下一步：把这些只读编译器升级为更完整的 guarded writer/runner 工具，但仍然要保留 HumanGate。
 
@@ -156,10 +156,16 @@ Use `--json` when another tool or agent needs structured plan data. It does not 
 
 ## Compile Loop CLI
 
-Compile a high-level intent brief into a proposed loop package without writing files:
+Compile a high-level intent brief into a proposed loop package without writing files by default:
 
 ```bash
 python scripts/compile_loop.py --intent <intent-file>
 ```
 
-Use `--json` when another tool needs structured proposal data. It does not write files or execute agents. See [Compile Loop CLI](docs/COMPILE_LOOP.md) for examples.
+Use `--json` when another tool needs structured proposal data. To materialize standard `.loop/` files, provide an explicit target directory:
+
+```bash
+python scripts/compile_loop.py --intent <intent-file> --write --dir <target-dir>
+```
+
+Existing target files are preserved unless `--force` is provided. See [Compile Loop CLI](docs/COMPILE_LOOP.md) for examples.

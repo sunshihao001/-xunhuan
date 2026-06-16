@@ -1,6 +1,6 @@
 # Compile Loop CLI
 
-`scripts/compile_loop.py` compiles a high-level intent brief / demand contract into a proposed Xunhuan loop package without writing files.
+`scripts/compile_loop.py` compiles a high-level intent brief / demand contract into a proposed Xunhuan loop package. Default mode remains read-only; guarded write mode can materialize standard `.loop/` files only when explicitly requested.
 
 It is the v0.6 companion to the existing tool chain:
 
@@ -14,9 +14,9 @@ Compile Loop CLI  → compiles high-level intent into a proposed loop package
 
 ## Boundary
 
-This command is intentionally safe and read-only.
+This command is intentionally safe and read-only by default.
 
-It does **not**:
+In default mode it does **not**:
 
 - write `.loop/` files
 - execute Codex or another agent
@@ -25,6 +25,8 @@ It does **not**:
 - call external services
 
 It only reads an intent brief and produces a proposed loop draft in memory / stdout.
+
+Guarded write mode requires both `--write` and `--dir <target-project>`. It writes only under `<target-project>/.loop/`, refuses to silently write to the current working directory, and refuses to overwrite existing target files unless `--force` is provided.
 
 ## Usage
 
@@ -37,6 +39,29 @@ Machine-readable output:
 ```bash
 python scripts/compile_loop.py --intent /path/to/intent.md --json
 ```
+
+Guarded write mode:
+
+```bash
+python scripts/compile_loop.py --intent /path/to/intent.md --write --dir /path/to/project
+```
+
+Overwrite existing generated `.loop/` files:
+
+```bash
+python scripts/compile_loop.py --intent /path/to/intent.md --write --dir /path/to/project --force
+```
+
+Write mode creates:
+
+- `TARGET.md`
+- `PATH.md`
+- `ACCEPTANCE.md`
+- `STATE.md`
+- `LOOP_LOG.md`
+- `STOP_GATE.md`
+- `HANDOFF.md`
+- `WORK_ORDER.md`
 
 ## What it parses
 
@@ -81,6 +106,9 @@ If the intent brief is missing required sections, the compiler exits non-zero an
 {
   "ok": true,
   "intent_path": "/tmp/intent.md",
+  "write": false,
+  "target_dir": null,
+  "written_files": [],
   "goal": "Build a safe loop compiler.",
   "scope": "Compile a brief into a proposed loop package.",
   "non_goals": ["Do not write files."],
@@ -107,4 +135,8 @@ python scripts/plan_next.py --dir /path/to/project
 python scripts/compile_loop.py --intent /path/to/intent.md
 ```
 
-At this stage, `compile_loop.py` is a planning compiler, not a writer. A future version can generate files only behind an explicit guarded write mode.
+Use default mode for review and planning. Use guarded write mode only when the target project directory is explicit and the caller is ready for `.loop/` files to be created. After writing, verify the target with:
+
+```bash
+python scripts/check_loop.py --dir /path/to/project
+```

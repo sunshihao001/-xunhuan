@@ -6,7 +6,7 @@
 
 ## Round 1
 
-Implement `scripts/compile_loop.py`, docs, README/INDEX links, and standard-library tests.
+Codex implements guarded write mode in `scripts/compile_loop.py`, tests, docs, README/INDEX updates.
 
 ## Round 2
 

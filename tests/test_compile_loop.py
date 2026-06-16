@@ -8,6 +8,17 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 COMPILE = ROOT / "scripts" / "compile_loop.py"
+CHECK = ROOT / "scripts" / "check_loop.py"
+STANDARD_LOOP_FILES = {
+    "TARGET.md",
+    "PATH.md",
+    "ACCEPTANCE.md",
+    "STATE.md",
+    "LOOP_LOG.md",
+    "STOP_GATE.md",
+    "HANDOFF.md",
+    "WORK_ORDER.md",
+}
 
 
 def run_cmd(*args, cwd=ROOT):
@@ -113,6 +124,98 @@ Compile a brief into a proposed loop package.
         result = run_cmd(sys.executable, str(COMPILE), "--intent", str(self.intent), "--json")
         self.assertEqual(result.returncode, 0, result.stderr + result.stdout)
         json.loads(result.stdout)
+
+    def test_write_requires_target_dir(self):
+        result = run_cmd(sys.executable, str(COMPILE), "--intent", str(self.intent), "--write")
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn("--dir", result.stderr + result.stdout)
+
+    def test_write_creates_standard_loop_files_that_pass_check(self):
+        target = Path(self.tempdir.name) / "target-project"
+        target.mkdir()
+
+        result = run_cmd(
+            sys.executable,
+            str(COMPILE),
+            "--intent",
+            str(self.intent),
+            "--write",
+            "--dir",
+            str(target),
+        )
+
+        self.assertEqual(result.returncode, 0, result.stderr + result.stdout)
+        self.assertIn("Files written:", result.stdout)
+        loop_dir = target / ".loop"
+        self.assertEqual({path.name for path in loop_dir.glob("*.md")}, STANDARD_LOOP_FILES)
+        check = run_cmd(sys.executable, str(CHECK), "--dir", str(target))
+        self.assertEqual(check.returncode, 0, check.stderr + check.stdout)
+
+    def test_write_json_reports_guarded_write_fields(self):
+        target = Path(self.tempdir.name) / "json-target"
+        target.mkdir()
+
+        result = run_cmd(
+            sys.executable,
+            str(COMPILE),
+            "--intent",
+            str(self.intent),
+            "--write",
+            "--dir",
+            str(target),
+            "--json",
+        )
+
+        self.assertEqual(result.returncode, 0, result.stderr + result.stdout)
+        payload = json.loads(result.stdout)
+        self.assertIs(payload["ok"], True)
+        self.assertIs(payload["write"], True)
+        self.assertEqual(payload["target_dir"], str(target.resolve()))
+        self.assertEqual({Path(path).name for path in payload["written_files"]}, STANDARD_LOOP_FILES)
+        self.assertEqual(payload["issues"], [])
+
+    def test_write_refuses_overwrite_without_force(self):
+        target = Path(self.tempdir.name) / "overwrite-target"
+        loop_dir = target / ".loop"
+        loop_dir.mkdir(parents=True)
+        existing = loop_dir / "TARGET.md"
+        existing.write_text("existing target\n", encoding="utf-8")
+
+        result = run_cmd(
+            sys.executable,
+            str(COMPILE),
+            "--intent",
+            str(self.intent),
+            "--write",
+            "--dir",
+            str(target),
+        )
+
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn("refusing to overwrite", result.stderr + result.stdout)
+        self.assertEqual(existing.read_text(encoding="utf-8"), "existing target\n")
+
+    def test_force_overwrites_existing_loop_files(self):
+        target = Path(self.tempdir.name) / "force-target"
+        loop_dir = target / ".loop"
+        loop_dir.mkdir(parents=True)
+        existing = loop_dir / "TARGET.md"
+        existing.write_text("existing target\n", encoding="utf-8")
+
+        result = run_cmd(
+            sys.executable,
+            str(COMPILE),
+            "--intent",
+            str(self.intent),
+            "--write",
+            "--dir",
+            str(target),
+            "--force",
+        )
+
+        self.assertEqual(result.returncode, 0, result.stderr + result.stdout)
+        self.assertNotEqual(existing.read_text(encoding="utf-8"), "existing target\n")
+        self.assertIn("Build a safe loop compiler.", existing.read_text(encoding="utf-8"))
 
 
 if __name__ == "__main__":
