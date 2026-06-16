@@ -2,50 +2,56 @@
 
 ## Stage completed
 
-Codex theory completion stage is complete.
+Creator-facing interface contract stage is complete.
 
 ## Source-of-truth work order
 
-`CODEX_WORK_ORDER_CREATOR_THEORY_V1.md`
+`.loop/WORK_ORDER.md`
 
 ## Delivered artifacts
 
-- `CREATOR_WORKFLOW_THEORY_V1.md`
-- `CREATOR_WORKFLOW_OPERATING_MODEL.md`
-- `CREATOR_WORKFLOW_SCENARIOS.md`
-- `CREATOR_WORKFLOW_ANTI_PATTERNS.md`
+- `CREATOR_INTERFACE_CONTRACT_V0_1.md`
 - updated `INDEX.md`
+
+## What this stage did
+
+This stage converted creator-first theory into a product interface contract that defines:
+
+- what the creator sees;
+- what internal machinery stays hidden;
+- how idea intake, direction check, status, preview, satisfaction feedback, correction, HumanGate, evidence, and stop states should appear;
+- how creator feedback routes back into Demand Contract, Loop, Codex, Verifier, Research, or Knowledge Base;
+- what MVP slice the contract enables next.
 
 ## Verifier evidence
 
 Hermes verifier passed:
 
-- existence and size checks;
+- file existence and size;
+- required interface sections;
 - required concept coverage;
-- 20-scenario coverage;
-- anti-pattern coverage;
-- INDEX navigation links;
+- `INDEX.md` navigation link;
 - relative Markdown links;
-- forbidden-path integrity.
+- allowed file scope, with `.loop` changes limited to Hermes state updates.
 
 ## Stop state
 
 DoneWithRisk.
 
-Risk: pre-existing `.codex/` directory remains untracked in the worktree and is intentionally not included in the committed product artifacts.
+Risk: pre-existing `.codex/` directory remains untracked in the worktree and is intentionally not included in committed product artifacts.
 
 ## Recommended next stage
 
 Create the next bounded work order for:
 
 ```text
-CREATOR_INTERFACE_CONTRACT_V0_1.md
+CREATOR_MVP_LOOP_DEMAND_CONTRACT_V0_1.md
 ```
 
 Purpose:
 
 ```text
-Turn creator-first theory into the first user-facing product interface contract: what the creator sees, what controls exist, what status/evidence is exposed, what remains internal, and how satisfaction feedback routes to Loop/Codex/Verifier/KB.
+Compile the creator interface contract into the first implementation-ready MVP demand contract: exact product slice, allowed implementation files, state model, UI/interaction acceptance criteria, feedback controls, verifier checks, HumanGate triggers, and stop states.
 ```
 
-This should happen before implementation so the future MVP does not expose internal machinery to the user.
+This should happen before implementation so the eventual MVP is driven by the interface contract rather than by raw internal machinery.

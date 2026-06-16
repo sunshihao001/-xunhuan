@@ -1,62 +1,55 @@
-# LOOP LOG
+# LOOP_LOG
 
-## Round: creator workflow theory v1 codex expansion
+## Round: creator interface contract v0.1
 
-### User request
+### Trigger
 
-Continue into the Codex theory-improvement stage. Use the demand-interrogation front end so the idea is expressed correctly. After completion, give feedback and recommendations.
+User said "继续" after the previous handoff recommended `CREATOR_INTERFACE_CONTRACT_V0_1.md` as the next stage.
 
-### Hermes demand interrogation result
+### Demand cognition
 
-The request was not for a new small tool or another isolated theory note. It was a Codex long-task theory completion round.
+Hermes interpreted the request as continuing the existing bounded loop rather than asking another clarification question.
 
-Correct expression:
+The active convergence slice is:
 
 ```text
-creator rough idea -> Hermes initial framework -> bounded Codex theory expansion -> Hermes verifier/audit -> feedback and productization recommendation
+creator-first theory -> creator-facing interface contract -> MVP/product slice
 ```
 
-### Codex boundary
+### Work order compiled
 
-Codex was allowed to create/update only:
+Hermes refreshed `.loop/WORK_ORDER.md` with a bounded Codex task for `CREATOR_INTERFACE_CONTRACT_V0_1.md`.
 
-- `CREATOR_WORKFLOW_THEORY_V1.md`
-- `CREATOR_WORKFLOW_OPERATING_MODEL.md`
-- `CREATOR_WORKFLOW_SCENARIOS.md`
-- `CREATOR_WORKFLOW_ANTI_PATTERNS.md`
-- `INDEX.md`
-- `.loop/STATE.md`
-- `.loop/LOOP_LOG.md`
-- `.loop/HANDOFF.md`
+### Codex result
 
-Codex was forbidden from creating CLI tools, implementation code, dependencies, tests, protocol changes, research-pack changes, or commits.
+Codex created:
 
-### Codex completion
+- `CREATOR_INTERFACE_CONTRACT_V0_1.md`
 
-Codex created/updated:
+Codex updated:
 
-- `CREATOR_WORKFLOW_THEORY_V1.md`
-- `CREATOR_WORKFLOW_OPERATING_MODEL.md`
-- `CREATOR_WORKFLOW_SCENARIOS.md`
-- `CREATOR_WORKFLOW_ANTI_PATTERNS.md`
 - `INDEX.md`
 
-Codex reported DoneWithRisk because `.codex/` was already untracked before the round.
+Codex did not commit changes.
 
-### Hermes independent verifier
+### Hermes verifier evidence
 
-Hermes ran an independent verifier and confirmed:
+Hermes independently verified:
 
-- all required artifacts exist and are meaningful size;
-- required conceptual coverage is present;
-- scenario matrix contains 20 scenarios;
-- required anti-patterns are present;
-- INDEX links exist;
-- relative Markdown links are valid;
-- forbidden directories were not changed.
+- `CREATOR_INTERFACE_CONTRACT_V0_1.md` exists and is substantive;
+- required sections exist;
+- required concepts exist: creator-facing surface, internal operating system, Hermes, Codex, Loop, Verifier, Research, Knowledge Base, HumanGate, DoneWithRisk, Blocked, approve/adjust/reject/continue/stop;
+- `INDEX.md` links to the new contract;
+- relative Markdown links: 59 checked, 0 missing;
+- changed files are limited to the new interface contract, `INDEX.md`, and Hermes-owned `.loop` state files;
+- pre-existing `.codex/` remains untracked and excluded.
 
-### Stop state
+### Decision
 
 DoneWithRisk.
 
-The risk is not about the new theory artifacts. The only risk is a pre-existing untracked `.codex/` directory in the worktree, which was not part of the allowed artifact set and was not committed.
+Risk: pre-existing `.codex/` untracked directory remains outside the committed artifact set.
+
+### Next recommended stage
+
+`CREATOR_MVP_LOOP_DEMAND_CONTRACT_V0_1.md` — convert the interface contract into an implementation-ready MVP demand contract before building UI/prototype files.

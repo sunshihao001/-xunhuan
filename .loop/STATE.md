@@ -1,60 +1,59 @@
 # STATE
 
 status: DoneWithRisk
-round: creator workflow theory v1 codex expansion
+round: creator interface contract v0.1
 
 ## User request
 
-The user asked to continue into the Codex theory-improvement stage, using the demand-interrogation front end so the idea is expressed correctly, then return feedback and future recommendations after completion.
+The user said "继续" after the previous stage recommended moving from creator-first theory expansion into a creator-facing product interface contract.
 
 ## Demand expression used
 
 real_objective:
 
 ```text
-Use the existing initial creator workflow idea framework as the source-of-truth, then let Codex expand it into a professional theory system, operating model, scenario mapping, and anti-pattern set without changing the creator-first product direction.
+Turn the completed creator-first theory into a creator-facing product interface contract that defines what the user sees, what the system hides, how intent/status/preview/feedback/HumanGate are expressed, and how creator feedback routes back into Loop/Codex/Verifier/Knowledge Base.
 ```
 
 problem_world:
 
 ```text
-The project had enough initial demand cognition and core principles. The next risk was document drift: Codex could over-engineer implementation, redefine the product direction, or produce abstract theory not connected to actual creator-facing scenarios. Therefore Codex was bounded to theory completion and Hermes verified coverage and scope.
+The project now has enough creator-first theory. The next product risk is either exposing internal machinery to the creator, or jumping into implementation without a user-facing interface contract. This round bridges theory to MVP without writing code.
 ```
 
 output_contract:
 
 ```text
-Create CREATOR_WORKFLOW_THEORY_V1.md, CREATOR_WORKFLOW_OPERATING_MODEL.md, CREATOR_WORKFLOW_SCENARIOS.md, CREATOR_WORKFLOW_ANTI_PATTERNS.md, and update INDEX.md.
+Create CREATOR_INTERFACE_CONTRACT_V0_1.md and update INDEX.md.
 ```
 
 ## Completed artifacts
 
-- `CREATOR_WORKFLOW_THEORY_V1.md`
-- `CREATOR_WORKFLOW_OPERATING_MODEL.md`
-- `CREATOR_WORKFLOW_SCENARIOS.md`
-- `CREATOR_WORKFLOW_ANTI_PATTERNS.md`
+- `CREATOR_INTERFACE_CONTRACT_V0_1.md`
 - updated `INDEX.md`
 
 ## Hermes verifier result
 
 Passed:
 
-- required files exist and are larger than 1000 bytes;
-- required terms covered: creator-first, Hermes, Codex, Loop, Verifier, Knowledge Base, HumanGate, satisfaction, scenario, anti-pattern, productization;
-- 20 scenario rows detected;
-- required anti-patterns detected;
-- INDEX links present;
-- relative Markdown links valid;
-- forbidden directories unchanged.
+- required file exists and is substantive;
+- required interface sections are present;
+- creator-facing surface and internal machinery are separated;
+- input, direction check, status, preview, satisfaction feedback, correction routing, HumanGate, hidden internals, evidence, interface states, MVP implications, anti-patterns, and verifier checklist are covered;
+- `INDEX.md` links to the new document;
+- relative Markdown links are valid;
+- only allowed product files changed, plus Hermes-owned `.loop` state updates.
 
-## Risk
+## Risk carried forward
 
-The repository had a pre-existing untracked `.codex/` directory before this round. It remains untracked and was not included as part of the product artifacts.
+The repository has a pre-existing untracked `.codex/` directory. It is not part of this round's product artifacts and remains excluded from commits.
 
 ## Next recommended stage
 
-Move from theory expansion to product interface design:
+Compile the interface contract into the first implementation-oriented demand contract:
 
 ```text
-creator theory v1 -> creator-facing MVP interface contract -> product slice work order -> Codex implementation/prototype -> Hermes verifier -> user satisfaction feedback
+CREATOR_MVP_LOOP_DEMAND_CONTRACT_V0_1.md
 ```
+
+This should define the exact MVP slice, allowed implementation surface, acceptance criteria, state model, feedback controls, verifier checks, and HumanGate triggers before any UI/prototype implementation begins.
