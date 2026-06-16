@@ -1,21 +1,22 @@
 # STATE
 
 status: Done
-round: creator-first workflow encapsulation
+round: core principles theory and application
 
 ## Current understanding
 
-The user clarified that the target user is a creator, not a professional AI programming operator. The workflow must hide scattered internal capabilities behind a simple creator-facing loop while preserving internal rigor.
+The user asked to identify and lock the core principles that should govern the creator-first AI workflow operating system, then have Codex mature the idea into professional theory and map it to practical scenarios.
 
 ## Completed action
 
-This round created the creator-first encapsulation model and requirements:
+Codex created:
 
-- `CREATOR_FIRST_WORKFLOW_MODEL.md`
-- `ENCAPSULATED_WORKFLOW_REQUIREMENTS.md`
+- `CORE_PRINCIPLES.md`
+- `CORE_PRINCIPLES_THEORY.md`
+- `CORE_PRINCIPLES_APPLICATION_MATRIX.md`
 
-The round also updated `INDEX.md` so the new product artifacts are discoverable.
+`INDEX.md` now links these artifacts.
 
 ## Next action
 
-Use the creator-first model as the product boundary for future work. Future rounds should keep the user-facing surface focused on idea, direction, preview, satisfaction, and correction while Hermes, Codex, Loop, Verifier, Knowledge Base, and Research handle internal execution.
+Use these core principles as acceptance criteria for all future productization work. Next likely step: turn the creator-facing loop into a concrete interface spec while checking every scenario against the principles.

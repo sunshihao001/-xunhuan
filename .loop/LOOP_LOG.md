@@ -1,75 +1,39 @@
 # LOOP_LOG
 
-## Creator-first workflow encapsulation round
+## Core principles theory and application round
 
-The user requested a documentation/product-model round to encapsulate the existing workflow for a non-professional AI programming user.
+The user asked to抓住重点 and establish the core principles that should govern all future design, execution, verification, and productization.
 
 ## What Codex produced
 
 Created:
 
-- `CREATOR_FIRST_WORKFLOW_MODEL.md`
-- `ENCAPSULATED_WORKFLOW_REQUIREMENTS.md`
+- `CORE_PRINCIPLES.md`
+- `CORE_PRINCIPLES_THEORY.md`
+- `CORE_PRINCIPLES_APPLICATION_MATRIX.md`
 
 Updated:
 
 - `INDEX.md`
-- `.loop/STATE.md`
-- `.loop/LOOP_LOG.md`
-- `.loop/HANDOFF.md`
 
-## Main findings
+## Core principles created
 
-- The user role should be creator, direction owner, and satisfaction judge.
-- Hermes, Codex, Loop, Verifier, Knowledge Base, and Research should remain rigorous internal subsystems, but their mechanics should be encapsulated.
-- The user-facing loop should be idea -> direction check -> system execution -> artifact preview -> satisfaction feedback -> correction.
-- HumanGate should protect direction, value, risk, scope, satisfaction, and major correction decisions without requiring technical micromanagement.
-
-## Verification evidence
-
-Required artifact existence, size, and coverage checks passed. Diff inspection confirmed that changed paths are within the allowed file list.
-
-## Decision
-
-Done.
-
-## Workflow external audit research pack round
-
-The user said to proceed according to the workflow theory audit direction. Hermes compiled a bounded Codex work order to create a layered research evidence pack.
-
-## What Codex produced
-
-Created `workflow_audit_research/`:
-
-```text
-workflow_audit_research/
-  README.md
-  raw/source_urls.md
-  clean/source_candidates.md
-  reading/S1_loop_engineering.md
-  reading/S2_context_engineering.md
-  reading/S3_spec_driven_development.md
-  reading/S4_human_in_loop_audit_trail.md
-  insights/workflow_audit_synthesis.md
-  insights/risk_register.md
-  kb/stable_conclusions.md
-  workflow/patch_candidates.md
-  workflow/next_research_plan.md
-```
-
-Updated `INDEX.md`.
-
-## Main findings
-
-- Current direction is externally supported by loop engineering, context engineering, spec-driven development, and HITL/audit trail sources.
-- Main risks are operational: premature evidence promotion, weak audit trail schema, context overload, Codex self-certification, and theory not becoming workflow behavior.
-- Stable conclusions were kept cautious; patch candidates remain candidate status.
+1. Creator Stays Creator
+2. Encapsulation Preserves Rigor
+3. Demand Before Execution
+4. Bounded Executor, Not Product Owner
+5. Verification Is Independent Evidence
+6. State Must Outlive Chat
+7. Knowledge Promotion Has Gates
+8. HumanGate Protects Authority
+9. Satisfaction Is Product Evidence
+10. Theory Must Drive Productization
 
 ## Verification evidence
 
-- Required file existence and size checks passed.
-- Coverage check passed.
-- Markdown local link check passed.
+- Required artifact existence and size checks passed.
+- Core principle concept coverage passed.
+- Local Markdown link check passed.
 - Forbidden path diff check passed.
 
 ## Decision

@@ -6,47 +6,36 @@ Done.
 
 ## What changed
 
-This round created creator-first workflow encapsulation artifacts:
+The project now has a core-principles layer that should govern future creator-first workflow productization.
 
-- `CREATOR_FIRST_WORKFLOW_MODEL.md`
-- `ENCAPSULATED_WORKFLOW_REQUIREMENTS.md`
+Artifacts:
 
-It also updated `INDEX.md` under Product and refreshed loop state/log/handoff for this round.
+- `CORE_PRINCIPLES.md`
+- `CORE_PRINCIPLES_THEORY.md`
+- `CORE_PRINCIPLES_APPLICATION_MATRIX.md`
 
-## Current product model
+## Core principles
 
-The user is modeled as:
-
-- creator,
-- direction owner,
-- satisfaction judge,
-- HumanGate decision owner for value, risk, scope, boundaries, and major corrections.
-
-The system should encapsulate:
-
-- demand interrogation,
-- research collection and promotion,
-- Codex work orders,
-- `.loop` state,
-- Verifier checks,
-- Knowledge Base learnback,
-- git and forbidden-path safety details.
-
-## Verification
-
-Passed:
-
-- required artifact existence and size check
-- creator workflow coverage check
-- allowed-path diff inspection
-- forbidden path unchanged check
+1. Creator Stays Creator
+2. Encapsulation Preserves Rigor
+3. Demand Before Execution
+4. Bounded Executor, Not Product Owner
+5. Verification Is Independent Evidence
+6. State Must Outlive Chat
+7. Knowledge Promotion Has Gates
+8. HumanGate Protects Authority
+9. Satisfaction Is Product Evidence
+10. Theory Must Drive Productization
 
 ## Resume instructions
 
-Future productization rounds should use the creator-facing loop as the outer product surface:
+Future work should treat these principles as acceptance criteria. Any new feature, interface, workflow patch, or Codex work order should answer:
 
 ```text
-idea -> direction check -> system execution -> artifact preview -> satisfaction feedback -> correction
+Which principle does this implement?
+What does the creator see?
+What does the system do internally?
+What verifier signal proves it worked?
 ```
 
-Internal rigor still comes from Hermes, Codex, Loop, Verifier, Knowledge Base, Research, Demand Contracts, and evidence-based stop states.
+Recommended next step: create a creator-facing interface spec that maps idea/direction/preview/satisfaction/correction into internal Hermes/Codex/Loop/Verifier behavior.

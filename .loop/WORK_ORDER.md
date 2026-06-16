@@ -1,56 +1,94 @@
-# WORK_ORDER - Non-Expert Creator Workflow Encapsulation Round
+# WORK_ORDER - Core Principles Theory and Application Round
 
 ## Context
 
-The user clarified an important product principle:
+The user clarified the next required move:
 
-> The user is not a professional AI programming person and may not understand many technical parts. The workflow should encapsulate scattered capabilities so the user only needs to create ideas, adjust the broad direction, and judge satisfaction with the finished product before requesting changes.
+> 抓住重点，把需要立为核心的原则确定好；根据现在积累的知识，使用需求拷问端深入研究给出需要立为核心的；根据 Hermes 确认初步想法，由 Codex 完善到专业理论，并根据专业理论落实到具体全部实际应用场景。
 
-This changes the product model. The current repo contains many powerful but scattered assets: demand interrogation, external research, knowledge pipeline, Codex work orders, loop state, verifier gates, audit packs, and productization contracts. These must be wrapped into a creator-facing operating model.
+This is a theory-to-application round. The purpose is to identify the non-negotiable core principles of the current AI workflow, formalize them into professional theory, and map them to actual usage scenarios.
+
+Do not implement code or CLI tools. Do not add dependencies. Do not modify forbidden paths.
 
 ## Objective
 
-Create a creator-facing encapsulation model for the AI workflow. The model should define what the user should and should not need to operate, and how Hermes should hide internal complexity behind simple stages and feedback loops.
-
-This is documentation/product-model work. Do not create CLI tools. Do not add dependencies. Do not implement UI.
+Create a core-principles layer for the creator-first AI workflow operating system, then map those principles to concrete practical scenarios.
 
 ## Read first
 
+- `CREATOR_FIRST_WORKFLOW_MODEL.md`
+- `ENCAPSULATED_WORKFLOW_REQUIREMENTS.md`
 - `AI_WORKFLOW_THEORY_V0_1.md`
 - `HERMES_CODEX_EXECUTION_PLAYBOOK.md`
-- `THEORY_TO_PRODUCT_CONNECTION.md`
+- `WORKFLOW_THEORY_AUDIT_BRIEF.md`
+- `workflow_audit_research/kb/stable_conclusions.md`
+- `workflow_audit_research/workflow/patch_candidates.md`
 - `PRODUCTIZATION_LOOP_V0_1.md`
 - `DEMAND_CONTRACT_PRODUCTIZATION_V0_1.md`
-- `workflow_audit_research/workflow/patch_candidates.md`
-- `workflow_audit_research/kb/stable_conclusions.md`
-- `WORKFLOW_THEORY_AUDIT_BRIEF.md`
+
+## Hermes-confirmed initial idea
+
+Use this as the initial frame:
+
+```text
+The system must be creator-first. The user is not a professional AI programming operator. The product must encapsulate scattered AI workflow capabilities so the user only needs to provide ideas, adjust direction, judge satisfaction, and request correction. Internally, Hermes, Codex, Loop, Verifier, Research, Knowledge Base, and Git/GitHub can remain professional and rigorous. Externally, the workflow must be simple, creator-facing, and satisfaction-driven.
+
+The key output now is not more scattered documents. It is a set of core principles that can govern all future design, implementation, verification, and productization scenarios.
+```
 
 ## Required output artifacts
 
-1. `CREATOR_FIRST_WORKFLOW_MODEL.md`
-   - Define the user's role as creator / direction owner / satisfaction judge.
-   - Define what the user should not need to understand: prompt engineering, Codex, loop files, verifier implementation, research pack internals, git details.
-   - Define what the system should encapsulate.
-   - Explain the difference between internal engineering workflow and user-facing workflow.
-   - Include a simple user-facing loop: idea → direction check → system execution → artifact preview → satisfaction feedback → correction.
+1. `CORE_PRINCIPLES.md`
+   - List the core principles that must govern the project.
+   - Each principle must include:
+     - principle statement
+     - why it exists
+     - what it forbids
+     - what it requires
+     - related internal subsystem
+     - verifier signal
+   - Principles should be concise and memorable.
 
-2. `ENCAPSULATED_WORKFLOW_REQUIREMENTS.md`
-   - Convert the principle into product requirements.
-   - Include functional requirements for Hermes, Codex, Loop, Verifier, Knowledge Base, and Research.
-   - Include non-goals.
-   - Include acceptance criteria.
-   - Include HumanGate rules from a non-technical user perspective.
-   - Include what feedback should look like: “满意 / 不满意 / 方向错 / 细节错 / 继续深化 / 停止”.
+2. `CORE_PRINCIPLES_THEORY.md`
+   - Turn the principles into professional theory.
+   - Explain the system as a creator-first AI operating system.
+   - Explain how idea/direction/satisfaction maps to Hermes/Codex/Loop/Verifier/KB internals.
+   - Explain why encapsulation is not simplification; it is product boundary design.
+   - Explain how theory must drive productization, not become document drift.
 
-3. Update `INDEX.md`
-   - Link both new artifacts under Product.
+3. `CORE_PRINCIPLES_APPLICATION_MATRIX.md`
+   - Map the principles to real application scenarios.
+   - Include at least these scenarios:
+     - idea intake
+     - demand interrogation
+     - external research
+     - knowledge-base update
+     - Codex long task
+     - loop execution
+     - verifier review
+     - product preview
+     - satisfaction feedback
+     - correction / repair
+     - HumanGate
+     - stop / handoff
+     - workflow patch promotion
+     - future UI / interface
+   - For each scenario include:
+     - user sees
+     - system does internally
+     - core principles applied
+     - acceptance / verifier signal
 
-4. Optional: update `.loop/STATE.md`, `.loop/LOOP_LOG.md`, `.loop/HANDOFF.md` with this round's state.
+4. Update `INDEX.md`
+   - Link the three new artifacts under Product.
+
+5. Optional: update `.loop/STATE.md`, `.loop/LOOP_LOG.md`, `.loop/HANDOFF.md`.
 
 ## Allowed files
 
-- `CREATOR_FIRST_WORKFLOW_MODEL.md`
-- `ENCAPSULATED_WORKFLOW_REQUIREMENTS.md`
+- `CORE_PRINCIPLES.md`
+- `CORE_PRINCIPLES_THEORY.md`
+- `CORE_PRINCIPLES_APPLICATION_MATRIX.md`
 - `INDEX.md`
 - `.loop/STATE.md`
 - `.loop/LOOP_LOG.md`
@@ -72,16 +110,19 @@ Do not modify:
 - `tests/`
 - `docs/`
 - `workflow_audit_research/`
-- root theory/contract files not listed in allowed files
+- root files not explicitly listed in allowed files
+
+Do not create CLI tools. Do not add dependencies. Do not commit.
 
 ## Content requirements
 
-- Write in clear language suitable for a non-professional AI programming user.
-- Do not reduce the system's internal rigor; hide complexity behind product boundaries.
-- Make it clear that the user should not have to manually operate demand interrogation, research collection, Codex, `.loop`, verifier, or git.
-- Preserve HumanGate: the user still decides direction, risk, value, scope, satisfaction, and major corrections.
-- Define how the system should report back: concise product status, evidence summary, what changed, what needs feedback.
-- Include a warning that the current repo is still building this encapsulation and not yet a finished UI/product.
+- Be professional, not slogan-only.
+- Keep principles few enough to govern: around 8-12 is appropriate.
+- Make principles actionable and verifiable.
+- Make the user's role simple: idea / direction / satisfaction / correction.
+- Make internal responsibilities clear: Hermes / Codex / Loop / Verifier / KB / Research.
+- Include actual practical application scenarios, not abstract theory only.
+- Tie every principle to later productization.
 
 ## Required verification before returning
 
@@ -90,20 +131,20 @@ Run and report:
 ```bash
 python - <<'PY'
 from pathlib import Path
-files = ['CREATOR_FIRST_WORKFLOW_MODEL.md','ENCAPSULATED_WORKFLOW_REQUIREMENTS.md','INDEX.md']
+files = ['CORE_PRINCIPLES.md','CORE_PRINCIPLES_THEORY.md','CORE_PRINCIPLES_APPLICATION_MATRIX.md','INDEX.md']
 for f in files:
     p = Path(f)
     assert p.exists(), f'missing {f}'
     assert p.stat().st_size > 1000, f'too small {f}'
-print('creator workflow artifacts exist')
+print('core principle artifacts exist')
 PY
 python - <<'PY'
 from pathlib import Path
-terms = ['creator','direction','satisfaction','Hermes','Codex','Loop','Verifier','Knowledge Base','HumanGate','encapsulate']
-text = '\n'.join(Path(f).read_text(encoding='utf-8', errors='replace') for f in ['CREATOR_FIRST_WORKFLOW_MODEL.md','ENCAPSULATED_WORKFLOW_REQUIREMENTS.md'])
+terms = ['creator-first','Hermes','Codex','Loop','Verifier','Knowledge Base','HumanGate','satisfaction','principle','scenario']
+text = '\n'.join(Path(f).read_text(encoding='utf-8', errors='replace') for f in ['CORE_PRINCIPLES.md','CORE_PRINCIPLES_THEORY.md','CORE_PRINCIPLES_APPLICATION_MATRIX.md'])
 missing = [t for t in terms if t not in text]
 assert not missing, missing
-print('creator workflow coverage passed')
+print('core principle coverage passed')
 PY
 git diff --name-only
 ```
@@ -115,7 +156,7 @@ Also verify forbidden paths are unchanged.
 Return:
 
 - Files created/updated.
-- How the user's role changed in the model.
-- What complexity is now marked for encapsulation.
+- List of core principles created.
+- How theory maps to practical scenarios.
 - Verification results.
 - Stop state.
