@@ -100,15 +100,16 @@ Hermes 编译 Loop
 
 ## 当前版本
 
-当前仓库保存的是 **v0.2 初步循环代理操作系统**：
+当前仓库保存的是 **v0.3 初步循环代理操作系统**：
 
 - 已完成理论主线整理
 - 已完成 Loop 协议初版
 - 已完成 Hermes + Codex bounded loop 试点
 - 已沉淀模板与验证规则
 - 已提供最小可运行 Loop 初始化器：`scripts/init_loop.py`
+- 已提供最小可运行 Loop 结构检查器：`scripts/check_loop.py`
 
-下一步：把初始化器升级为更完整的 runner/bootstrap 工具，接入 research loop、coding loop、knowledge update loop、issue-to-pr loop。
+下一步：把初始化器与检查器升级为更完整的 runner/bootstrap 工具，接入 research loop、coding loop、knowledge update loop、issue-to-pr loop。
 
 ## Init Loop CLI
 
@@ -119,3 +120,13 @@ python scripts/init_loop.py --name demo --dir <target-dir>
 ```
 
 Use `--dry-run` to preview writes and `--force` to overwrite existing `.loop` files. See [Init Loop CLI](docs/INIT_LOOP.md) for examples.
+
+## Check Loop CLI
+
+Verify that a target project has a structurally complete `.loop/` workspace:
+
+```bash
+python scripts/check_loop.py --dir <target-dir>
+```
+
+Use `--json` when another tool needs machine-readable readiness results. See [Check Loop CLI](docs/CHECK_LOOP.md) for examples.

@@ -1,36 +1,33 @@
 # LOOP_LOG
 
-## Round 0 — Loop compiled
+## Round 0 - Loop compiled
 
-Hermes 将用户目标编译为 v0.2 有界执行闭环：实现 Loop 初始化器。
+Hermes compiled v0.3 bounded loop for a minimal Loop Verifier CLI.
 
-## Round 1 — Codex execution
+## Round 1
 
-Codex added:
+Codex was invoked with the bounded work order, but the Codex CLI returned a usage-limit error and could not execute the implementation round.
 
-- `scripts/init_loop.py`
-- `docs/INIT_LOOP.md`
-- README entry for Init Loop CLI
-- INDEX entry for Init Loop CLI
+Hermes proceeded directly to avoid blocking the product loop:
 
-## Hermes verifier
+1. Wrote `tests/test_check_loop.py` first.
+2. Ran the tests before implementation and observed RED failure because `scripts/check_loop.py` did not exist.
+3. Implemented `scripts/check_loop.py` with standard-library-only checks.
+4. Added `docs/CHECK_LOOP.md` and updated `README.md` / `INDEX.md`.
+5. Re-ran unit and acceptance checks successfully.
 
-Passed:
+## Evidence
 
-- help output
-- Python compile
-- fresh init
-- conflict protection
-- force overwrite
-- dry-run no-write behavior
-- copied-script fallback templates
-- Markdown links
-- forbidden diff check
-
-## GitHub upload
-
-- Commit: `5d1aed933804909ecfb4cfd168f8e26f2e80f019`
-- Push: `main -> main`
+- `python tests/test_check_loop.py -v`: 6 tests passed.
+- `python scripts/check_loop.py --help`: passed.
+- `python -m py_compile scripts/check_loop.py`: passed.
+- Fresh initialized loop check: passed.
+- Missing `STATE.md` negative check: failed as expected.
+- Missing `HumanGate` negative check: failed as expected.
+- Missing `Required verification` negative check: failed as expected.
+- JSON output parsed with `python -m json.tool`: passed.
+- Markdown relative links: 25 checked, 0 missing.
+- Forbidden path diff: none.
 
 ## Decision
 

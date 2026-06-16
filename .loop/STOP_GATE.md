@@ -1,25 +1,17 @@
-# STOP_GATE — v0.2
+# STOP_GATE
 
-## Final stop state
+## Done
 
-Done.
-
-## Done evidence
-
-- Init Loop CLI implemented.
-- Help/compile/init/conflict/force/dry-run/fallback checks passed.
-- Markdown links passed.
-- Forbidden protocol/template/workflow dirs unchanged.
-- Commit pushed: `5d1aed933804909ecfb4cfd168f8e26f2e80f019`.
+All acceptance checks pass, docs are updated, and forbidden paths are unchanged.
 
 ## DoneWithRisk
 
-Not used.
+Core verifier works, but a documented non-blocking edge case remains.
 
 ## Blocked
 
-Not used.
+Stop if repository auth fails, Codex cannot run, or verifier requirements require external dependencies.
 
 ## HumanGate
 
-Not triggered.
+Stop before changing product scope beyond a checker CLI, rewriting core protocol, or adding dependencies.

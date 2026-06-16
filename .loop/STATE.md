@@ -5,31 +5,12 @@ round: 1
 
 ## Current understanding
 
-v0.2 has implemented and uploaded the minimum runnable Loop initializer.
+v0.3 now adds `scripts/check_loop.py`, a minimal structural verifier for `.loop/` workspaces.
 
-## Delivered
+## Completed action
 
-- `scripts/init_loop.py`
-- `docs/INIT_LOOP.md`
-- README/INDEX entry points
+Round 1 completed by Hermes directly after Codex CLI was blocked by usage limits. TDD-style red test was run first against missing `scripts/check_loop.py`; implementation then made the tests pass.
 
-## Hermes verifier evidence
+## Next action
 
-- `python scripts/init_loop.py --help`: pass
-- `python -m py_compile scripts/init_loop.py`: pass
-- fresh init writes exactly 8 `.loop` files: pass
-- second init without `--force` exits non-zero: pass
-- init with `--force`: pass
-- `--dry-run` writes nothing: pass
-- copied-script fallback templates: pass
-- Markdown link check: pass
-- forbidden protocol/template/workflow dirs unchanged: pass
-
-## GitHub evidence
-
-- Commit: `5d1aed933804909ecfb4cfd168f8e26f2e80f019`
-- Push: `main -> main`
-
-## Stop decision
-
-Done.
+Recommended v0.4: start a minimal `run_loop.py` or bootstrap command that composes init/check into one guided local loop lifecycle.

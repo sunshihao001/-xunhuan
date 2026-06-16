@@ -38,3 +38,4 @@
 ## Tools
 
 - [Init Loop CLI](docs/INIT_LOOP.md)
+- [Check Loop CLI](docs/CHECK_LOOP.md)
