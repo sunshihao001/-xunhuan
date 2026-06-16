@@ -1,35 +1,35 @@
 # STATE
 
 status: DoneWithRisk
-round: creator interface contract v0.1
+round: creator mvp loop demand contract v0.1
 
 ## User request
 
-The user said "继续" after the previous stage recommended moving from creator-first theory expansion into a creator-facing product interface contract.
+The user said "继续" after the previous stage completed `CREATOR_INTERFACE_CONTRACT_V0_1.md` and recommended compiling it into `CREATOR_MVP_LOOP_DEMAND_CONTRACT_V0_1.md` before implementation.
 
 ## Demand expression used
 
 real_objective:
 
 ```text
-Turn the completed creator-first theory into a creator-facing product interface contract that defines what the user sees, what the system hides, how intent/status/preview/feedback/HumanGate are expressed, and how creator feedback routes back into Loop/Codex/Verifier/Knowledge Base.
+Compile the creator-facing interface contract into an implementation-ready MVP demand contract, without implementing UI yet. The contract must define the first minimal product slice that Codex can later build while preserving creator-first boundaries and hiding internal machinery.
 ```
 
 problem_world:
 
 ```text
-The project now has enough creator-first theory. The next product risk is either exposing internal machinery to the creator, or jumping into implementation without a user-facing interface contract. This round bridges theory to MVP without writing code.
+The project now has theory, scenarios, anti-patterns, operating model, and an interface contract. The next risk is premature implementation: Codex could build a UI/prototype before the MVP slice, file scope, acceptance checks, HumanGate triggers, state model, and verifier gates are explicit. This round must produce the final demand contract before implementation.
 ```
 
 output_contract:
 
 ```text
-Create CREATOR_INTERFACE_CONTRACT_V0_1.md and update INDEX.md.
+Create CREATOR_MVP_LOOP_DEMAND_CONTRACT_V0_1.md and update INDEX.md.
 ```
 
 ## Completed artifacts
 
-- `CREATOR_INTERFACE_CONTRACT_V0_1.md`
+- `CREATOR_MVP_LOOP_DEMAND_CONTRACT_V0_1.md`
 - updated `INDEX.md`
 
 ## Hermes verifier result
@@ -37,10 +37,12 @@ Create CREATOR_INTERFACE_CONTRACT_V0_1.md and update INDEX.md.
 Passed:
 
 - required file exists and is substantive;
-- required interface sections are present;
-- creator-facing surface and internal machinery are separated;
-- input, direction check, status, preview, satisfaction feedback, correction routing, HumanGate, hidden internals, evidence, interface states, MVP implications, anti-patterns, and verifier checklist are covered;
+- required sections and concepts are present;
+- product slice is explicitly named `Creator MVP Loop v0.1`;
+- user-facing flow and internal routing flow are defined;
+- roles, states, controls, HumanGate triggers, verifier requirements, future implementation acceptance criteria, anti-patterns, open decisions, and next Codex work order are covered;
 - `INDEX.md` links to the new document;
+- no UI/code/scripts/tests were created;
 - relative Markdown links are valid;
 - only allowed product files changed, plus Hermes-owned `.loop` state updates.
 
@@ -50,10 +52,14 @@ The repository has a pre-existing untracked `.codex/` directory. It is not part 
 
 ## Next recommended stage
 
-Compile the interface contract into the first implementation-oriented demand contract:
+Create a bounded Codex implementation work order for:
 
 ```text
-CREATOR_MVP_LOOP_DEMAND_CONTRACT_V0_1.md
+Implement Creator MVP Loop v0.1 Prototype
 ```
 
-This should define the exact MVP slice, allowed implementation surface, acceptance criteria, state model, feedback controls, verifier checks, and HumanGate triggers before any UI/prototype implementation begins.
+Recommended default implementation category:
+
+```text
+single static HTML/CSS/JS prototype using static sample data, no dependencies, no real `.loop` automation, no full app architecture
+```
