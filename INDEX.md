@@ -34,3 +34,7 @@
 
 - [Product Positioning](PRODUCT_POSITIONING.md)
 - [v0.7 Trial](07_TRIALS/V0_7_BOUNDED_LOOP_TRIAL.md)
+
+## Tools
+
+- [Init Loop CLI](docs/INIT_LOOP.md)

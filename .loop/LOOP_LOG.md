@@ -2,46 +2,31 @@
 
 ## Round 0 — Loop compiled
 
-Hermes 将用户目标编译为产品 bootstrap loop。
+Hermes 将用户目标编译为 v0.2 有界执行闭环：实现 Loop 初始化器。
 
-## Round 1 — Product structure written
+## Round 1 — Codex execution
 
-已写入：
+Codex added:
 
-- README.md
-- PRODUCT_POSITIONING.md
-- INDEX.md
-- 00_CONCEPT/
-- 01_PROTOCOL/
-- 02_TEMPLATES/
-- 03_RUNNERS/
-- 04_VERIFIERS/
-- 05_WORKFLOWS/
-- 06_KNOWLEDGE_BASE/
-- 07_TRIALS/
-- .loop/
+- `scripts/init_loop.py`
+- `docs/INIT_LOOP.md`
+- README entry for Init Loop CLI
+- INDEX entry for Init Loop CLI
 
-## Round 2 — Verification and GitHub upload
+## Hermes verifier
 
-Verifier evidence:
+Passed:
 
-- Required directories: pass
-- Required files: pass
-- Markdown files: 35
-- Relative Markdown links: 20
-- Missing links: 0
-- Commit: `e7def63ecddb34c4d7aa0307b299a50c818a896b`
-- Push: `main -> main`
-- Remote verified via GitHub API
-- Repository description updated:
-  - `Xunhuan Agent OS：基于 Loop Engineering 的初步循环代理操作系统`
-- Topics added:
-  - `agent-os`
-  - `ai-workflow`
-  - `codex`
-  - `hermes`
-  - `loop-engineering`
+- help output
+- Python compile
+- fresh init
+- conflict protection
+- force overwrite
+- dry-run no-write behavior
+- copied-script fallback templates
+- Markdown links
+- forbidden diff check
 
 ## Decision
 
-Done.
+ReadyForPush.

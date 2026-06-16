@@ -1,23 +1,28 @@
-# TARGET — Xunhuan Agent OS Bootstrap
+# TARGET — v0.2 Loop 初始化器
 
 ## Target
 
-把当前最新 AI 工作流沉淀为 `sunshihao001/-xunhuan` 产品仓库的初步循环代理操作系统。
+把 Xunhuan Agent OS 从“理论 + 协议 + 模板”推进到“可运行的最小工具”：提供 `scripts/init_loop.py`，用于在任意项目中初始化 `.loop/` 状态目录。
 
 ## Value
 
-不能只停留在聊天上下文；必须形成可浏览、可版本化、可迭代的 GitHub 产品资产。
+让 Xunhuan 不只保存工作流文档，而能实际启动一个 bounded-loop 工作区。
 
 ## Human Role
 
-用户定义方向：循环代理、AI 工作流 OS、Loop Engineering、Hermes/Codex 分工。
+用户确认产品方向：v0.2 做最小 Loop 初始化器。
 
 ## Hermes Role
 
-编译产品主线、协议、模板、验证门、知识库，并上传 GitHub。
+编译本轮 loop、生成 Codex WORK_ORDER、执行 verifier、更新状态、提交推送。
+
+## Codex Role
+
+实现脚本和必要文档，不扩大范围。
 
 ## Non-goals
 
-- 不实现复杂软件系统代码。
-- 不接入生产部署。
-- 不引入依赖。
+- 不做复杂包发布。
+- 不引入第三方依赖。
+- 不实现完整 runner 调度器。
+- 不接入真实 Codex 自动运行。

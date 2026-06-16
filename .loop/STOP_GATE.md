@@ -1,26 +1,17 @@
-# STOP_GATE
+# STOP_GATE — v0.2
 
-## Final stop state
+## Done
 
-Done.
-
-## Done evidence
-
-- 仓库结构完整。
-- Markdown 链接验证通过。
-- Git commit 成功。
-- Git push 成功。
-- GitHub 远端 commit 验证成功。
-- GitHub 仓库描述和 topics 已更新。
+所有 ACCEPTANCE 通过，提交并推送 GitHub。
 
 ## DoneWithRisk
 
-Not used.
+脚本可用但存在非阻塞文档或平台兼容风险。
 
 ## Blocked
 
-Not used.
+Codex 不可用、验证失败两次、GitHub push 失败、或需要超出范围的依赖/发布系统。
 
 ## HumanGate
 
-Not triggered.
+需要改变产品方向、引入依赖、发布到 PyPI、重构仓库协议、强推或删除历史。

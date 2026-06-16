@@ -1,43 +1,23 @@
 # HANDOFF
 
-## Final status
+## Current status
 
-Done.
-
-## Repository
-
-https://github.com/sunshihao001/-xunhuan
-
-## Commit
-
-`e7def63ecddb34c4d7aa0307b299a50c818a896b`
+ReadyForPush.
 
 ## What changed
 
-The repository now contains the initial Xunhuan Agent OS product structure:
+v0.2 makes Xunhuan Agent OS runnable at the first layer:
 
-- README product entry
-- product positioning
-- concept docs
-- loop protocol specs
-- reusable templates
-- Hermes/Codex runner contract
-- verifier docs
-- workflows
-- knowledge base
-- v0.7 bounded-loop trial evidence
-- `.loop/` bootstrap control state
+```bash
+python scripts/init_loop.py --name demo --dir <target-dir>
+```
 
-## Resume instructions
+This initializes the standard 8 `.loop` files.
 
-Next loop should start from:
+## Evidence
 
-1. `README.md`
-2. `INDEX.md`
-3. `PRODUCT_POSITIONING.md`
-4. `01_PROTOCOL/LOOP_SPEC.md`
-5. `.loop/STATE.md`
+Hermes verifier passed all acceptance checks.
 
-Recommended next product loop:
+## Next action
 
-> Convert templates into a runnable CLI/helper script that can initialize `.loop/` for a new project.
+Commit and push to GitHub. After push, update this handoff to Done with commit evidence.
