@@ -34,6 +34,7 @@
 
 - [Product Positioning](PRODUCT_POSITIONING.md)
 - [AI Workflow Control Model](AI_WORKFLOW_CONTROL_MODEL.md)
+- [AI Workflow Knowledge Pipeline](AI_WORKFLOW_KNOWLEDGE_PIPELINE.md)
 - [v0.7 Trial](07_TRIALS/V0_7_BOUNDED_LOOP_TRIAL.md)
 
 ## Tools
