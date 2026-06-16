@@ -5,26 +5,25 @@ round: 1
 
 ## Current understanding
 
-The user approved continuing after the theory-to-product connection layer. The next correct step was to compile a concrete Demand Contract and next Codex work order for the first productization slice, not to add more theory or tools.
+The user approved the workflow theory audit direction. This round paused productization and created a layered external-audit research pack instead of continuing implementation.
 
 ## Completed action
 
-Codex completed the productization contract compilation round and produced:
+Codex created `workflow_audit_research/` with raw / clean / reading / insights / kb / workflow layers.
 
-- `DEMAND_CONTRACT_PRODUCTIZATION_V0_1.md`
-- `CODEX_WORK_ORDER_PRODUCT_SLICE_V0_1.md`
+Created audit outputs include:
 
-`.loop/WORK_ORDER.md` now contains the next executable implementation work order for the first product slice:
+- source URL inventory
+- clean source candidates
+- four reading cards
+- audit synthesis
+- risk register
+- cautious stable conclusions
+- workflow patch candidates
+- next research plan
 
-```text
-Create a browsable productization source-of-truth layer.
-```
-
-Hermes independently verified file existence, concept coverage, links, and forbidden path boundaries.
+Hermes independently verified file existence, coverage terms, links, and forbidden path boundaries.
 
 ## Next action
 
-Run the next Codex implementation round from `.loop/WORK_ORDER.md` to create:
-
-- `PRODUCTIZATION_SOURCE_OF_TRUTH.md`
-- `PRODUCTIZATION_EXECUTION_INDEX.md`
+Use `workflow_audit_research/workflow/patch_candidates.md` to decide which candidate patch should become an accepted workflow change. Recommended next target: audit trail schema or research_context field.

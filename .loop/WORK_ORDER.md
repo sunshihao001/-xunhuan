@@ -1,76 +1,144 @@
-# WORK_ORDER - Productization Source-of-Truth Implementation Round
+# WORK_ORDER - Workflow External Audit Research Pack Round
+
+## Context
+
+The user approved the workflow theory audit direction. The next correct step is to turn the audit brief and external source candidates into a layered research evidence pack.
+
+This is a research cognition update round, not product implementation and not CLI tooling.
 
 ## Objective
 
-Create the first implementation product slice for the productization loop:
+Create a durable `workflow_audit_research/` evidence pack that audits the current Hermes + Codex + Loop + Knowledge Base workflow against external literature and practice.
 
-```text
-Create a browsable productization source-of-truth layer that turns the current
-theory stack into a concrete execution surface for future loops.
-```
+The pack must preserve candidate evidence separately from reading cards, synthesis, stable conclusions, and workflow patch candidates.
 
-Do not implement automation. Do not create CLI tools. Do not add dependencies. Do not commit. Do not expand scope beyond the files named in this work order.
+## Read first
 
-## Read First
-
-Read these files before editing:
-
+- `WORKFLOW_THEORY_AUDIT_BRIEF.md`
+- `WORKFLOW_EXTERNAL_AUDIT_SOURCES.md`
 - `AI_WORKFLOW_THEORY_V0_1.md`
 - `HERMES_CODEX_EXECUTION_PLAYBOOK.md`
 - `RESEARCH_TO_PRODUCT_LOOP.md`
+- `AI_WORKFLOW_KNOWLEDGE_PIPELINE.md`
 - `THEORY_TO_PRODUCT_CONNECTION.md`
 - `PRODUCTIZATION_LOOP_V0_1.md`
-- `AI_WORKFLOW_CONTROL_MODEL.md`
-- `AI_WORKFLOW_KNOWLEDGE_PIPELINE.md`
-- `DEMAND_CONTRACT_PRODUCTIZATION_V0_1.md`
-- `CODEX_WORK_ORDER_PRODUCT_SLICE_V0_1.md`
-- `INDEX.md`
 
-Use `DEMAND_CONTRACT_PRODUCTIZATION_V0_1.md` as the controlling scope. Use the theory files as inputs, not as permission to broaden the product.
+## Required output tree
 
-## Product slice
+Create:
 
-The selected Product slice is a documentation source-of-truth layer for future productization rounds.
+```text
+workflow_audit_research/
+  README.md
+  raw/
+    source_urls.md
+  clean/
+    source_candidates.md
+  reading/
+    S1_loop_engineering.md
+    S2_context_engineering.md
+    S3_spec_driven_development.md
+    S4_human_in_loop_audit_trail.md
+  insights/
+    workflow_audit_synthesis.md
+    risk_register.md
+  kb/
+    stable_conclusions.md
+  workflow/
+    patch_candidates.md
+    next_research_plan.md
+```
 
-It must summarize:
+Update `INDEX.md` with a link to `workflow_audit_research/README.md`.
 
-- which documents are source-of-truth,
-- what order Hermes should read them,
-- what Codex should receive,
-- what Verifier should check,
-- where feedback goes.
+## Content requirements
 
-The slice should be practical and browsable. It should avoid repeating all theory. It should map the current document stack into execution decisions for future loops.
+### README.md
 
-## Required Output Artifacts
+- Explain the purpose of the audit pack.
+- State that it is not final kb yet.
+- Define the reading order.
+- Explain raw / clean / reading / insights / kb / workflow promotion gates.
 
-1. `PRODUCTIZATION_SOURCE_OF_TRUTH.md`
-   - Define the source-of-truth stack for productization.
-   - Group source documents by role: theory, control, playbook, productization, knowledge, loop handoff.
-   - State the read order for Hermes.
-   - State the curated handoff set for Codex.
-   - State Verifier evidence checks.
-   - State feedback and learnback routes.
-   - Include stop conditions: Done, DoneWithRisk, Blocked, HumanGate, Repair.
+### raw/source_urls.md
 
-2. `PRODUCTIZATION_EXECUTION_INDEX.md`
-   - Provide a browsable index for future productization execution.
-   - Include an artifact map with document, owner, purpose, gate, and downstream use.
-   - Identify the current next executable round.
-   - Include HumanGate triggers and Verifier gates.
-   - Make clear that this is not a CLI, not implementation automation, and not a new theory layer.
+- List source URLs, titles, source type, and audit dimension.
+- Clearly label as raw/candidate evidence.
 
-3. `INDEX.md`
-   - Add links to `PRODUCTIZATION_SOURCE_OF_TRUTH.md` and `PRODUCTIZATION_EXECUTION_INDEX.md` under Product or Workflow.
-   - Keep existing links intact.
+### clean/source_candidates.md
+
+- Summarize each candidate source.
+- Include relevance, quality, limitations, and use_for.
+
+### reading cards
+
+For each source card include:
+
+- source metadata
+- core thesis
+- useful claims
+- evidence strength
+- limits / risks
+- relation to current workflow
+- audit implications
+- candidate workflow patch
+
+### insights/workflow_audit_synthesis.md
+
+Synthesize across sources by audit dimension:
+
+- Loop Engineering
+- Context Engineering
+- Spec-driven Development
+- Human-in-the-loop
+- Verifier / maker-checker
+- Audit trail / provenance
+- Knowledge pipeline
+
+For each dimension include:
+
+- support evidence
+- challenge / risk evidence
+- current workflow assessment
+- improvement direction
+
+### insights/risk_register.md
+
+List current workflow risks:
+
+- risk
+- why it matters
+- evidence source
+- severity
+- mitigation
+- target artifact to improve
+
+### kb/stable_conclusions.md
+
+Only include cautiously promoted conclusions. It must explicitly state which conclusions are stable enough and which are still candidates.
+
+### workflow/patch_candidates.md
+
+Include workflow patch candidates, not final patches. Each candidate must have:
+
+- patch id
+- source evidence
+- target artifact / behavior
+- proposed change
+- verifier gate
+- status: candidate
+
+### workflow/next_research_plan.md
+
+Define next research/search steps, including missing source types such as official docs, GitHub repos, academic/industry frameworks, and examples of audit trail schema.
 
 ## Allowed files
 
-The only allowed files for this implementation slice are:
-
-- `PRODUCTIZATION_SOURCE_OF_TRUTH.md`
-- `PRODUCTIZATION_EXECUTION_INDEX.md`
+- `workflow_audit_research/**`
 - `INDEX.md`
+- `.loop/STATE.md`
+- `.loop/LOOP_LOG.md`
+- `.loop/HANDOFF.md`
 
 ## Forbidden files/directories
 
@@ -87,98 +155,56 @@ Do not modify:
 - `scripts/`
 - `tests/`
 - `docs/`
-- `.loop/`
-- any file not listed under allowed files
+- any root theory/contract/work order file except `INDEX.md`
 
-## Hard Constraints
+Do not create CLI tools. Do not add dependencies. Do not commit.
 
-- Do not create CLI tools.
-- Do not add dependencies.
-- Do not commit.
-- Do not rewrite the accepted theory.
-- Do not modify forbidden paths.
-- Do not turn this into a broad product architecture pass.
-- Do not add implementation code.
-- Do not treat Codex self-report as verification.
-
-## Content Requirements
-
-The new artifacts must be concrete and executable for future loop work. They should answer:
-
-- How does this connect to the overall workflow?
-- What does Hermes read and compile?
-- What does Codex receive and execute?
-- What does Verifier check?
-- When should HumanGate be triggered?
-- Where do feedback and learnback go?
-
-Use concise sections and tables where helpful. Avoid copying large blocks from the source theory. This slice should make the theory easier to use, not longer to read.
-
-## Required Verification
+## Required verification before returning
 
 Run and report:
 
 ```bash
 python - <<'PY'
 from pathlib import Path
-files = [
-  'PRODUCTIZATION_SOURCE_OF_TRUTH.md',
-  'PRODUCTIZATION_EXECUTION_INDEX.md',
-  'INDEX.md',
+required = [
+  'workflow_audit_research/README.md',
+  'workflow_audit_research/raw/source_urls.md',
+  'workflow_audit_research/clean/source_candidates.md',
+  'workflow_audit_research/reading/S1_loop_engineering.md',
+  'workflow_audit_research/reading/S2_context_engineering.md',
+  'workflow_audit_research/reading/S3_spec_driven_development.md',
+  'workflow_audit_research/reading/S4_human_in_loop_audit_trail.md',
+  'workflow_audit_research/insights/workflow_audit_synthesis.md',
+  'workflow_audit_research/insights/risk_register.md',
+  'workflow_audit_research/kb/stable_conclusions.md',
+  'workflow_audit_research/workflow/patch_candidates.md',
+  'workflow_audit_research/workflow/next_research_plan.md',
 ]
-for f in files:
+for f in required:
     p = Path(f)
     assert p.exists(), f'missing {f}'
-    assert p.stat().st_size > 1000, f'too small {f}'
-print('productization source-of-truth artifacts exist')
+    assert p.stat().st_size > 500, f'too small {f}'
+print('workflow audit research pack exists')
 PY
 python - <<'PY'
 from pathlib import Path
-terms = [
-  'source-of-truth',
-  'Hermes',
-  'Codex',
-  'Verifier',
-  'HumanGate',
-  'DoneWithRisk',
-  'Blocked',
-  'Repair',
-  'feedback',
-  'learnback',
-]
-text = '\n'.join(Path(f).read_text(encoding='utf-8', errors='replace') for f in [
-  'PRODUCTIZATION_SOURCE_OF_TRUTH.md',
-  'PRODUCTIZATION_EXECUTION_INDEX.md',
-])
+terms = ['Loop Engineering','Context Engineering','Spec-driven','HumanGate','Verifier','audit trail','provenance','raw','clean','reading','insights','kb','workflow patch']
+text = '\n'.join(p.read_text(encoding='utf-8', errors='replace') for p in Path('workflow_audit_research').rglob('*.md'))
 missing = [t for t in terms if t not in text]
 assert not missing, missing
-print('productization source-of-truth coverage passed')
+print('workflow audit coverage passed')
 PY
 git diff --name-only
 ```
 
-Also verify forbidden paths are unchanged by inspecting `git diff --name-only`. The only expected changed files are:
+Also verify forbidden paths are unchanged.
 
-- `PRODUCTIZATION_SOURCE_OF_TRUTH.md`
-- `PRODUCTIZATION_EXECUTION_INDEX.md`
-- `INDEX.md`
-
-## Completion Report
+## Completion report
 
 Return:
 
 - Files created/updated.
-- Product slice advanced.
-- How the new artifacts connect theory to next execution.
+- Main audit findings.
+- Patch candidates created.
 - Verification commands and results.
-- Forbidden path check result.
-- Stop state: Done, DoneWithRisk, Blocked, HumanGate, or Repair.
-- Any risks or remaining gaps.
-
-## Stop Conditions
-
-- **Done**: All required artifacts exist, checks pass, changed files are limited to allowed files, and no material unresolved risk remains.
-- **DoneWithRisk**: The source-of-truth layer is usable, but a named risk or incomplete semantic check remains.
-- **Blocked**: A required read-first file is missing or unreadable, or the repository state prevents verification.
-- **HumanGate**: Any next action requires scope expansion, forbidden path changes, CLI tools, dependencies, commits, or product direction judgment.
-- **Repair**: Verification fails but the fix is bounded to the allowed files in this work order.
+- Stop state: Done / DoneWithRisk / Blocked / HumanGate / Repair.

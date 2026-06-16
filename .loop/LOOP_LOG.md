@@ -1,28 +1,41 @@
 # LOOP_LOG
 
-## Productization contract compilation round
+## Workflow external audit research pack round
 
-This round compiled the first concrete productization Demand Contract and the next Codex work order for the source-of-truth slice.
+The user said to proceed according to the workflow theory audit direction. Hermes compiled a bounded Codex work order to create a layered research evidence pack.
 
 ## What Codex produced
 
-- `DEMAND_CONTRACT_PRODUCTIZATION_V0_1.md`
-- `CODEX_WORK_ORDER_PRODUCT_SLICE_V0_1.md`
-
-## Why this matters
-
-The theory is now connected to a specific next implementation round:
+Created `workflow_audit_research/`:
 
 ```text
-theory -> theory/product connection -> productization Demand Contract -> .loop WORK_ORDER -> Codex -> Verifier
+workflow_audit_research/
+  README.md
+  raw/source_urls.md
+  clean/source_candidates.md
+  reading/S1_loop_engineering.md
+  reading/S2_context_engineering.md
+  reading/S3_spec_driven_development.md
+  reading/S4_human_in_loop_audit_trail.md
+  insights/workflow_audit_synthesis.md
+  insights/risk_register.md
+  kb/stable_conclusions.md
+  workflow/patch_candidates.md
+  workflow/next_research_plan.md
 ```
 
-The selected first product slice is a browsable productization source-of-truth layer that future loops can read as the execution surface.
+Updated `INDEX.md`.
+
+## Main findings
+
+- Current direction is externally supported by loop engineering, context engineering, spec-driven development, and HITL/audit trail sources.
+- Main risks are operational: premature evidence promotion, weak audit trail schema, context overload, Codex self-certification, and theory not becoming workflow behavior.
+- Stable conclusions were kept cautious; patch candidates remain candidate status.
 
 ## Verification evidence
 
-- Artifact existence and size checks passed.
-- Productization contract coverage passed.
+- Required file existence and size checks passed.
+- Coverage check passed.
 - Markdown local link check passed.
 - Forbidden path diff check passed.
 
