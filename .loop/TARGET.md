@@ -2,24 +2,23 @@
 
 ## Target
 
-v0.5 adds a guarded plan/checklist compiler CLI: `scripts/plan_next.py`.
+v0.6 adds a read-only higher-level intent compiler CLI: `scripts/compile_loop.py`.
 
 ## Value
 
-Xunhuan can now convert a bounded `WORK_ORDER.md` from plain Markdown into a structured execution and verifier checklist consumable by humans, Hermes, Codex, or future tools.
+Xunhuan can now take a compact loop brief / demand contract and compile it into a proposed `.loop/` package shape without mutating files. This is the first step toward a true loop brief compiler instead of only per-file CLIs.
 
 ## Human Role
 
-Approve only if the scope expands into actual agent execution, shell execution, secrets, or production side effects.
+Provide a concise intent brief and approve any future write-mode expansion explicitly.
 
 ## Agent Role
 
-Hermes compiles this v0.5 bounded loop, attempts Codex execution, verifies independently, commits, pushes, and updates loop state.
+Hermes compiles this v0.6 bounded loop, attempts Codex execution, verifies independently, commits, pushes, and updates loop state.
 
 ## Non-goals
 
+- Do not write files from the compiler.
 - Do not execute agents.
-- Do not execute shell commands from `WORK_ORDER.md`.
-- Do not mutate `.loop/` from `plan_next.py`.
+- Do not run shell commands from the compiler.
 - Do not introduce external dependencies.
-- Do not build a full runner yet.
