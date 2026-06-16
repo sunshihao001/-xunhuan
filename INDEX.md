@@ -40,6 +40,8 @@
 - [Research to Product Loop](RESEARCH_TO_PRODUCT_LOOP.md)
 - [Theory to Product Connection](THEORY_TO_PRODUCT_CONNECTION.md)
 - [Productization Loop v0.1](PRODUCTIZATION_LOOP_V0_1.md)
+- [Productization Demand Contract v0.1](DEMAND_CONTRACT_PRODUCTIZATION_V0_1.md)
+- [Productization Source-of-Truth Work Order v0.1](CODEX_WORK_ORDER_PRODUCT_SLICE_V0_1.md)
 - [v0.7 Trial](07_TRIALS/V0_7_BOUNDED_LOOP_TRIAL.md)
 
 ## Tools

@@ -1,4 +1,4 @@
-# WORK_ORDER - Productization Source-of-Truth Implementation Round
+# CODEX WORK ORDER - Productization Source-of-Truth Slice v0.1
 
 ## Objective
 
@@ -26,7 +26,7 @@ Read these files before editing:
 - `CODEX_WORK_ORDER_PRODUCT_SLICE_V0_1.md`
 - `INDEX.md`
 
-Use `DEMAND_CONTRACT_PRODUCTIZATION_V0_1.md` as the controlling scope. Use the theory files as inputs, not as permission to broaden the product.
+Use the demand contract as the controlling scope. Use the theory files as inputs, not as permission to broaden the product.
 
 ## Product slice
 
@@ -64,7 +64,7 @@ The slice should be practical and browsable. It should avoid repeating all theor
    - Add links to `PRODUCTIZATION_SOURCE_OF_TRUTH.md` and `PRODUCTIZATION_EXECUTION_INDEX.md` under Product or Workflow.
    - Keep existing links intact.
 
-## Allowed files
+## Allowed Files
 
 The only allowed files for this implementation slice are:
 
@@ -72,7 +72,7 @@ The only allowed files for this implementation slice are:
 - `PRODUCTIZATION_EXECUTION_INDEX.md`
 - `INDEX.md`
 
-## Forbidden files/directories
+## Forbidden Files and Directories
 
 Do not modify:
 

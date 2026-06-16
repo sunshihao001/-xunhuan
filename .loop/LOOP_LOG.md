@@ -1,30 +1,30 @@
 # LOOP_LOG
 
-## Connection round - Theory to product
+## Productization contract compilation round
 
-The user asked whether the theory felt disconnected from the overall workflow. Demand interrogation concluded that the risk was real if the theory remained only documentation.
+This round compiled the first concrete productization Demand Contract and the next Codex work order for the source-of-truth slice.
 
 ## What Codex produced
 
-- `THEORY_TO_PRODUCT_CONNECTION.md`
-- `PRODUCTIZATION_LOOP_V0_1.md`
+- `DEMAND_CONTRACT_PRODUCTIZATION_V0_1.md`
+- `CODEX_WORK_ORDER_PRODUCT_SLICE_V0_1.md`
 
 ## Why this matters
 
-The new artifacts explicitly connect:
+The theory is now connected to a specific next implementation round:
 
 ```text
-theory -> Demand Contract -> .loop -> Codex -> Verifier -> feedback
+theory -> theory/product connection -> productization Demand Contract -> .loop WORK_ORDER -> Codex -> Verifier
 ```
 
-They also define the next productization loop and the next Codex long-task direction without creating new CLI tools.
+The selected first product slice is a browsable productization source-of-truth layer that future loops can read as the execution surface.
 
 ## Verification evidence
 
-- File existence and size checks passed.
-- Concept coverage passed.
-- Markdown links checked: 33, missing: 0.
-- Forbidden path diff: none.
+- Artifact existence and size checks passed.
+- Productization contract coverage passed.
+- Markdown local link check passed.
+- Forbidden path diff check passed.
 
 ## Decision
 

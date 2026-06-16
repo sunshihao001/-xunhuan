@@ -6,30 +6,32 @@ Done.
 
 ## What changed
 
-The workflow now has an explicit connection layer from theory to productization:
+This round compiled the first productization Demand Contract and the next Codex work order.
 
-- `THEORY_TO_PRODUCT_CONNECTION.md`
-- `PRODUCTIZATION_LOOP_V0_1.md`
+Artifacts:
 
-`INDEX.md` links both files.
+- `DEMAND_CONTRACT_PRODUCTIZATION_V0_1.md`
+- `CODEX_WORK_ORDER_PRODUCT_SLICE_V0_1.md`
+- `.loop/WORK_ORDER.md`
 
-## User concern addressed
+## Selected first product slice
 
-The user asked whether the completed theory feels disconnected from the overall workflow. The answer is: yes, it could be disconnected if left as theory. The new connection documents prevent that by defining the next executable chain:
-
-```text
-theory -> Demand Contract -> .loop -> Codex bounded work order -> Verifier -> feedback / correction / learnback
-```
+A browsable productization source-of-truth layer that turns the current theory stack into a concrete execution surface for future loops.
 
 ## Verification
 
 Passed:
 
-- artifact existence and size check
-- concept coverage check
-- Markdown local link check
+- artifact existence and size checks
+- productization contract coverage check
+- local Markdown link check
 - forbidden path diff check
 
 ## Resume instructions
 
-Next loop should not add more theory. It should compile `PRODUCTIZATION_LOOP_V0_1.md` into a concrete productization Demand Contract and first implementation `WORK_ORDER.md`.
+Run the next Codex round from `.loop/WORK_ORDER.md` to create:
+
+- `PRODUCTIZATION_SOURCE_OF_TRUTH.md`
+- `PRODUCTIZATION_EXECUTION_INDEX.md`
+
+That round should be implementation of the productization source-of-truth layer, not more theory or a new CLI.
