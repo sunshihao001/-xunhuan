@@ -42,6 +42,8 @@
 - [Productization Loop v0.1](PRODUCTIZATION_LOOP_V0_1.md)
 - [Productization Demand Contract v0.1](DEMAND_CONTRACT_PRODUCTIZATION_V0_1.md)
 - [Productization Source-of-Truth Work Order v0.1](CODEX_WORK_ORDER_PRODUCT_SLICE_V0_1.md)
+- [Workflow Theory Audit Brief](WORKFLOW_THEORY_AUDIT_BRIEF.md)
+- [Workflow External Audit Sources](WORKFLOW_EXTERNAL_AUDIT_SOURCES.md)
 - [v0.7 Trial](07_TRIALS/V0_7_BOUNDED_LOOP_TRIAL.md)
 
 ## Tools
