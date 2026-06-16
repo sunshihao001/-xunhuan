@@ -6,7 +6,7 @@
 
 ## Round 1
 
-Implement `scripts/run_loop.py`, docs, README/INDEX links, and standard-library tests.
+Implement `scripts/plan_next.py`, docs, README/INDEX links, and standard-library tests.
 
 ## Round 2
 
