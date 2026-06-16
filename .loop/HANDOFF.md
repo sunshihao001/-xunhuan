@@ -2,71 +2,67 @@
 
 ## Stage completed
 
-Creator MVP demand contract stage is complete.
+Creator MVP Loop v0.1 prototype implementation stage is complete.
 
 ## Source-of-truth work order
 
-`.loop/WORK_ORDER.md`
+- `CODEX_WORK_ORDER_CREATOR_MVP_PROTOTYPE_V0_1.md`
+- `.loop/WORK_ORDER.md`
 
 ## Delivered artifacts
 
-- `CREATOR_MVP_LOOP_DEMAND_CONTRACT_V0_1.md`
+- `CODEX_WORK_ORDER_CREATOR_MVP_PROTOTYPE_V0_1.md`
+- `prototypes/creator-mvp-loop-v0-1.html`
 - updated `INDEX.md`
 
 ## What this stage did
 
-This stage converted `CREATOR_INTERFACE_CONTRACT_V0_1.md` into an implementation-ready MVP demand contract.
+This stage converted the implementation-ready MVP demand contract into the first browsable prototype surface.
 
-It defines:
+The prototype demonstrates:
 
-- the first product slice: `Creator MVP Loop v0.1`;
-- the creator-facing flow: idea intake → direction check → status → preview → satisfaction feedback → correction/stop;
-- the internal routing flow: Hermes → Demand Contract → Loop → Codex → Verifier → feedback/learnback;
-- user/system role boundaries;
-- future allowed implementation surfaces;
-- forbidden future implementation scope;
-- MVP states and transitions;
-- required controls: approve / adjust / reject / continue / stop;
-- HumanGate triggers;
-- evidence and verifier requirements;
-- future implementation acceptance criteria;
-- failure modes and anti-patterns;
-- open decisions before implementation;
-- suggested next Codex implementation work order.
+- natural-language idea intake;
+- direction check with objective, output, non-goals, and risk;
+- visible status / loop progression;
+- artifact-level preview;
+- evidence summary;
+- creator satisfaction controls: approve / adjust / reject / continue / stop;
+- HumanGate as a normal decision state;
+- correction routing;
+- Stop behavior that prevents automatic continuation;
+- Continue behavior that routes scope expansion to HumanGate;
+- summarized internal route: Hermes -> Demand Contract -> Loop -> Codex -> Verifier -> feedback/learnback.
 
 ## Verifier evidence
 
 Hermes verifier passed:
 
-- file existence and size;
-- required section and concept coverage;
-- `INDEX.md` navigation link;
-- no UI/code/script/test creation;
-- relative Markdown links;
-- allowed file scope, with `.loop` changes limited to Hermes state updates.
+- artifact existence and size;
+- required flow and control coverage;
+- HumanGate / preview / evidence / correction route coverage;
+- no network or dependency patterns;
+- `INDEX.md` navigation links;
+- forbidden directory check;
+- Python stdlib HTML parse;
+- extracted inline JavaScript `node --check`.
 
 ## Stop state
 
 DoneWithRisk.
 
-Risk: pre-existing `.codex/` directory remains untracked in the worktree and is intentionally not included in committed product artifacts.
+Risks:
+
+- Browser rendering was not manually verified because Chrome/Chromium/Edge was not available in the execution environment.
+- Pre-existing `.codex/` remains untracked and excluded from committed artifacts.
 
 ## Recommended next stage
 
-Create and execute the next bounded work order:
+Review the static prototype and choose the next route:
 
 ```text
-Implement Creator MVP Loop v0.1 Prototype
-```
-
-Recommended implementation default:
-
-```text
-single static HTML/CSS/JS prototype using static sample data, no dependencies, no real `.loop` automation, no full app architecture
-```
-
-Purpose:
-
-```text
-Build the smallest browsable prototype that demonstrates idea intake, direction check, execution/status, artifact preview, evidence summary, satisfaction feedback, HumanGate behavior, and correction/stop routing.
+Approve  -> treat the prototype as the baseline and refine visual/product quality.
+Adjust   -> repair specific UI/content/interaction details inside the same bounded surface.
+Reject   -> reopen direction or demand contract.
+Continue -> HumanGate for a new product slice beyond this prototype.
+Stop     -> preserve state and halt automatic continuation.
 ```

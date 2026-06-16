@@ -1,122 +1,77 @@
 # WORK_ORDER
 
-## Task name
+## Round
 
-Creator MVP Loop Demand Contract V0.1
+creator mvp loop prototype v0.1
 
-## Read first
+## Source documents
 
-Codex must read these files before writing:
-
+- `CREATOR_MVP_LOOP_DEMAND_CONTRACT_V0_1.md`
 - `CREATOR_INTERFACE_CONTRACT_V0_1.md`
-- `CREATOR_WORKFLOW_THEORY_V1.md`
-- `CREATOR_WORKFLOW_OPERATING_MODEL.md`
-- `CREATOR_WORKFLOW_SCENARIOS.md`
-- `CREATOR_WORKFLOW_ANTI_PATTERNS.md`
-- `CORE_PRINCIPLES.md`
-- `DEMAND_CONTRACT_TEMPLATE.md`
-- `CODEX_WORK_ORDER_PRODUCT_SLICE_V0_1.md`
-- `PRODUCTIZATION_LOOP_V0_1.md`
-- `INDEX.md`
-
-## Demand cognition expression
-
-### real_objective
-
-Compile the creator-facing interface contract into an implementation-ready MVP demand contract, without implementing the UI yet. The contract must define the first minimal product slice that Codex can later build while preserving creator-first boundaries and hiding internal machinery.
-
-### problem_world
-
-The repository now has theory, scenarios, anti-patterns, operating model, and an interface contract. The next risk is premature implementation: Codex could build a UI/prototype before the MVP slice, file scope, acceptance checks, HumanGate triggers, state model, and verifier gates are explicit. This round must produce the final demand contract before implementation.
-
-### convergence_slice
-
-Create one implementation-ready demand contract that turns `CREATOR_INTERFACE_CONTRACT_V0_1.md` into a bounded MVP slice. It should be specific enough for a future Codex implementation work order, but must not itself implement UI/code.
+- `CODEX_WORK_ORDER_CREATOR_MVP_PROTOTYPE_V0_1.md`
 
 ## Objective
 
-Create `CREATOR_MVP_LOOP_DEMAND_CONTRACT_V0_1.md` and update `INDEX.md` so the next stage can safely move from docs/spec into a bounded MVP implementation work order.
+Implement the first browsable `Creator MVP Loop v0.1` prototype as a bounded static artifact.
 
-## Required content in `CREATOR_MVP_LOOP_DEMAND_CONTRACT_V0_1.md`
+The prototype must demonstrate:
 
-The document must include at least these sections:
+```text
+idea intake -> direction check -> executing/status -> preview -> evidence summary -> satisfaction feedback -> correction/stop
+```
 
-1. Purpose and source contract
-2. MVP product slice name and thesis
-3. Real objective / problem world / convergence slice
-4. User-facing flow: idea intake → direction check → executing/status → preview → satisfaction feedback → correction/stop
-5. Internal routing flow: Hermes → Demand Contract → Loop → Codex → Verifier → feedback/learnback
-6. Explicit user role and system role boundaries
-7. Allowed future implementation surface, expressed as categories rather than exact files if the codebase does not exist yet
-8. Forbidden future implementation scope
-9. MVP states and transitions
-10. Required creator-facing controls: approve / adjust / reject / continue / stop
-11. HumanGate triggers
-12. Evidence and verifier requirements
-13. Acceptance criteria for future implementation
-14. Failure modes / anti-patterns to prevent
-15. Open decisions before implementation
-16. Suggested next Codex implementation work order
+It must also summarize the internal route without making the creator operate internals:
 
-## Important requirements
+```text
+Hermes -> Demand Contract -> Loop -> Codex -> Verifier -> feedback/learnback
+```
 
-- Keep this as a demand contract, not an implementation.
-- Do not create UI/code/scripts/tests.
-- Use the interface contract as the source of truth.
-- Keep creator-facing simplicity and internal rigor separated.
-- Make the next implementation stage concrete enough to run as a bounded Codex task.
-- If exact implementation files are not yet known, define an allowed implementation surface by artifact categories, for example: prototype doc, single HTML mockup, local web prototype, or future app surface. Do not invent a large app architecture.
+## Allowed files for Codex execution
 
-## Allowed files
+```text
+prototypes/creator-mvp-loop-v0-1.html
+INDEX.md
+```
 
-Codex may modify only:
+Hermes may update `.loop/*` after verification.
 
-- `CREATOR_MVP_LOOP_DEMAND_CONTRACT_V0_1.md`
-- `INDEX.md`
+## Forbidden scope
 
-## Forbidden files and paths
+- No dependencies or package files.
+- No CLI tools.
+- No full app architecture.
+- No real `.loop` automation.
+- No services, databases, auth, integrations, or network behavior.
+- No default exposure of raw `.loop`, work order, verifier transcript, git, research layers, or KB schemas.
+- No protocol/template/runner/verifier/workflow/knowledge-base/trial/script/test directory changes.
+- Codex must not commit.
 
-Do not modify:
+## Required output
 
-- `00_CONCEPT/`
-- `01_PROTOCOL/`
-- `02_TEMPLATES/`
-- `03_RUNNERS/`
-- `04_VERIFIERS/`
-- `05_WORKFLOWS/`
-- `06_KNOWLEDGE_BASE/`
-- `07_TRIALS/`
-- `scripts/`
-- `tests/`
-- `README.md`
-- existing creator theory/interface files unless explicitly required
-- `.loop/` files
-- `.codex/`
+- `CODEX_WORK_ORDER_CREATOR_MVP_PROTOTYPE_V0_1.md`
+- `prototypes/creator-mvp-loop-v0-1.html`
+- updated `INDEX.md`
 
-## Non-goals
+## Verification gates
 
-- Do not implement UI.
-- Do not write code.
-- Do not create scripts or tests.
-- Do not redesign the full Loop OS.
-- Do not add external research.
-- Do not commit changes.
+Hermes must verify:
 
-## Acceptance criteria
+- HTML artifact exists and is substantive;
+- required flow steps are present;
+- approve / adjust / reject / continue / stop controls exist;
+- HumanGate is visible;
+- preview and evidence summary are visible;
+- stop behavior and HumanGate continuation behavior are represented;
+- internal route is summarized, not exposed as required creator work;
+- no network/dependency patterns are present;
+- `INDEX.md` links the work order and prototype;
+- changed file scope is allowed;
+- forbidden directories are not changed;
+- JS syntax extracted from the HTML passes `node --check`.
 
-- `CREATOR_MVP_LOOP_DEMAND_CONTRACT_V0_1.md` exists and is substantive.
-- `INDEX.md` links to the new document.
-- The document explicitly names the next product slice.
-- It includes user-facing flow, internal routing flow, roles, states, controls, HumanGate triggers, verifier requirements, future implementation acceptance criteria, anti-patterns, open decisions, and next Codex work order.
-- It does not implement UI/code.
-- Only allowed files are modified.
+## Stop-state policy
 
-## Required completion report from Codex
-
-Return:
-
-1. Files changed
-2. Summary of demand contract design
-3. How this makes the next implementation round safe and bounded
-4. Any risks or open questions
-5. Suggested next bounded work order
+- `Done` if prototype exists, checks pass, and no material open risk remains.
+- `DoneWithRisk` if prototype is usable but browser rendering has not been manually verified.
+- `Blocked` if required tools or files prevent implementation.
+- `HumanGate` if continuation would expand beyond the prototype slice.
