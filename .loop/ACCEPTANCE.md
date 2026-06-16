@@ -2,17 +2,17 @@
 
 ## Final Done Criteria
 
-- [ ] `python scripts/compile_loop.py --help` succeeds and documents `--write`, `--dir`, and `--force`.
-- [ ] `python -m py_compile scripts/compile_loop.py` succeeds.
-- [ ] `python tests/test_compile_loop.py -v` passes with new write-mode coverage.
-- [ ] Existing `tests/test_plan_next.py`, `tests/test_run_loop.py`, and `tests/test_check_loop.py` still pass.
-- [ ] Without `--write`, compiler does not mutate files.
-- [ ] With `--write --dir <target>`, compiler creates standard `.loop` files.
-- [ ] Existing `.loop` files are not overwritten without `--force`.
-- [ ] `--force` overwrites existing generated files.
-- [ ] Written `.loop` passes `check_loop.py`.
-- [ ] Markdown relative links remain valid.
-- [ ] Forbidden theory/protocol/template/workflow dirs are unchanged.
+- [ ] `python scripts/init_research_pack.py --help` succeeds.
+- [ ] `python -m py_compile scripts/init_research_pack.py` succeeds.
+- [ ] `python tests/test_init_research_pack.py -v` passes.
+- [ ] Existing compile/check/run/plan tests still pass.
+- [ ] Initializer creates `raw/`, `clean/`, `reading/`, `insights/`, `kb/`, and `workflow/` under a target pack directory.
+- [ ] Initializer writes a root `README.md` explaining the cognition question, layer meanings, and promotion gate.
+- [ ] Initializer writes starter files for source inventory and workflow patches.
+- [ ] Existing files are not overwritten without `--force`.
+- [ ] `--dry-run` previews without writing.
+- [ ] Markdown links remain valid.
+- [ ] Forbidden core theory/protocol/template/workflow dirs are unchanged.
 
 ## Evidence Required Each Round
 

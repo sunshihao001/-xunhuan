@@ -44,3 +44,4 @@
 - [Run Loop CLI](docs/RUN_LOOP.md)
 - [Plan Next CLI](docs/PLAN_NEXT.md)
 - [Compile Loop CLI](docs/COMPILE_LOOP.md)
+- [Init Research Pack CLI](docs/INIT_RESEARCH_PACK.md)

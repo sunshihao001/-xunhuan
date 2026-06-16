@@ -6,12 +6,12 @@ All acceptance checks pass, docs are updated, forbidden paths are unchanged, and
 
 ## DoneWithRisk
 
-Core write mode works, but a documented non-blocking edge case remains.
+Initializer works, but a documented non-blocking limitation remains.
 
 ## Blocked
 
-Stop if Codex cannot run, tests cannot execute, or write-mode requirements require unsafe behavior.
+Stop if Codex cannot run, tests cannot execute, or requirements imply external crawling/vector infra beyond scope.
 
 ## HumanGate
 
-Stop before adding autonomous execution, deleting user files, writing outside the requested target directory, or changing core protocol/template directories.
+Stop before adding live web crawling, paid APIs, vector DB/RAG infra, destructive writes, or changes to core protocol/template directories.

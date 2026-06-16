@@ -5,12 +5,12 @@ round: 1
 
 ## Current understanding
 
-v0.7 adds guarded write mode to `scripts/compile_loop.py`: default remains read-only, while explicit `--write --dir <target>` materializes standard `.loop/` files and refuses overwrites without `--force`.
+v0.8 adds `scripts/init_research_pack.py`, a concrete research evidence pack initializer. This turns the user's demand into execution: external research should become layered durable knowledge assets, not one-off search summaries.
 
 ## Completed action
 
-Round 1 completed with Codex execution available. Codex followed a TDD-style loop, added failing guarded-write tests first, implemented minimal write-mode behavior, updated docs, and returned a completion report. Hermes independently re-ran the verifier gates and manual acceptance checks.
+Round 1 completed with Codex execution. Codex followed TDD, added tests first, implemented the initializer, updated docs, README, and INDEX. Hermes independently re-ran verifier gates and manual positive/negative checks.
 
 ## Next action
 
-Recommended v0.8: add a first-class executor bridge that takes an existing checked `.loop/WORK_ORDER.md` and launches Codex in a bounded mode, while preserving Hermes as verifier and stopping at HumanGate.
+Recommended v0.9: add `scripts/check_research_pack.py` to validate pack structure, source inventory parseability, starter files, and promotion-gate readiness before any research pack is used as Hermes/Codex context.

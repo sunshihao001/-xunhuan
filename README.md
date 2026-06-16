@@ -169,3 +169,13 @@ python scripts/compile_loop.py --intent <intent-file> --write --dir <target-dir>
 ```
 
 Existing target files are preserved unless `--force` is provided. See [Compile Loop CLI](docs/COMPILE_LOOP.md) for examples.
+
+## Init Research Pack CLI
+
+Create a layered research evidence pack for preserving external sources, synthesis, stable conclusions, and workflow patch candidates:
+
+```bash
+python scripts/init_research_pack.py --name ai-workflow-research --dir <target-dir> --question "How should external research become durable AI workflow knowledge?"
+```
+
+Use `--dry-run` to preview writes and `--force` to overwrite generated starter files. See [Init Research Pack CLI](docs/INIT_RESEARCH_PACK.md) for examples.

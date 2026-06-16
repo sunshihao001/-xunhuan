@@ -2,23 +2,23 @@
 
 ## Target
 
-v0.7 adds guarded write mode to `scripts/compile_loop.py`.
+v0.8 adds a Research Evidence Pack initializer: `scripts/init_research_pack.py`.
 
 ## Value
 
-Xunhuan moves from read-only proposal to controlled loop materialization: a high-level intent can become real `.loop/` files only when an explicit write flag is provided.
+External research stops being one-off chat evidence and becomes a durable, layered knowledge asset that can feed Hermes, Codex, verifier gates, and workflow patches.
 
 ## Human Role
 
-Approve guarded write-mode semantics and ensure future destructive writes remain behind explicit flags.
+Define the cognition question, source boundaries, and promotion criteria.
 
 ## Agent Role
 
-Hermes compiles this v0.7 bounded loop, Codex executes implementation, Hermes verifies independently, commits, pushes, and updates loop state.
+Hermes compiles the demand into a bounded loop, Codex implements the initializer, Hermes verifies evidence and updates state.
 
 ## Non-goals
 
-- Do not add autonomous agent execution.
-- Do not run shell commands from intent briefs.
-- Do not overwrite existing `.loop` files without `--force`.
-- Do not introduce external dependencies.
+- Do not perform a full external research crawl in this loop.
+- Do not build vector/RAG infrastructure yet.
+- Do not mutate existing research packs without explicit force.
+- Do not add dependencies.

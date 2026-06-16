@@ -6,38 +6,60 @@ Done.
 
 ## What changed
 
-v0.7 adds guarded write mode to `scripts/compile_loop.py`:
+v0.8 adds a research evidence pack initializer:
 
 ```bash
-python scripts/compile_loop.py --intent <intent-file> --write --dir <target-project>
-python scripts/compile_loop.py --intent <intent-file> --write --dir <target-project> --force
+python scripts/init_research_pack.py --name <pack-name> --dir <target-dir> --question <cognition-question>
+python scripts/init_research_pack.py --name <pack-name> --dir <target-dir> --question <cognition-question> --dry-run
+python scripts/init_research_pack.py --name <pack-name> --dir <target-dir> --question <cognition-question> --force
 ```
 
-Default mode remains read-only. Write mode creates the standard 8 `.loop` files and refuses overwrite unless `--force` is supplied.
+It creates a layered pack:
+
+```text
+raw/
+raw/source_captures/
+clean/
+reading/
+insights/
+kb/
+workflow/
+```
+
+and starter files:
+
+```text
+README.md
+clean/sources.json
+clean/source_quality.md
+insights/synthesis.md
+kb/stable_conclusions.md
+workflow/patches.md
+workflow/next_execution_plan.md
+```
 
 ## Evidence
 
 Verifier evidence passed:
 
-- `python scripts/compile_loop.py --help`
-- `python -m py_compile scripts/compile_loop.py`
+- `python scripts/init_research_pack.py --help`
+- `python -m py_compile scripts/init_research_pack.py`
+- `python tests/test_init_research_pack.py -v`
 - `python tests/test_compile_loop.py -v`
 - `python tests/test_plan_next.py -v`
 - `python tests/test_run_loop.py -v`
 - `python tests/test_check_loop.py -v`
-- read-only compile mutation check
-- `--json | python -m json.tool`
-- guarded write positive path
-- guarded overwrite refusal path
-- guarded overwrite with `--force`
-- `python scripts/check_loop.py --dir <target>` after writing
-- Markdown relative link check
+- positive init path
+- overwrite refusal path
+- `--force` path
+- `--dry-run` non-write path
+- Markdown link check
 - forbidden path diff check
 
 ## Risks
 
-Codex ran successfully this round. The temporary `.codex/` worktree artifact and previously untracked workflow files remained outside the commit scope.
+This initializes evidence packs only. It does not crawl the web, build a RAG/vector store, or automatically promote evidence into stable knowledge.
 
 ## Resume instructions
 
-Recommended next loop: v0.8 first-class executor bridge. Keep Hermes as verifier and human boundary manager; let Codex run bounded work orders only after the loop has been checked and approved.
+Recommended next loop: v0.9 research pack checker. After that, add source capture/import and promotion-gate tooling.
