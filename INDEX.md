@@ -38,6 +38,8 @@
 - [AI Workflow Theory v0.1](AI_WORKFLOW_THEORY_V0_1.md)
 - [Hermes Codex Execution Playbook](HERMES_CODEX_EXECUTION_PLAYBOOK.md)
 - [Research to Product Loop](RESEARCH_TO_PRODUCT_LOOP.md)
+- [Theory to Product Connection](THEORY_TO_PRODUCT_CONNECTION.md)
+- [Productization Loop v0.1](PRODUCTIZATION_LOOP_V0_1.md)
 - [v0.7 Trial](07_TRIALS/V0_7_BOUNDED_LOOP_TRIAL.md)
 
 ## Tools

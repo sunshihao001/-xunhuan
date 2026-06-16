@@ -1,82 +1,52 @@
-# WORK_ORDER - Long Theory Completion Round
+# WORK_ORDER - Theory to Product Connection Round
 
-## Correction
+## User feedback to address
 
-The previous execution over-focused on small CLI increments. The user has clarified the actual desired next step:
+The user approved continued progress but raised a concern:
 
-> Use the initial idea already expressed in Hermes, plus the saved AI workflow assets, and let Codex run a long task to complete the first full version of the theory/workflow. Hermes should then verify and report back.
+> After completing the theory, does this feel disconnected from the overall workflow?
 
-Do not create another small standalone CLI in this round.
+Demand interrogation conclusion:
 
-## Read first
-
-- `AI_WORKFLOW_CONTROL_MODEL.md`
-- `AI_WORKFLOW_KNOWLEDGE_PIPELINE.md`
-- `AI_WORKFLOW_MAP.md` if present
-- `AI_WORKFLOW_ROUTER.md` if present
-- `DEMAND_CONTRACT_TEMPLATE.md` if present
-- `README.md`
-- `INDEX.md`
-- `docs/COMPILE_LOOP.md`
-- `docs/INIT_RESEARCH_PACK.md`
-- `.loop/HANDOFF.md`
-
-## User's initial idea to preserve and complete
-
-The user wants this workflow:
-
-```text
-在 Hermes 里先给出需求初步想法；
-搜索外部相关信息资料来完善和填充理论框架；
-把完善后的理论交给 Codex 长任务，补全具体的全部理论初步版本；
-再按照全部理论使用循环代理把它做成成品；
-成品完成后，根据不合适的地方继续调整修改；
-外部搜索资料不能只是当时搜索使用，而要按照来源和层级保存为知识库储备；
-Hermes 应该负责需求拷问、理论框架、知识库与验证；
-Codex 应该负责长任务执行和具体细节完善；
-人只负责关键边界、方向调整和 HumanGate。
-```
+Yes, it can become disconnected if the theory remains only as documentation. The next action must connect the theory artifacts back into an executable productization loop.
 
 ## Objective
 
-Create the first complete, coherent theory/workflow version for this AI workflow operating system. It should integrate the saved cognition into a professional artifact set that can guide future Hermes + Codex + loop-agent execution.
+Create the connection layer that turns the completed theory into an explicit next product-building loop. Do not create CLI tools. Create documentation that answers: how does the new theory drive the next Codex/loop execution round?
 
-## Required output artifacts
-
-Create or update documentation only. Do not create new CLI tools in this round.
-
-Required artifacts:
-
-1. `AI_WORKFLOW_THEORY_V0_1.md`
-   - Complete theory framework.
-   - Explain the control model: Human / Hermes / Codex / Loop / Verifier / Knowledge Base.
-   - Explain why external research must become durable evidence assets.
-   - Explain how initial ideas become theory, then Codex long tasks, then loop-built product, then iterative correction.
-
-2. `HERMES_CODEX_EXECUTION_PLAYBOOK.md`
-   - Concrete step-by-step workflow.
-   - Include exact phases from initial idea to final product.
-   - Include what Hermes does, what Codex does, when HumanGate triggers, and how verifier checks results.
-   - Include example Codex long-task work order shape.
-
-3. `RESEARCH_TO_PRODUCT_LOOP.md`
-   - External research → layered knowledge → theory → Codex task → loop execution → product → correction.
-   - Define the durable research layers: raw, clean, reading, insights, kb, workflow.
-   - Define promotion gates from source to stable knowledge and workflow patch.
-
-4. Update `INDEX.md`
-   - Add the new artifacts under Product or a new Theory / Workflow section.
-
-5. Optionally update `README.md` only if useful for navigation.
-
-## Allowed files
+## Read first
 
 - `AI_WORKFLOW_THEORY_V0_1.md`
 - `HERMES_CODEX_EXECUTION_PLAYBOOK.md`
 - `RESEARCH_TO_PRODUCT_LOOP.md`
+- `AI_WORKFLOW_CONTROL_MODEL.md`
+- `AI_WORKFLOW_KNOWLEDGE_PIPELINE.md`
 - `INDEX.md`
-- `README.md`
-- `.loop/*` only if needed for status notes
+- `.loop/HANDOFF.md`
+
+## Required output artifacts
+
+1. `THEORY_TO_PRODUCT_CONNECTION.md`
+   - Explain why theory can become disconnected.
+   - Explain how to prevent that with explicit artifacts and gates.
+   - Map each theory artifact to its role in the next productization loop.
+   - Define the connection contract from theory → demand contract → loop → Codex → verifier → feedback.
+
+2. `PRODUCTIZATION_LOOP_V0_1.md`
+   - Define the next executable loop to turn the theory into a usable product/system.
+   - Include phases, deliverables, allowed owners, verifier gates, and HumanGate triggers.
+   - Define a concrete next Codex long-task objective.
+   - Include stop states: Done, DoneWithRisk, Blocked, HumanGate, Repair.
+
+3. Update `INDEX.md`
+   - Link both new documents under Product or Workflow.
+
+## Allowed files
+
+- `THEORY_TO_PRODUCT_CONNECTION.md`
+- `PRODUCTIZATION_LOOP_V0_1.md`
+- `INDEX.md`
+- `.loop/*` only if needed for state notes
 
 ## Forbidden files/directories
 
@@ -98,14 +68,11 @@ Do not create CLI tools. Do not add dependencies.
 
 ## Content quality requirements
 
-- Avoid empty theory and vague slogans.
-- Use concrete phases, gates, artifacts, and file names.
-- Distinguish temporary research evidence from stable knowledge.
-- Distinguish Hermes orchestration from Codex execution.
-- Distinguish Codex self-report from Hermes verifier evidence.
-- Include stop conditions: Done, DoneWithRisk, Blocked, HumanGate.
-- Include how future external sources should be saved and promoted.
-- Include how this can guide later product implementation.
+- Do not just repeat the theory.
+- Focus on connection: what is the next executable loop and what artifacts carry context.
+- Make it clear that theory is not the end state; it is input to productization.
+- Include exact next Codex work order direction, but not the full implementation yet.
+- Explain when Hermes should ask the user vs continue automatically.
 
 ## Required verification before returning
 
@@ -115,28 +82,26 @@ Run and report:
 python - <<'PY'
 from pathlib import Path
 files = [
-  'AI_WORKFLOW_THEORY_V0_1.md',
-  'HERMES_CODEX_EXECUTION_PLAYBOOK.md',
-  'RESEARCH_TO_PRODUCT_LOOP.md',
+  'THEORY_TO_PRODUCT_CONNECTION.md',
+  'PRODUCTIZATION_LOOP_V0_1.md',
   'INDEX.md',
 ]
 for f in files:
     p = Path(f)
     assert p.exists(), f'missing {f}'
     assert p.stat().st_size > 1000, f'too small {f}'
-print('artifact existence check passed')
+print('connection artifacts exist')
 PY
 python - <<'PY'
 from pathlib import Path
-required_terms = ['Hermes', 'Codex', 'HumanGate', 'Verifier', 'raw', 'clean', 'reading', 'insights', 'kb', 'workflow']
+terms = ['theory', 'Demand Contract', '.loop', 'Codex', 'Verifier', 'HumanGate', 'productization', 'feedback']
 text = '\n'.join(Path(f).read_text(encoding='utf-8', errors='replace') for f in [
-  'AI_WORKFLOW_THEORY_V0_1.md',
-  'HERMES_CODEX_EXECUTION_PLAYBOOK.md',
-  'RESEARCH_TO_PRODUCT_LOOP.md',
+  'THEORY_TO_PRODUCT_CONNECTION.md',
+  'PRODUCTIZATION_LOOP_V0_1.md',
 ])
-missing = [t for t in required_terms if t not in text]
+missing = [t for t in terms if t not in text]
 assert not missing, missing
-print('concept coverage check passed')
+print('connection concept coverage passed')
 PY
 git diff --name-only
 ```
@@ -148,6 +113,6 @@ Also verify forbidden paths are unchanged.
 Return:
 
 - Files created/updated.
-- Summary of the completed theory/workflow version.
+- How this fixes the user's concern.
 - Verification commands and results.
 - Any risks or remaining gaps.
