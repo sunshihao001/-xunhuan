@@ -6,34 +6,40 @@ Done.
 
 ## What changed
 
-v0.3 adds a minimal Loop Verifier CLI:
+v0.4 adds a safe read-only Loop Bootstrap Runner CLI:
 
 ```bash
-python scripts/check_loop.py --dir <target-project>
-python scripts/check_loop.py --dir <target-project> --json
+python scripts/run_loop.py --dir <target-project>
+python scripts/run_loop.py --dir <target-project> --json
 ```
 
-It verifies that `<target-project>/.loop/` contains the standard 8 Xunhuan loop files and required readiness markers in `STATE.md`, `STOP_GATE.md`, and `WORK_ORDER.md`.
+It reuses `check_loop.py`, reads `.loop/STATE.md`, extracts `status`, `round`, and `## Next action`, and points to `.loop/WORK_ORDER.md` with a short work-order title.
+
+It explicitly does not execute agents or mutate files.
 
 ## Evidence
 
 Verifier evidence passed:
 
-- `python scripts/check_loop.py --help`
-- `python -m py_compile scripts/check_loop.py`
+- `python scripts/run_loop.py --help`
+- `python -m py_compile scripts/run_loop.py`
+- `python scripts/check_loop.py --dir .`
+- `python scripts/run_loop.py --dir .`
+- `python tests/test_run_loop.py -v`
 - `python tests/test_check_loop.py -v`
-- fresh `init_loop.py` + `check_loop.py` positive path
-- missing `STATE.md` negative path
-- missing STOP_GATE `HumanGate` negative path
-- missing WORK_ORDER `Required verification` negative path
-- `--json` parse check
-- Markdown relative links check
+- fresh `init_loop.py` + `run_loop.py` positive path
+- `run_loop.py --json | python -m json.tool`
+- invalid `.loop` negative path
+- `.loop` read-only hash check
+- Markdown relative link check
 - forbidden path diff check
 
 ## Risks
 
 Codex CLI could not run because of usage limits, so Hermes executed implementation directly with TDD-style verifier evidence. This is recorded in `LOOP_LOG.md`.
 
+There are untracked top-level files (`AI_WORKFLOW_MAP.md`, `AI_WORKFLOW_ROUTER.md`) in the working tree that were not part of this loop and were intentionally not staged for the v0.4 commit.
+
 ## Resume instructions
 
-Recommended next loop: v0.4 minimal runner/bootstrap command, likely `scripts/run_loop.py`, that composes init/check and prepares a next `WORK_ORDER.md` lifecycle without becoming a full autonomous runner too early.
+Recommended next loop: v0.5 guarded planner/checklist mode. Keep it read-only by default: convert `WORK_ORDER.md` into a verifier/execution checklist, but do not launch Codex or shell commands without explicit HumanGate approval.

@@ -5,12 +5,12 @@ round: 1
 
 ## Current understanding
 
-v0.3 now adds `scripts/check_loop.py`, a minimal structural verifier for `.loop/` workspaces.
+v0.4 adds `scripts/run_loop.py`, a safe read-only bootstrap runner that checks `.loop`, reports status/round/next action, and points to the current work order without executing agents or mutating files.
 
 ## Completed action
 
-Round 1 completed by Hermes directly after Codex CLI was blocked by usage limits. TDD-style red test was run first against missing `scripts/check_loop.py`; implementation then made the tests pass.
+Round 1 completed by Hermes directly after Codex CLI was blocked by usage limits. TDD-style red tests were run first against missing `scripts/run_loop.py`; implementation then made the tests pass.
 
 ## Next action
 
-Recommended v0.4: start a minimal `run_loop.py` or bootstrap command that composes init/check into one guided local loop lifecycle.
+Recommended v0.5: add a guarded `plan_next` / verifier-checklist generator, still read-only by default, that turns `WORK_ORDER.md` into an execution checklist without launching agents.

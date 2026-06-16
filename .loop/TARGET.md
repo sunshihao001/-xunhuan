@@ -2,23 +2,23 @@
 
 ## Target
 
-v0.3 adds a minimal runnable Loop Verifier CLI: `scripts/check_loop.py`.
+v0.4 adds a safe Loop Bootstrap Runner CLI: `scripts/run_loop.py`.
 
 ## Value
 
-Xunhuan can not only initialize `.loop/` workspaces, but also verify whether an existing `.loop/` workspace is structurally complete and ready for a bounded agent round.
+Xunhuan can initialize a loop, check a loop, and now summarize the current loop execution state without launching autonomous agents. This creates a safe bridge from static loop files to an executable loop lifecycle.
 
 ## Human Role
 
-Define product direction and approve broad scope changes only if required.
+Approve only scope expansions such as fully autonomous execution, secrets, or production side effects.
 
 ## Agent Role
 
-Hermes compiles this bounded loop, delegates implementation to Codex, independently verifies behavior, commits, pushes, and updates loop state.
+Hermes compiles this v0.4 bounded loop, attempts Codex execution, verifies independently, commits, pushes, and updates loop state.
 
 ## Non-goals
 
-- Do not build a full loop runner.
-- Do not execute agent work orders automatically.
-- Do not alter core theory/protocol/template/workflow directories unless documentation links require it.
+- Do not build a fully autonomous runner.
+- Do not invoke Codex, Hermes, shell commands, git, or external tools from `run_loop.py`.
+- Do not mutate `.loop/` files from `run_loop.py`.
 - Do not introduce external dependencies.

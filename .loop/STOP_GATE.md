@@ -6,12 +6,12 @@ All acceptance checks pass, docs are updated, and forbidden paths are unchanged.
 
 ## DoneWithRisk
 
-Core verifier works, but a documented non-blocking edge case remains.
+Core runner works, but a documented non-blocking limitation remains.
 
 ## Blocked
 
-Stop if repository auth fails, Codex cannot run, or verifier requirements require external dependencies.
+Stop if repository auth fails or requirements imply autonomous execution beyond the safe bootstrap boundary.
 
 ## HumanGate
 
-Stop before changing product scope beyond a checker CLI, rewriting core protocol, or adding dependencies.
+Stop before adding real agent execution, shell command execution, git writes, secrets, or production side effects to `run_loop.py`.

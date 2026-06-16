@@ -4,23 +4,24 @@
 
 - `README.md`
 - `INDEX.md`
-- `docs/INIT_LOOP.md`
+- `docs/CHECK_LOOP.md`
+- `scripts/check_loop.py`
 - `scripts/init_loop.py`
 - `.loop/TARGET.md`
 - `.loop/ACCEPTANCE.md`
 
 ## Objective
 
-Implement v0.3: a minimal Loop Verifier CLI at `scripts/check_loop.py`.
+Implement v0.4: a safe Loop Bootstrap Runner CLI at `scripts/run_loop.py`.
 
 ## Allowed files
 
-- `scripts/check_loop.py`
-- `docs/CHECK_LOOP.md`
+- `scripts/run_loop.py`
+- `tests/test_run_loop.py`
+- `docs/RUN_LOOP.md`
 - `README.md`
 - `INDEX.md`
-- Optional lightweight test/helper files if useful, but prefer no dependencies.
-- `.loop/*` only for execution notes if necessary.
+- `.loop/*` for execution state and evidence only
 
 ## Forbidden files/directories
 
@@ -35,79 +36,74 @@ Do not modify:
 - `06_KNOWLEDGE_BASE/`
 - `07_TRIALS/`
 
+Do not add dependencies.
+
 ## Requirements
 
-Create `scripts/check_loop.py` using only Python standard library.
+Create `scripts/run_loop.py` using only Python standard library.
 
 CLI behavior:
 
 ```bash
-python scripts/check_loop.py --dir <target-project>
-python scripts/check_loop.py --dir <target-project> --json
+python scripts/run_loop.py --dir <target-project>
+python scripts/run_loop.py --dir <target-project> --json
 ```
 
-The checker must inspect `<target-project>/.loop/` and verify:
+The runner must be read-only. It must not mutate `.loop/` files.
 
-1. Required files exist:
-   - `TARGET.md`
-   - `PATH.md`
-   - `ACCEPTANCE.md`
-   - `STATE.md`
-   - `LOOP_LOG.md`
-   - `STOP_GATE.md`
-   - `HANDOFF.md`
-   - `WORK_ORDER.md`
-2. `STATE.md` contains `status:` and `round:` markers.
-3. `STOP_GATE.md` contains the four gates:
-   - Done
-   - DoneWithRisk
-   - Blocked
-   - HumanGate
-4. `WORK_ORDER.md` contains at least these sections/markers:
-   - Objective
-   - Allowed files
-   - Required verification
-5. Exit code 0 if all checks pass; non-zero if any check fails.
-6. Human-readable default output summarizing PASS/FAIL and issues.
-7. `--json` output with parseable JSON containing at least:
-   - `ok`: boolean
+It should:
+
+1. Reuse/import `scripts/check_loop.py` logic when possible.
+2. Validate the target `.loop/`; if invalid, exit non-zero and surface issues.
+3. Parse `STATE.md` for:
+   - `status:` value
+   - `round:` value
+4. Extract a concise `next_action` from the `## Next action` section when present.
+5. Report the `WORK_ORDER.md` path and a short work-order preview/heading.
+6. In human output, print a safe execution briefing:
+   - check result
+   - status
+   - round
+   - next action
+   - work order path
+   - explicit note that the CLI does not execute agents
+7. In JSON output, include at least:
+   - `ok`
    - `target_dir`
    - `loop_dir`
-   - `issues`: list
+   - `status`
+   - `round`
+   - `next_action`
+   - `work_order_path`
+   - `work_order_title`
+   - `issues`
 
 Documentation:
 
-- Add `docs/CHECK_LOOP.md` with usage, checks, exit codes, and examples.
-- Update README and INDEX to mention v0.3 checker.
+- Add `docs/RUN_LOOP.md` with usage, read-only boundary, examples, and how it fits after init/check.
+- Update README and INDEX to mention v0.4 runner.
 
 ## Required verification before returning
 
 Run and report:
 
 ```bash
-python scripts/check_loop.py --help
-python -m py_compile scripts/check_loop.py
+python scripts/run_loop.py --help
+python -m py_compile scripts/run_loop.py
+python tests/test_run_loop.py -v
 TMPDIR=$(mktemp -d)
-python scripts/init_loop.py --name verifier-ok --dir "$TMPDIR"
-python scripts/check_loop.py --dir "$TMPDIR"
-python scripts/check_loop.py --dir "$TMPDIR" --json
-rm "$TMPDIR/.loop/STATE.md"
-python scripts/check_loop.py --dir "$TMPDIR" ; test $? -ne 0
+python scripts/init_loop.py --name runner-ok --dir "$TMPDIR"
+python scripts/run_loop.py --dir "$TMPDIR"
+python scripts/run_loop.py --dir "$TMPDIR" --json
+python scripts/run_loop.py --dir "$TMPDIR" --json | python -m json.tool
 ```
 
-Also test these negative cases in any robust way:
+Also verify:
 
-- missing STOP_GATE gate fails
-- missing WORK_ORDER Required verification marker fails
-- `--json` output parses as JSON
-
-Finally run:
-
-```bash
-git diff --name-only
-```
-
-Confirm forbidden paths were not modified.
+- invalid `.loop` causes non-zero exit and surfaces checker issues
+- running `run_loop.py` does not mutate `.loop` files
+- Markdown links remain valid
+- forbidden directories are unchanged
 
 ## Completion report
 
@@ -115,5 +111,6 @@ Return:
 
 - Files changed.
 - Commands run with pass/fail status.
+- Whether read-only behavior was verified.
 - Any risks or deferred work.
 - Whether forbidden paths stayed unchanged.

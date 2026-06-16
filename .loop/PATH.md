@@ -6,8 +6,8 @@
 
 ## Round 1
 
-Implement `scripts/check_loop.py`, documentation, README/INDEX links, and tests or self-contained verifier checks.
+Implement `scripts/run_loop.py`, docs, README/INDEX links, and standard-library tests.
 
 ## Round 2
 
-Only if Round 1 verifier fails: fix failures without expanding scope.
+Only if verifier fails: fix narrow failures without expanding scope.
