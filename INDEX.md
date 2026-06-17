@@ -45,6 +45,8 @@
 - [Creator Workflow Anti-Patterns](CREATOR_WORKFLOW_ANTI_PATTERNS.md)
 - [Creator Interface Contract v0.1](CREATOR_INTERFACE_CONTRACT_V0_1.md)
 - [Creator MVP Loop Demand Contract v0.1](CREATOR_MVP_LOOP_DEMAND_CONTRACT_V0_1.md)
+- [Creator MVP App Surface Contract v0.1](CREATOR_MVP_APP_SURFACE_CONTRACT_V0_1.md)
+- [Codex Work Order: Creator MVP App Surface Contract v0.1](CODEX_WORK_ORDER_CREATOR_MVP_APP_SURFACE_CONTRACT_V0_1.md)
 - [Codex Work Order: Creator MVP Prototype v0.1](CODEX_WORK_ORDER_CREATOR_MVP_PROTOTYPE_V0_1.md)
 - [Creator MVP Loop Prototype v0.1](prototypes/creator-mvp-loop-v0-1.html)
 - [Codex Work Order: Creator MVP Prototype Refinement v0.2](CODEX_WORK_ORDER_CREATOR_MVP_PROTOTYPE_REFINEMENT_V0_2.md)

@@ -1,82 +1,66 @@
 # STATE
 
 status: DoneWithRisk
-round: creator mvp loop prototype refinement v0.2
+round: creator mvp app surface contract v0.1
 
 ## User request
 
-The user said "继续推进" after the v0.1 prototype stage completed and Hermes recommended a review/refinement pass before moving into a real app surface.
+The user approved continuing from the refined static prototype toward the next recommended stage.
 
 ## Demand expression used
 
 real_objective:
 
 ```text
-Refine the first static Creator MVP Loop prototype into a clearer v0.2 product surface while preserving v0.1, avoiding architecture expansion, and verifying the interaction behavior.
+Before any real app/framework implementation, define the first creator-facing app surface boundary that turns the v0.2 static prototype into an implementation-ready product contract.
 ```
 
 problem_world:
 
 ```text
-The v0.1 prototype proved the loop but still felt closer to a document/dashboard. The next useful step was not a full app, but a product-quality refinement: clearer creator path, better status/evidence hierarchy, HumanGate clarity, and stronger interaction affordances.
+The repository already has creator-first theory, interface contract, MVP demand contract, and static prototype v0.2. The next risk was premature app implementation: Codex could choose arbitrary framework/app scope or expose internal Loop/Codex/Verifier machinery. Therefore this round defined the app surface contract first.
 ```
 
 output_contract:
 
 ```text
-Create CODEX_WORK_ORDER_CREATOR_MVP_PROTOTYPE_REFINEMENT_V0_2.md, create prototypes/creator-mvp-loop-v0-2.html, preserve prototypes/creator-mvp-loop-v0-1.html, and update INDEX.md.
+Create CREATOR_MVP_APP_SURFACE_CONTRACT_V0_1.md and update INDEX.md. Do not implement code or modify prototypes.
 ```
 
 ## Completed artifacts
 
-- `CODEX_WORK_ORDER_CREATOR_MVP_PROTOTYPE_REFINEMENT_V0_2.md`
-- `prototypes/creator-mvp-loop-v0-2.html`
+- `CODEX_WORK_ORDER_CREATOR_MVP_APP_SURFACE_CONTRACT_V0_1.md`
+- `CREATOR_MVP_APP_SURFACE_CONTRACT_V0_1.md`
 - updated `INDEX.md`
 
-## Prototype coverage
+## Contract decision
 
-The v0.2 prototype improves v0.1 by:
-
-- making the primary creator path easier to scan;
-- separating creator controls from internal evidence;
-- adding summarized evidence plus optional internal detail behind a disclosure element;
-- presenting HumanGate as a creator-owned decision state with options;
-- preserving approve / adjust / reject / continue / stop controls;
-- routing Continue to HumanGate when it implies scope expansion;
-- disabling continuation controls after Stop;
-- preserving the internal route summary: Hermes -> Demand Contract -> Loop -> Codex -> Verifier -> feedback/learnback.
+The next implementation should be a named `Creator MVP App Surface v0.1` using a safe bounded surface: static HTML/CSS/JS remains acceptable, but as a real app surface, with read-only fixture data and no real `.loop` automation.
 
 ## Hermes verifier result
 
 Passed:
 
-- v0.1 artifact remains unchanged;
-- v0.2 artifact exists and is substantive: 29275 bytes;
-- required labels/concepts are present;
-- feedback actions are present: approve, adjust, reject, continue, stop;
-- HumanGate choices are present: authorize, keep, stop;
-- evidence uses an optional details/disclosure element;
-- no static network/dependency patterns were detected;
-- `INDEX.md` preserves v0.1 link and adds v0.2 link;
-- forbidden directories were not changed;
-- HTML parsed with Python stdlib HTML parser;
-- extracted inline JavaScript passed `node --check`;
-- Playwright CLI rendered a screenshot successfully after installing the matching Chromium build;
-- CDP interaction check passed: initial Preview -> Continue -> HumanGate -> Stop, with Continue and Authorize disabled after Stop.
+- required files exist and are larger than 1000 bytes;
+- required app-surface terms covered;
+- required states covered;
+- INDEX links present;
+- relative Markdown links valid;
+- forbidden directories, including `prototypes/`, unchanged.
 
-## Risk carried forward
+## Risk
 
-The repository still has a pre-existing untracked `.codex/` directory/config file. It is not part of this round's product artifacts and remains excluded from commits.
-
-Because of that unrelated dirty state, this round is marked `DoneWithRisk` even though the v0.2 prototype itself passed render and interaction verification.
+The repository has a pre-existing untracked `.codex/` directory. It remains excluded from committed product artifacts.
 
 ## Next recommended stage
 
-Continue with one of:
+Create a bounded implementation work order for `Creator MVP App Surface v0.1` with exact allowed files, probably:
 
 ```text
-approve -> promote v0.2 as baseline and compile the next product slice
-adjust -> bounded v0.2 UI/content repair
-continue -> HumanGate for moving from static prototype toward a named app surface
-stop -> preserve handoff and halt automatic continuation
+app/creator-mvp/index.html
+app/creator-mvp/styles.css
+app/creator-mvp/app.js
+optional app/creator-mvp/fixtures.js
 ```
+
+The implementation should use read-only fixture data only and must pass browser/interaction verification.

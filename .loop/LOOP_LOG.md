@@ -1,90 +1,68 @@
-# LOOP_LOG
+# LOOP LOG
 
-## Round: creator mvp loop prototype refinement v0.2
+## Round: creator mvp app surface contract v0.1
 
-### Trigger
+### User request
 
-User said "继续推进" after the v0.1 prototype stage completed and the previous handoff recommended a prototype review/refinement pass.
+The user approved the next stage after the v0.2 static prototype refinement.
 
-### Demand cognition
+### Hermes demand interrogation result
 
-Hermes interpreted the request as continuing the bounded loop with a refinement stage, not expanding into a real app surface yet.
-
-The active convergence slice was:
+Correct expression:
 
 ```text
-v0.1 static prototype -> product-quality v0.2 refinement -> verified creator-facing baseline
+static prototype v0.2 -> app surface boundary contract -> bounded implementation work order -> Codex prototype/app execution -> Hermes browser/verifier checks -> user satisfaction feedback
 ```
 
-### Work order compiled
+This round was a contract/specification round, not an implementation round.
+
+### Codex boundary
+
+Codex was allowed to create/update only:
+
+- `CREATOR_MVP_APP_SURFACE_CONTRACT_V0_1.md`
+- `INDEX.md`
+- `.loop/STATE.md`
+- `.loop/LOOP_LOG.md`
+- `.loop/HANDOFF.md`
+
+Codex was forbidden from modifying `prototypes/`, implementation files, scripts, tests, dependencies, protocols, research packs, or commits.
+
+### Hermes-created work order
 
 Hermes created:
 
-- `CODEX_WORK_ORDER_CREATOR_MVP_PROTOTYPE_REFINEMENT_V0_2.md`
+- `CODEX_WORK_ORDER_CREATOR_MVP_APP_SURFACE_CONTRACT_V0_1.md`
 
-The work order constrained Codex to:
+### Codex completion
 
-```text
-prototypes/creator-mvp-loop-v0-2.html
-INDEX.md
-```
+Codex created/updated:
 
-and required Codex to preserve:
-
-```text
-prototypes/creator-mvp-loop-v0-1.html
-```
-
-### Codex result
-
-Codex created:
-
-- `prototypes/creator-mvp-loop-v0-2.html`
-
-Codex updated:
-
+- `CREATOR_MVP_APP_SURFACE_CONTRACT_V0_1.md`
 - `INDEX.md`
 
-Codex did not commit changes.
+### Key contract decisions
 
-### Hermes verifier evidence
+- Next surface name: `Creator MVP App Surface v0.1`.
+- Static HTML/CSS/JS remains acceptable, but as an app surface rather than another loose prototype.
+- Real `.loop` automation is out of scope.
+- Read-only fixture data is the default.
+- Internal machinery remains hidden by default; only evidence/risk summaries may surface.
+- Next implementation must name exact allowed files and remain a single bounded app-surface round.
 
-Hermes independently verified:
+### Hermes independent verifier
 
-- v0.1 file exists and has no diff;
-- v0.2 file exists and is substantive: 29275 bytes;
-- required labels/concepts are present: Creator MVP Loop v0.1, v0.2 refinement, Idea Intake, Direction Check, Status, Preview, Evidence Summary, Satisfaction Feedback, HumanGate, Correction Routing, internal route roles, scope expansion, and automatic continuation;
-- feedback actions are present: approve, adjust, reject, continue, stop;
-- HumanGate choices are present: authorize, keep, stop;
-- evidence includes optional internal detail via `<details>/<summary>`;
-- no static network/dependency patterns were detected;
-- `INDEX.md` preserves v0.1 link and adds v0.2 link;
-- forbidden directories were not changed;
-- HTML parsed via Python stdlib `html.parser`;
-- extracted inline script passed `node --check`;
-- Playwright CLI rendered the v0.2 page and produced a screenshot after installing the matching Chromium build;
-- CDP interaction verification passed:
-  - initial state: Preview;
-  - Continue -> HumanGate;
-  - route title: HumanGate: creator-owned decision;
-  - Stop -> Stop;
-  - Continue disabled after Stop: true;
-  - Authorize new slice disabled after Stop: true.
+Hermes confirmed:
 
-### Decision
+- contract and work order exist and are meaningful size;
+- required app-surface concepts are covered;
+- required states are covered;
+- INDEX links the new contract and work order;
+- relative Markdown links are valid;
+- forbidden directories, including `prototypes/`, were not changed.
+
+### Stop state
 
 DoneWithRisk.
 
-Reason:
-
-- v0.2 itself passed file, syntax, render, and interaction verification;
-- the worktree still has a pre-existing untracked `.codex/` directory/config file that is intentionally excluded from committed artifacts.
-
-### Next recommended stage
-
-The v0.2 prototype can now be used as the product baseline for the next HumanGate decision:
-
-```text
-continue as static prototype refinement
-or move toward a named app surface / real product implementation slice
-```
+The contract itself passed. Risk remains the pre-existing untracked `.codex/` directory, which is excluded from committed product artifacts.
